@@ -15,4 +15,6 @@
         <div class="effect-banner"></div>
     </section>
     @include('layouts.course')
+
+    @include('layouts.why_hapolearn')
 @endsection

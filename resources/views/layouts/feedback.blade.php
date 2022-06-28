@@ -7,7 +7,7 @@
     </div>
     <div class="container">
         <div class="slide-show">
-            <div class="feedback-item ">
+            <div class="feedback-item">
                     <div class="feedback-container">
                         <div class="feedback-content">
                             “A wonderful course on how to start. Eddie beautifully conveys all essentials of a becoming a good Angular developer.
@@ -29,7 +29,7 @@
                         </div>
                     </div>
                 </div>
-            <div class="feedback-item ">
+            <div class="feedback-item">
                     <div class="feedback-container">
                         <div class="feedback-content">
                             “A wonderful course on how to start. Eddie beautifully conveys all essentials of a becoming a good Angular developer.
@@ -51,7 +51,7 @@
                         </div>
                     </div>
                 </div>
-            <div class="feedback-item ">
+            <div class="feedback-item">
                 <div class="feedback-container">
                     <div class="feedback-content">
                         “A wonderful course on how to start. Eddie beautifully conveys all essentials of a becoming a good Angular developer.
@@ -73,7 +73,7 @@
                     </div>
                 </div>
             </div>
-            <div class="feedback-item ">
+            <div class="feedback-item">
                 <div class="feedback-container">
                     <div class="feedback-content">
                         “A wonderful course on how to start. Eddie beautifully conveys all essentials of a becoming a good Angular developer.

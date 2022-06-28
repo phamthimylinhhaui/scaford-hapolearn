@@ -1,0 +1,137 @@
+.feedback {
+  font-family: $font-main;
+
+  .feedback-top {
+    .feedback-description {
+      text-align: center;
+      font-size: 25px;
+      margin: 2rem auto;
+    }
+  }
+}
+
+.feedback-container {
+  position: relative;
+  border: 0.5px solid $white;
+  padding: 1rem;
+  margin: 1rem;
+  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.15);
+
+  &::after {
+    height: 0px;
+    width: 0px;
+    content: " ";
+    display: block;
+    z-index: 2;
+    border-width: 15px 15px 10px 0;
+    border-style: solid;
+    border-color: transparent #fff transparent transparent;
+    transform: rotate(-90deg);
+    position: absolute;
+    bottom: -1rem;
+    box-shadow: 0px 0px 8px #f8f9fa;
+  }
+
+  .feedback-content {
+    font-size: 16px;
+    margin: 1rem auto;
+    border-left: 5px solid $gray;
+    padding: 1rem;
+  }
+}
+
+.user-comment {
+  padding-left: 2.5rem;
+
+  .user-avatar {
+    width: 4rem;
+    height: 4rem;
+  }
+}
+
+.feedback-user-info {
+  .user-name {
+    text-transform: capitalize;
+    font-size: 20px;
+    font-weight: 700;
+    color: $blue;
+  }
+
+  .user-category {
+    font-size: 16px;
+  }
+
+  .user-rate {
+    color: $yellow;
+  }
+}
+
+.slick-track {
+  display: flex;
+}
+
+.slide-show {
+  overflow: hidden;
+  position: relative;
+
+  .slick-prev {
+    position: absolute;
+    top: 6rem;
+    z-index: 2;
+    left: 0;
+  }
+
+  .slick-next {
+    position: absolute;
+    top: 6rem;
+    z-index: 2;
+    right: 0;
+  }
+
+  .slick-arrow {
+    border: 0;
+    background: none;
+    transform: scale(1.25);
+    color: $gray;
+  }
+}
+
+@media (min-width: 577px) and (max-width: 991px) {
+  .feedback {
+    .feedback-top {
+      .heading-courses {
+        font-size: 50px;
+      }
+
+      .feedback-description {
+        font-size: 18px;
+      }
+    }
+  }
+
+  .feedback-container{
+    .feedback-content {
+      font-size: 16px;
+    }
+  }
+}
+
+@media (min-width: 375px) and (max-width: 576px) {
+  .feedback {
+    .feedback-top {
+      .heading-courses {
+        font-size: 40px;
+      }
+
+      .feedback-description {
+        font-size: 16px;
+      }
+    }
+  }
+
+  .feedback-container{
+    .feedback-content {
+      font-size: 14px;
+    }
+  }
+}

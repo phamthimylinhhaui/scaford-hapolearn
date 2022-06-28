@@ -17,4 +17,6 @@
     @include('layouts.course')
 
     @include('layouts.why_hapolearn')
+
+    @include('layouts.feedback')
 @endsection

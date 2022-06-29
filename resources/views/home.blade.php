@@ -19,4 +19,6 @@
     @include('layouts.why_hapolearn')
 
     @include('layouts.feedback')
+
+    @include('layouts.statistic')
 @endsection

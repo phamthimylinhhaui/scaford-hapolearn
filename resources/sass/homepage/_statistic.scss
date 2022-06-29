@@ -1,0 +1,123 @@
+.statistic-banner {
+  background-size: cover;
+  padding: 5rem;
+  object-fit: cover;
+  background-image: url("/images/image-become.png");
+  align-items: center;
+  font-family: $font-main;
+  margin-top: 3rem;
+
+  .statistic-container {
+    margin: auto;
+    text-align: center;
+    line-height: 1.5;
+
+    .banner-statistic-title {
+      color: white;
+      font-size: 60px;
+      letter-spacing: -2%;
+      font-weight: 700;
+      margin-bottom: 2rem;
+   }
+
+    .statistic-btn {
+      @extend .btn-main;
+      color: #B2D235;
+      font-size: 30px;
+      font-weight: 700;
+      background: white;
+      width: 30vw;
+      margin: auto;
+    }
+  }
+}
+
+.statistic {
+  text-transform: capitalize;
+  font-family: $font-main;
+
+  .heading-statistic {
+    @extend .heading-courses;
+    width: 27vw;
+  }
+}
+
+.col {
+  margin-bottom: 1rem;
+
+  .list-item {
+    font-size: 60px;
+    text-align: center;
+    letter-spacing: -5%;
+
+    .list-title {
+      font-weight: 700;
+      color: $black;
+    }
+
+    .list-data {
+      font-weight: bold;
+      color: $main-color;
+    }
+  }
+}
+
+@media (min-width: 577px) and (max-width: 991px) {
+  .statistic-banner {
+    background-size: 100% 100%;
+
+    .statistic-container {
+      .banner-statistic-title {
+        font-size: 35px;
+      }
+
+      .statistic-btn {
+        font-size: 20px;
+      }
+    }
+  }
+
+  .statistic {
+    .heading-statistic {
+      width: 24vw;
+    }
+  }
+
+  .col {
+    .list-item {
+      letter-spacing: -5%;
+      font-size: 40px;
+    }
+  }
+}
+
+@media (min-width: 375px) and (max-width: 576px) {
+  .statistic-banner {
+    background-size: 100% 100%;
+    padding: 3rem;
+
+    .statistic-container {
+      .banner-statistic-title {
+        font-size: 23px;
+      }
+
+      .statistic-btn {
+        font-size: 18px;
+        width: 60vw;
+      }
+    }
+  }
+
+  .statistic {
+    .heading-statistic {
+      width: 40vw;
+    }
+  }
+
+  .col {
+    .list-item {
+      letter-spacing: -5%;
+      font-size: 40px;
+    }
+  }
+}

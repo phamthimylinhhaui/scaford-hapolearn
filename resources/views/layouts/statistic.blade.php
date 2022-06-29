@@ -1,12 +1,12 @@
 <div class="container-fluid statistic-banner">
-   <div class="statistic-container">
-       <div class="banner-statistic-title">Become a member of our<br>
-           growing community!
-       </div>
-       <div class="statistic-btn">
-           Start Learning Now!
-       </div>
-   </div>
+    <div class="statistic-container">
+        <div class="banner-statistic-title">Become a member of our<br>
+            growing community!
+        </div>
+        <div class="statistic-btn">
+            Start Learning Now!
+        </div>
+    </div>
 </div>
 <div class="container statistic">
     <div class="heading-statistic">statistic</div>

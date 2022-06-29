@@ -1,0 +1,149 @@
+.footer-top {
+  background-color: $footer-color;
+  font-family: $font-main;
+  color: white;
+
+  .text-center {
+    .row {
+      padding: 5rem 2rem;
+    }
+  }
+}
+
+.footer-brand {
+  padding: 0;
+  font-size: 20px;
+
+  .footer-logo {
+    .logo-image {
+      margin-left: -9rem;
+      margin-top: -1rem;
+      padding-bottom: 1rem;
+      transform: scale(1.25);
+    }
+  }
+
+  .brand-description {
+    margin-top: 1rem;
+    letter-spacing: 1px;
+    text-align: left;
+    padding-left: 2rem;
+  }
+}
+
+.row-item {
+  display: flex;
+  text-align: left;
+
+  .col-6 {
+    p {
+      font-weight: 700;
+    }
+  }
+}
+
+.text-reset {
+  font-size: 20px;
+}
+
+.list-icon {
+  transform: scale(3);
+}
+
+.footer-bottom {
+  background-color: $gray-2;
+  font-family: $font-main;
+  color: white;
+  font-size: 15px;
+  font-weight: 500;
+
+  .fw-bold {
+    font-size: 15px;
+  }
+}
+
+@media (min-width: 577px) and (max-width: 991px) {
+  .footer-brand {
+    .footer-logo {
+      .logo-image {
+        transform: scale(1);
+        margin-left: -1rem;
+      }
+    }
+
+    .brand-description {
+      margin-left: -1rem;
+      letter-spacing: 0;
+      font-size: 16px;
+    }
+  }
+
+  .footer-icon {
+    padding: 5rem 1rem;
+  }
+
+  .text-reset {
+    font-size: 18px;
+  }
+}
+
+@media (min-width: 375px) and (max-width: 576px) {
+  .footer-item {
+    position: relative;
+    height: 23rem;
+
+    .footer-brand {
+      position: absolute;
+      top: 14rem;
+      left: 0;
+    }
+
+    .row-item {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+    }
+
+    .row-icon {
+      position: absolute;
+      top: 14rem;
+      right: -3.5rem;
+      width: 60%;
+    }
+
+    .text-reset {
+      font-size: 17px;
+    }
+  }
+
+  .footer-brand {
+    .footer-logo {
+      .logo-image {
+        transform: scale(0.5);
+      }
+    }
+
+    .brand-description {
+      letter-spacing: 0;
+      font-size: 14px;
+      margin-left: 1rem;
+      margin-top: -1rem;
+    }
+  }
+
+  .footer-icon {
+    transform: scale(0.5);
+
+    .list-icon {
+      padding-right: 2rem
+    }
+  }
+
+  .footer-top {
+    .text-center {
+      .row {
+        padding: 0;
+      }
+    }
+  }
+}

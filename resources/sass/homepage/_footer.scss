@@ -1,0 +1,44 @@
+.footer-top {
+  background-color: $footer-color;
+  font-family: $font-main;
+  color: white;
+
+  .container {
+    .row {
+      padding: 5rem 0;
+    }
+  }
+}
+
+.footer-brand {
+  padding: 0;
+  font-size: 20px;
+
+  .footer-logo {
+    .logo-image {
+      margin-left: -6rem;
+    }
+  }
+
+  .brand-description {
+    margin-top: 1rem;
+    letter-spacing: 1px;
+    text-align: left;
+  }
+}
+
+.row-item {
+  display: flex;
+
+  .col-6 {
+    p {
+      font-weight: 700;
+    }
+  }
+}
+
+.footer-bottom {
+  background-color: #454545;
+  font-family: $font-main;
+  color: white;
+}

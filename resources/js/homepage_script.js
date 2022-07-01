@@ -1,4 +1,6 @@
 $(document).ready(function(){
+	$('.jquery-message-btn').on('click', function(){$('#contentMessage').toggleClass('active')})
+
   $('.slide-show').slick({
     infinite: true,
     slidesToShow: 2,

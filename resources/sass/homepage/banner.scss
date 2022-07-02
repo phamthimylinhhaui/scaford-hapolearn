@@ -34,7 +34,7 @@
   }
 
   .content-description {
-    width: 50%;
+    width: 63%;
     font-size: 25px;
   }
 
@@ -59,7 +59,7 @@
 
 .message-display {
   position: fixed;
-  width: 40%;
+  width: 35%;
   z-index: 3;
   right: 0;
   top: 50vh;
@@ -91,11 +91,7 @@
   }
 }
 
-.content {
-  span {
-    margin-left: 1rem;
-  }
-
+.content-detail {
   .close {
     margin-top: -1rem !important;
   }
@@ -105,20 +101,39 @@
     margin: 0.5rem;
   }
 
-  .message-body {
-    float: right;
-    width: 85%;
-    background-color: #F1F0F0;
-    padding: 0.75rem;
+  .message-content {
+    text-align: left;
+    width: 80%;
+    margin-left: 5rem;
+    padding: 0.5rem;
+    background-color: $gray-message;
     border-radius: 1rem;
     line-height: 1.5;
     font-size: 12px;
     letter-spacing: 1px;
   }
+
+  .message-btn-login {
+    display: block;
+    width: 85%;
+    margin: 1rem 4rem;
+    border-radius: 1rem;
+  }
+
+  .chat {
+    text-decoration: none;
+    color: #B3B3B3;
+    font-size: 12px;
+    text-align: center;
+    margin-left: 10rem;
+  }
 }
 
-.message-footer {
-  
+.message-btn-login {
+  .message-link {
+    text-decoration: none;
+    color: white;
+  }
 }
 
 @media (max-width: 1106px) {
@@ -151,6 +166,20 @@
       .content-btn {
         width: 50%;
         font-size: 16px;
+      }
+    }
+  }
+
+  .message-display {
+    width: 45%;
+
+    .content {
+      .content-detail {
+        margin-left: -1.9rem;
+
+        .chat {
+          margin-left: 6rem;
+        }
       }
     }
   }
@@ -190,5 +219,30 @@
 
   .effect-banner {
     height: 20rem;
+  }
+
+  .message-display {
+    width: 50%;
+
+    .content {
+      .content-detail {
+        margin-left: -1.9rem;
+
+        .message-content {
+          margin-left: 3rem;
+          font-size: 12px;
+        }
+
+        .message-btn-login {
+          margin-left: 2rem;
+          font-size: 12px;
+        }
+
+        .chat {
+          font-size: 12px;
+          margin-left: 1rem;
+        }
+      }
+    }
   }
 }

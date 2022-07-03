@@ -1,5 +1,10 @@
 $(document).ready(function(){
-	$('.jquery-message-btn').on('click', function(){$('#contentMessage').toggleClass('active')})
+	$('.jquery-message-btn').on('click', function(){$('#contentMessage').toggleClass('active')});
+
+	$('#jqueryBtn').on('click', function(){
+		$('#exit').toggleClass('active');
+		$('#jqueryBtn').toggleClass('active');
+	});
 
   $('.slide-show').slick({
     infinite: true,

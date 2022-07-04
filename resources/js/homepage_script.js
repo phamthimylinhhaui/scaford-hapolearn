@@ -1,7 +1,7 @@
 $(document).ready(function(){
 	$('.jquery-message-btn').on('click', function(){
-		$('#contentMessage').toggleClass('active')}
-	);
+		$('#contentMessage').toggleClass('active')
+	});
 
 	$('#jqueryBtn').on('click', function(){
 		$('#exit').toggleClass('active');

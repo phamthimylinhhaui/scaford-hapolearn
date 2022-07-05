@@ -34,7 +34,7 @@
   }
 
   .content-description {
-    width: 50%;
+    width: 63%;
     font-size: 25px;
   }
 
@@ -54,6 +54,87 @@
       font-size: 30px;
       padding: 0 10px;
     }
+  }
+}
+
+.message-display {
+  position: fixed;
+  width: 35%;
+  z-index: 3;
+  right: 0;
+  top: 50vh;
+
+  .content {
+    font-family: $font-main;
+    background-color: white;
+    display: block;
+    width: 100%;
+    border-radius: 1rem;
+    margin: -1rem;
+    box-shadow: 0px 0px 8px 0px #00000040;
+
+    &.active {
+      display: none;
+    }
+  }
+
+  .jquery-message-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    float: right;
+    margin-top: 2rem;
+
+    i {
+      transform: scale(2.25);
+    }
+  }
+}
+
+.content-detail {
+  margin-left: -1.8rem;
+
+  .close {
+    margin-top: -1rem !important;
+  }
+
+  .message-icon {
+    float: left;
+    margin: 0.5rem;
+  }
+
+  .message-content {
+    text-align: left;
+    width: 80%;
+    margin-left: 5rem;
+    padding: 0.5rem;
+    background-color: $gray-message;
+    border-radius: 1rem;
+    line-height: 1.5;
+    font-size: 12px;
+    letter-spacing: 1px;
+  }
+
+  .message-btn-login {
+    display: block;
+    width: 85%;
+    margin: 1rem 4rem;
+    border-radius: 1rem;
+  }
+
+  .chat {
+    text-decoration: none;
+    color: #B3B3B3;
+    font-size: 12px;
+    text-align: center;
+    margin-left: 10rem;
+  }
+}
+
+.message-btn-login {
+  .message-link {
+    text-decoration: none;
+    color: white;
   }
 }
 
@@ -87,6 +168,20 @@
       .content-btn {
         width: 50%;
         font-size: 16px;
+      }
+    }
+  }
+
+  .message-display {
+    width: 45%;
+
+    .content {
+      .content-detail {
+        margin-left: -1.9rem;
+
+        .chat {
+          margin-left: 6rem;
+        }
       }
     }
   }
@@ -126,5 +221,30 @@
 
   .effect-banner {
     height: 20rem;
+  }
+
+  .message-display {
+    width: 50%;
+
+    .content {
+      .content-detail {
+        margin-left: -1.9rem;
+
+        .message-content {
+          margin-left: 3rem;
+          font-size: 12px;
+        }
+
+        .message-btn-login {
+          margin-left: 2rem;
+          font-size: 12px;
+        }
+
+        .chat {
+          font-size: 12px;
+          margin-left: 1rem;
+        }
+      }
+    }
   }
 }

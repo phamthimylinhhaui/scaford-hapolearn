@@ -15,7 +15,31 @@ class Course extends Model
         'name',
         'image',
         'price',
-        'teacher',
         'description'
     ];
+
+    public function lessons()
+    {
+        return $this->hasMany(Lesson::class, 'course_id');
+    }
+
+    public function reviews()
+    {
+        return $this->hasMany(Review::class, 'course_id');
+    }
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class, 'user_course', 'course_id');
+    }
+
+    public function teacherCourse()
+    {
+        return $this->belongsToMany(User::class, 'user_course', 'course_id');
+    }
+
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class, 'course_tag', 'course_id');
+    }
 }

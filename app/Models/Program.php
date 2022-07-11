@@ -13,8 +13,18 @@ class Program extends Model
 
     protected $fillable = [
         'name',
-        'source_code',
-        'slide',
-        'video'
+        'lesson_id',
+        'path',
+        'type'
     ];
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class, 'user_program', 'program_id');
+    }
+
+    public function lesson()
+    {
+        return $this->belongsTo(Lesson::class);
+    }
 }

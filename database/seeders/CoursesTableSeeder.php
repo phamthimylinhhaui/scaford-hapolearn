@@ -15,11 +15,11 @@ class CoursesTableSeeder extends Seeder
     public function run()
     {
         DB::table('courses')->insert([
-                'name'=>'html'
+                'name' => 'html'
         ]);
 
         DB::table('courses')->insert([
-            'name'=>'css'
+            'name' => 'css'
         ]);
     }
 }

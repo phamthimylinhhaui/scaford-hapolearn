@@ -18,9 +18,9 @@ class ReviewFactory extends Factory
         return [
             'user_id' => $this->faker->randomElement(User::pluck('id')),
             'course_id' => $this->faker->randomElement(Course::pluck('id')),
-            'content' => $this->faker->realText(200,3),
-            'rate' => $this->faker->numberBetween(1,5),
-            'parent_id' => $this->faker->numberBetween(1,500),
+            'content' => $this->faker->Text(200),
+            'parent_id' => $this->faker->numberBetween(1, 5000),
+            'rate' => $this->faker->numberBetween(1, 5),
         ];
     }
 }

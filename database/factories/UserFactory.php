@@ -24,7 +24,7 @@ class UserFactory extends Factory
     {
         return [
             'name' => $this->faker->name(),
-            'avatar' => $this->faker->imageUrl(640,480),
+            'avatar' => $this->faker->imageUrl(640, 480),
             'email' => $this->faker->unique()->safeEmail(),
             'email_verified_at' => now(),
             'password' => bcrypt('12345678'), // password
@@ -32,8 +32,8 @@ class UserFactory extends Factory
             'phone' => $this->faker->phoneNumber(),
             'address' => $this->faker->address(),
             'date_of_birth' => $this->faker->date('Y-m-d'),
-            'role' => $this->faker->numberBetween(0,2),
-            'about_me' => $this->faker->realText(200,5),
+            'role' => $this->faker->numberBetween(0, 2),
+            'about_me' => $this->faker->realText(200, 2),
         ];
     }
 

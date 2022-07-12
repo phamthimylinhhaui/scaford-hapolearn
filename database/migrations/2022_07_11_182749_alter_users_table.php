@@ -17,9 +17,9 @@ class AlterUsersTable extends Migration
             $table->string('avatar')->nullable();
             $table->string('phone')->nullable();
             $table->string('address')->nullable();
-            $table->string('date_of_birth')->nullable();
+            $table->dateTime('date_of_birth')->nullable();
             $table->integer('role')->default(0);
-            $table->integer('about_me')->nullable();
+            $table->text('about_me')->nullable();
         });
     }
 

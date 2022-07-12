@@ -9,6 +9,8 @@ class CourseTag extends Model
 {
     use HasFactory;
 
+    protected $table = 'course_tag';
+
     protected $fillable = [
         'tag_id',
         'course_id'

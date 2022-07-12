@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Course;
+use App\Models\Tag;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -14,7 +14,16 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(CoursesTableSeeder::class);
         $this->call(UsersTableSeeder::class);
+        $this->call(CoursesTableSeeder::class);
+        $this->call(LessonsTableSeeder::class);
+        $this->call(ProgramsTableSeeder::class);
+        $this->call(TagsTableSeeder::class);
+        $this->call(ReviewsTableSeeder::class);
+        $this->call(CourseTagTableSeeder::class);
+        $this->call(TeacherCourseTableSeeder::class);
+        $this->call(UserCourseTableSeeder::class);
+        $this->call(UserLessonTableSeeder::class);
+        $this->call(UserProgramTableSeeder::class);
     }
 }

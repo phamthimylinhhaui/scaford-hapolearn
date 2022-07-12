@@ -20,6 +20,7 @@ class AlterUsersTable extends Migration
             $table->dateTime('date_of_birth')->nullable();
             $table->integer('role')->default(0);
             $table->text('about_me')->nullable();
+            $table->softDeletes();
         });
     }
 

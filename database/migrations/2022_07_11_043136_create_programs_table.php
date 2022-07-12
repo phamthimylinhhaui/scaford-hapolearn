@@ -17,9 +17,8 @@ class CreateProgramsTable extends Migration
             $table->id();
             $table->string('name');
             $table->integer('lesson_id')->unsigned();
-            $table->text('course_code')->nullable();
-            $table->string('slide')->nullable();
-            $table->string('video')->nullable();
+            $table->string('path')->nullable();
+            $table->string('type')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

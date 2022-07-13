@@ -38,7 +38,7 @@ class AlterUsersTable extends Migration
             $table->dropColumn('date_of_birth');
             $table->dropColumn('role');
             $table->dropColumn('about_me');
-            $table->softDeletes();
+            $table->dropSoftDeletes();
         });
     }
 }

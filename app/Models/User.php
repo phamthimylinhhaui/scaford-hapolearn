@@ -20,6 +20,12 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'avatar',
+        'phone',
+        'address',
+        'date_of_birth',
+        'role',
+        'about_me'
     ];
 
     /**
@@ -40,4 +46,29 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function courses()
+    {
+        return $this->belongsToMany(Course::class, 'user_course', 'user_id');
+    }
+
+    public function teacherCourse()
+    {
+        return $this->belongsToMany(Course::class, 'teacher_course', 'user_id');
+    }
+
+    public function lessons()
+    {
+        return $this->belongsToMany(Course::class, 'teacher_course', 'user_id');
+    }
+
+    public function programs()
+    {
+        return $this->belongsToMany(Course::class, 'teacher_course', 'user_id');
+    }
+
+    public function reviews()
+    {
+        return $this->hasMany(Review::class, 'user_id');
+    }
 }

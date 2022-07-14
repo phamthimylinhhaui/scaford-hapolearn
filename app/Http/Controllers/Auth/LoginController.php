@@ -48,7 +48,7 @@ class LoginController extends Controller
         if (Auth::attempt($credentials)) {
             return redirect('home')->with('success', 'Đăng nhập thành công');
         } else {
-            return redirect()->back()->with('status', 'Email hoặc Password không chính xác');
+            return redirect()->back()->with('error', 'Email hoặc Password không chính xác');
         }
     }
 }

@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\LoginRequest;
 
@@ -48,7 +47,7 @@ class LoginController extends Controller
         if (Auth::attempt($credentials)) {
             return redirect('home')->with('success', 'Đăng nhập thành công');
         } else {
-            return redirect()->back()->with('error', 'Email hoặc Password không chính xác');
+            return redirect()->back()->with('error', 'Username hoặc Password không chính xác');
         }
     }
 }

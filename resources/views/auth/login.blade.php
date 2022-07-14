@@ -20,10 +20,10 @@
                         @csrf
 
                         <div class="form-group">
-                            <label for="user-name" class="col-md-12 col-form-label text-md-left">Username</label>
+                            <label for="username" class="col-md-12 col-form-label text-md-left">Username</label>
 
                             <div class="col-md-12">
-                                <input id="user-name" type="text" class="form-control @error('user_name') is-invalid @enderror" name="user_name" value="{{ old('user_name') }}" required autocomplete="user_name" autofocus>
+                                <input id="username" type="text" class="form-control @error('user_name') is-invalid @enderror" name="user_name" value="{{ old('user_name') }}" required autocomplete="user_name" autofocus>
 
                                 @error('user_name')
                                     <span class="invalid-feedback" role="alert">

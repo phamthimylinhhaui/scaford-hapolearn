@@ -23,7 +23,7 @@ class UserFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->name(),
+            'user_name' => $this->faker->name(),
             'avatar' => $this->faker->imageUrl(640, 480),
             'email' => $this->faker->unique()->safeEmail(),
             'email_verified_at' => now(),

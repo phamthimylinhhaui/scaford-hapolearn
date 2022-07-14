@@ -45,7 +45,7 @@ class LoginController extends Controller
         $credentials = $request->only('user_name', 'password');
 
         if (Auth::attempt($credentials)) {
-            return redirect('home')->with('success', 'Đăng nhập thành công');
+            return redirect('/')->with('success', 'Đăng nhập thành công');
         }
 
         return redirect()->back()->with('error', 'Username hoặc Password không chính xác');

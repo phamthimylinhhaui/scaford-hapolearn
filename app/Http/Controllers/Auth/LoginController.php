@@ -48,6 +48,6 @@ class LoginController extends Controller
             return redirect('/')->with('success', __('message.login_success'));
         }
 
-        return redirect()->back()->with('error',  __('message.login_error'));
+        return redirect()->back()->with('error', __('message.login_error'));
     }
 }

@@ -1,0 +1,104 @@
+.card-login {
+  margin: 5rem 0;
+  color: $gray-login;
+
+  .card-title {
+    font-family: Arial;
+    color: $main-color;
+    font-size: 30px;
+    text-align: center;
+    margin: auto;
+    padding-top: 3rem;
+    font-weight: 400;
+  }
+}
+
+.card-login-body {
+  .message-error {
+    width: 80%;
+    margin: auto;
+  }
+
+  form {
+    width: 80%;
+    margin: auto;
+  }
+}
+
+.login-submit {
+  justify-content: space-between;
+
+  .btn-sign-in {
+    margin-left: 2rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .link-forgot-password {
+    float: right;
+    text-align: right;
+    color: $main-color;
+  }
+}
+
+.sign-in-with {
+  margin: 2.5rem 5rem;
+
+  .text {
+    margin: 2rem auto;
+
+    .content-text {
+      font-size: 20px;
+      padding: 0;
+      text-align: center;
+    }
+
+    .line {
+      border: 1px solid $gray-login;
+      height: 1px;
+      margin: auto;
+    }
+  }
+
+  .btn-google {
+    margin-left: 2vw;
+    background: none;
+    border-color: $red-login;
+    border-radius: 20px;
+
+    .link-login-google {
+      color: $red-login;
+      font-size: 20px;
+    }
+  }
+
+  .btn-main {
+    margin-left: 2vw;
+
+    .btn-create {
+      color: white;
+      font-size: 22px;
+    }
+  ;
+  }
+}
+
+@media (min-width: 577px) and (max-width: 991px) {
+  .card-login {
+    display: block;
+  }
+}
+
+@media (min-width: 375px) and (max-width: 576px) {
+  .sign-in-with {
+    .btn-google {
+      width: 80%;
+      margin-left: 7vw;
+    }
+
+    .btn-login-create {
+      width: 80%;
+      margin-left: 7vw;
+    }
+  }
+}

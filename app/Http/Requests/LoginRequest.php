@@ -32,11 +32,11 @@ class LoginRequest extends FormRequest
     public function messages()
     {
         return [
-            'user_name.required' => ':attribute  không được để trống!',
-            'user_name.min' => ':attribute không được ít hơn :min ký tự',
-            'user_name.alpha_dash' => ':attribute không được chứa các ký tự đặc biệt và khoảng trắng',
-            'password.required' => ':attribute không được để trống!',
-            'password.min' => ':attribute không được ít hơn :min ký tự ',
+            'user_name.required' => __('message.user_name_required'),
+            'user_name.min' => __('message.user_name_min'),
+            'user_name.alpha_dash' => __('message.user_name_alpha_dash'),
+            'password.required' => __('message.password_required'),
+            'password.min' => __('message.password_min'),
         ];
     }
 

@@ -7,4 +7,8 @@ return [
     'password_min' => ':attribute phải có ít nhất :min kí tự',
     'login_success' => 'Đăng nhập thành công',
     'login_error' => 'Username hoặc Password không chính xác',
+    'user_name_unique' => ':attribute này đã tồn tại',
+    'email_required' => ':attribute  không được để trống!',
+    'email_unique' => ':attribute này đã tồn tại',
+    'password_confirmed' => 'Nhập lại password chưa đúng',
 ];

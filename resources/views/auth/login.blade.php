@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container-fluid background-auth">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card card-login">
@@ -83,7 +83,7 @@
                             <div class="col-lg-3 col-md-2 line"></div>
                         </div>
                         <div class="btn btn-primary btn-main col-md-11 btn-login-create">
-                            <a href="" class="btn-create">create new account</a>
+                            <a href="/register" class="btn-create">create new account</a>
                         </div>
                     </div>
                 </div>

@@ -1,0 +1,37 @@
+.background-auth {
+  background-color: $gray-background;
+}
+
+.form-group {
+  .col-md-12 {
+    .btn-register {
+      margin-bottom: 3rem;
+      margin-top: 1rem;
+      width: 70%;
+      padding: 0.5rem;
+      font-size: 22px;
+    }
+  }
+}
+
+@media (min-width: 577px) and (max-width: 991px) {
+  .form-group {
+    .col-md-12 {
+      .btn-register {
+        font-size: 16px;
+      }
+    }
+  }
+}
+
+@media (min-width: 375px) and (max-width: 576px) {
+  .form-group {
+    .col-md-12 {
+      .btn-register {
+        margin-left: 17vw;
+        width: 50%;
+        font-size: 16px;
+      }
+    }
+  }
+}

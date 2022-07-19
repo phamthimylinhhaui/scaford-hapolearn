@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-7">
             <div class="card card-login">
-                <div class="card-title">{{ __('Sign up to HapoLearn') }}</div>
+                <div class="card-title">{{ __('message.register_title') }}</div>
 
                 <div class="card-login-body">
                     <form method="POST" action="{{ route('register') }}">
@@ -70,7 +70,7 @@
                         <div class="form-group">
                             <div class="offset-md-4 col-md-12 col-xs-4 col-sm-4 col-xl-8 col-lg-8">
                                 <button type="submit" class="btn btn-primary btn-main col-md-4 col-lg-7 btn-register">
-                                    {{ __('Sign up') }}
+                                    {{ __('message.log_in') }}
                                 </button>
                             </div>
                         </div>

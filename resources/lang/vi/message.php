@@ -14,5 +14,8 @@ return [
     'password_confirmation_required' => ':attribute không được bỏ trống!',
     'password_confirmation_min' => ':attribute phải có ít nhất :min kí tự',
     'password_confirmation_same' => ':attribute chưa đúng',
+    'register_success' => 'Đăng ký thành công, Hapo xin chào!!!',
     'register_error' => 'Đăng ký thất bại!',
+    'log_in' => 'Sign up',
+    'register_title' => 'Sign up to HapoLearn',
 ];

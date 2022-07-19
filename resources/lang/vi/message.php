@@ -14,4 +14,5 @@ return [
     'password_confirmation_required' => ':attribute không được bỏ trống!',
     'password_confirmation_min' => ':attribute phải có ít nhất :min kí tự',
     'password_confirmation_same' => ':attribute chưa đúng',
+    'register_error' => 'Đăng ký thất bại!',
 ];

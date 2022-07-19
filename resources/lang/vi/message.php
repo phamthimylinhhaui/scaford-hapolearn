@@ -9,6 +9,9 @@ return [
     'login_error' => 'Username hoặc Password không chính xác',
     'user_name_unique' => ':attribute này đã tồn tại',
     'email_required' => ':attribute  không được để trống!',
+    'email_email' => ':attribute  không đúng định dạng email!',
     'email_unique' => ':attribute này đã tồn tại',
-    'password_confirmed' => 'Nhập lại password chưa đúng',
+    'password_confirmation_required' => ':attribute không được bỏ trống!',
+    'password_confirmation_min' => ':attribute phải có ít nhất :min kí tự',
+    'password_confirmation_same' => ':attribute chưa đúng',
 ];

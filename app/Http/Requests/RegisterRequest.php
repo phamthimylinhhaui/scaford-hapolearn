@@ -25,8 +25,9 @@ class RegisterRequest extends FormRequest
     {
         return [
             'user_name' => 'required|min:6|unique:users',
-            'email' => 'required|unique:users',
-            'password' => 'required|min:8|confirmed',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|min:6',
+            'password_confirmation' => 'required|min:6|same:password',
         ];
     }
 
@@ -38,9 +39,12 @@ class RegisterRequest extends FormRequest
             'user_name.unique' => __('message.user_name_unique'),
             'email.required' => __('message.email_required'),
             'email.unique' => __('message.email_unique'),
+            'email.email' => __('message.email_email'),
             'password.required' => __('message.password_required'),
             'password.min' => __('message.password_min'),
-            'password.confirmed' => __('message.password_confirmed'),
+            'password_confirmation.required' => __('message.password_confirmation_required'),
+            'password_confirmation.min' => __('message.password_confirmation_min'),
+            'password_confirmation.same' => __('message.password_confirmation_same'),
         ];
     }
 
@@ -50,6 +54,7 @@ class RegisterRequest extends FormRequest
             'user_name' => 'Tên tài khoản',
             'email' => 'Email',
             'password' => 'Mật khẩu',
+            'password_confirmation' => 'Nhập lại mật khẩu',
         ];
     }
 }

@@ -24,7 +24,7 @@ class RegisterRequest extends FormRequest
     public function rules()
     {
         return [
-            'user_name' => 'required|min:6|unique:users',
+            'user_name' => 'required|min:6|alpha_dash|unique:users',
             'email' => 'required|email|unique:users',
             'password' => 'required|min:6',
             'password_confirmation' => 'required|min:6|same:password',
@@ -37,6 +37,7 @@ class RegisterRequest extends FormRequest
             'user_name.required' => __('message.user_name_required'),
             'user_name.min' => __('message.user_name_min'),
             'user_name.unique' => __('message.user_name_unique'),
+            'user_name.alpha_dash' => __('message.user_name_alpha_dash'),
             'email.required' => __('message.email_required'),
             'email.unique' => __('message.email_unique'),
             'email.email' => __('message.email_email'),

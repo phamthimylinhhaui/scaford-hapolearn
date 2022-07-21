@@ -4,13 +4,13 @@
         <div class="col">
             <div class="card h-100">
                 <div class="card-img">
-                    <img src="{{ asset($course['image']) }}" class="card-img-top" alt="...">
+                    <img src="{{ asset($course->image) }}" class="card-img-top" alt="...">
 {{--                    'images/logo-html.png' --}}
                 </div>
                 <div class="card-body">
-                    <h5 class="card-title">{{ $course['name'] }}</h5>
+                    <h5 class="card-title">{{ $course->name }}</h5>
                     <p class="card-text">
-                        {{ $course['description'] }}
+                        {{ $course->description }}
                     </p>
                     <div class="btn btn-success">
                         <a href="#">take this course</a>
@@ -29,12 +29,12 @@
         <div class="col">
             <div class="card h-100">
                 <div class="card-img">
-                    <img src="{{ asset( $otherCourse['image']) }}" class="card-img-top" alt="...">
+                    <img src="{{ asset( $otherCourse->image) }}" class="card-img-top" alt="...">
                 </div>
                 <div class="card-body">
-                    <h5 class="card-title">{{ $otherCourse['name'] }}</h5>
+                    <h5 class="card-title">{{ $otherCourse->name }}</h5>
                     <p class="card-text">
-                        {{ $otherCourse['description'] }}
+                        {{ $otherCourse->description }}
                     </p>
                     <div class="btn btn-success">
                         <a href="#">take this course</a>

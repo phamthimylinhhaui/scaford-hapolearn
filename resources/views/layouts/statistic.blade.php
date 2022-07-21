@@ -14,7 +14,7 @@
         <div class="col">
             <div class="h-100 list-item">
                 <div class="list-title">course</div>
-                <div class="list-data">{{ $totalCount }}</div>
+                <div class="list-data">{{ $totalCourse }}</div>
             </div>
         </div>
         <div class="col">

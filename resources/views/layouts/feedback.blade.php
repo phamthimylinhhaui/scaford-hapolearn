@@ -11,16 +11,16 @@
             <div class="feedback-item">
                     <div class="feedback-container">
                         <div class="feedback-content">
-                            {{ $feedback['content']  }}
+                            {{ $feedback->content  }}
                         </div>
                     </div>
                     <div class="row user-comment">
-                        <img src="{{ asset($feedback['avatar']) }}" class="user-avatar" alt="...">
+                        <img src="{{ asset($feedback->avatar) }}" class="user-avatar" alt="...">
                         <div class="feedback-user-info col-8">
-                            <div class="user-name">{{$feedback['user_name']}}<div>
-                            <div class="user-category">{{$feedback['name']}}</div>
+                            <div class="user-name">{{$feedback->user_name }}<div>
+                            <div class="user-category">{{$feedback->name }}</div>
                             <div class="user-rate">
-                               @for($i = 0; $i < $feedback['rate']; $i++)
+                               @for($i = 0; $i < $feedback->rate; $i++)
                                 <i class="fa-solid fa-star user-star-icon"></i>
                                 @endfor
                             </div>

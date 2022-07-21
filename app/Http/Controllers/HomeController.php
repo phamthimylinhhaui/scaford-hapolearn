@@ -21,10 +21,10 @@ class HomeController extends Controller
         $courses = (new Course())->ShowCourse();
         $otherCourses = (new Course())->OtherCourse();
         $feedbacks = (new Review())->Feedback();
-        $totalCount = (new Course())->all()->count();
+        $totalCourse = (new Course())->all()->count();
         $totalLesson = (new Lesson())->all()->count();
         $totalLearner = (new UserCourse())->TotalLearner();
 
-        return view('home', compact('courses', 'otherCourses', 'feedbacks', 'totalCount', 'totalLesson', 'totalLearner'));
+        return view('home', compact('courses', 'otherCourses', 'feedbacks', 'totalCourse', 'totalLesson', 'totalLearner'));
     }
 }

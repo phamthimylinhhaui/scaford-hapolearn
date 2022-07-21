@@ -22,10 +22,7 @@ class Review extends Model
 
     public function scopeFeedback()
     {
-        return $this->join('users', 'users.id', '=', 'reviews.user_id')
-            ->join('courses', 'courses.id', '=', 'reviews.course_id')
-            ->select('content', 'users.avatar', 'users.user_name', 'courses.name', 'reviews.rate')
-            ->limit(SHOW_FEEDBACK)->get();
+        return $this->with('course', 'user')->take(SHOW_FEEDBACK)->get();
     }
 
     public function course()

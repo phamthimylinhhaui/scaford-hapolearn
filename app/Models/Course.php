@@ -20,12 +20,12 @@ class Course extends Model
 
     public function scopeShowCourse()
     {
-        return $this->limit(SHOW_COURSE)->get();
+        return $this->take(SHOW_COURSE)->get();
     }
 
     public function scopeOtherCourse()
     {
-        return $this->inRandomOrder()->limit(SHOW_COURSE)->get();
+        return $this->inRandomOrder()->take(SHOW_COURSE)->get();
     }
 
     public function lessons()

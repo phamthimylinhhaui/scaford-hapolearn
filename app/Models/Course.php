@@ -18,6 +18,16 @@ class Course extends Model
         'description'
     ];
 
+    public function scopeShowCourse()
+    {
+        return $this->limit(SHOW_COURSE)->get();
+    }
+
+    public function scopeOtherCourse()
+    {
+        return $this->inRandomOrder()->limit(SHOW_COURSE)->get();
+    }
+
     public function lessons()
     {
         return $this->hasMany(Lesson::class, 'course_id');

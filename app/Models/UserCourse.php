@@ -17,4 +17,9 @@ class UserCourse extends Model
         'user_id',
         'course_id'
     ];
+    public function scopeTotalLearner()
+    {
+        return $this->join('users', 'users.id', '=', 'user_course.user_id')
+            ->where('role', '=', config('roles.user'))->count();
+    }
 }

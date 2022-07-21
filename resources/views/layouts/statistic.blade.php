@@ -14,19 +14,19 @@
         <div class="col">
             <div class="h-100 list-item">
                 <div class="list-title">course</div>
-                <div class="list-data">1,586</div>
+                <div class="list-data">{{ $totalCount }}</div>
             </div>
         </div>
         <div class="col">
             <div class="h-100 list-item">
                 <div class="list-title">lessons</div>
-                <div class="list-data">2,689</div>
+                <div class="list-data">{{ $totalLesson }}</div>
             </div>
         </div>
         <div class="col">
             <div class="h-100 list-item">
                 <div class="list-title">learners</div>
-                <div class="list-data">16,882</div>
+                <div class="list-data">{{ $totalLearner }}</div>
             </div>
         </div>
     </div>

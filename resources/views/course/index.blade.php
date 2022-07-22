@@ -2,15 +2,15 @@
 
 @section('content')
 <section class="list-course">
-    <div class="container-fluid">
-        <div class="row course-search">
-            <div class="form-filter">
-                <button>
+    <div class="container-fluid list-course-container">
+        <div class="row col-6 float-left course-search">
+            <div class="col-2 course-filter">
+                <button class="button-filter" id="jqueryFilterBtn">
                     <i class="fas fa-sliders-h"></i> Filter
                 </button>
             </div>
 
-            <div class="box-search">
+            <div class="col-10 box-search">
                 <form>
                     <input type="text" class="box-search-text" placeholder="Search...">
                     <input type="submit" class="btn-primary box-search-button" value="Tìm kiếm">
@@ -18,30 +18,13 @@
             </div>
         </div>
 
-        <div class="course-filter">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto w-100">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">All Courses</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link " href="/login">Login/Register</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link " href="/profile">Profile</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="show-course">
-
+        <div class="attribute-filter active row" id="contentFilter">
+             <form method="get" action="">
+                <label>Lọc theo</label>
+                <button>Mới nhất</button>
+                <button>Cũ nhất</button>
+                <input type="radio" value="">teacher
+             </form>
         </div>
     </div>
 </section>

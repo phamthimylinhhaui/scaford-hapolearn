@@ -1,7 +1,10 @@
 .list-course {
   background-color: $gray-background;
+  overflow: overlay;
 
-  .container-fluid {
+  .list-course-container {
+    padding: 2rem 0;
+
     .course-search {
       align-items: center;
       margin: auto;
@@ -9,18 +12,65 @@
   }
 }
 
-.course-search {
+.course-filter {
   .button-filter {
-
+    border: 1px solid gray;
+    border-radius: 5px;
+    width: 100%;
+    padding: 5px;
+    font-weight: 700;
+    font-size: 16px;
+    color: $gray-login;
+    font-family: Open sans;
   }
+}
 
-  .box-search {
+.box-search {
+  form {
+    margin-left: -1rem;
+
     .box-search-text {
+      border: 1px solid gray;
+      border-radius: 5px;
+      padding: 4px;
+      font-size: 16px;
+      width: 70%;
+      margin-right: 0.2rem;
+    }
+
+    .box-search-button {
+      font-size: 15px;
+      padding: 5px;
+      background: #B2D235;
+      border: 1px solid gray;
+      border-radius: 5px;
+      font-weight: 700;
+      font-family: Open sans;
+    }
+  }
+}
+
+
+.attribute-filter {
+  display: block;
+
+  &.active {
+    display: none;
+  }
+}
+
+.list-course-container {
+  .attribute-filter{
+    background-color: $gray-background;
+    z-index: 5;
+    position: absolute;
+    top: 10.25rem;
+    padding: 1rem 3rem;
+    width: 101%;
+
+    form{
 
     }
 
-    .box-search-botton {
-
-    }
   }
 }

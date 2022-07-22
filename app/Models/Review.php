@@ -22,7 +22,7 @@ class Review extends Model
 
     public function scopeFeedback()
     {
-        return $this->with('course', 'user')->take(SHOW_FEEDBACK)->get();
+        return $this->with('course', 'user')->take(config('config_queries.show_feedback_homepage'))->get();
     }
 
     public function course()

@@ -1,3 +1,5 @@
 <?php
-const SHOW_COURSE = 3;
-const SHOW_FEEDBACK = 6;
+return [
+    'show_course_homepage' => 3,
+    'show_feedback_homepage' => 4,
+];

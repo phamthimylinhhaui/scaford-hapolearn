@@ -4,8 +4,7 @@
         <div class="col">
             <div class="card h-100">
                 <div class="card-img">
-                    <img src="{{ asset($course->image) }}" class="card-img-top" alt="...">
-{{--                    'images/logo-html.png' --}}
+                    <img src="{{ asset( !empty($course->image) ? $course->image : 'images/logo-html.png') }}" class="card-img-top" alt="...">
                 </div>
                 <div class="card-body">
                     <h5 class="card-title">{{ $course->name }}</h5>
@@ -29,7 +28,7 @@
         <div class="col">
             <div class="card h-100">
                 <div class="card-img">
-                    <img src="{{ asset( $otherCourse->image) }}" class="card-img-top" alt="...">
+                    <img src="{{ asset( !empty($otherCourse->image) ? $otherCourse->image : 'images/logo-html.png' ) }}" class="card-img-top" alt="...">
                 </div>
                 <div class="card-body">
                     <h5 class="card-title">{{ $otherCourse->name }}</h5>

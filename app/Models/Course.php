@@ -18,14 +18,14 @@ class Course extends Model
         'description'
     ];
 
-    public function scopeShowCourse()
+    public function scopeShowCourseAtHomepage()
     {
-        return $this->take(SHOW_COURSE)->get();
+        return $this->take(config('config_queries.show_course_homepage'))->get();
     }
 
     public function scopeOtherCourse()
     {
-        return $this->inRandomOrder()->take(SHOW_COURSE)->get();
+        return $this->inRandomOrder()->take(config('config_queries.show_course_homepage'))->get();
     }
 
     public function lessons()

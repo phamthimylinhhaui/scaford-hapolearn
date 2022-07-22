@@ -15,7 +15,7 @@
                         </div>
                     </div>
                     <div class="row user-comment">
-                        <img src="{{ asset(($feedback->user)->avatar) }}" class="user-avatar" alt="...">
+                        <img src="{{ asset( !empty(($feedback->user)->avatar) ? ($feedback->user)->avatar : 'images/image-user.png') }}" class="user-avatar" alt="...">
                         <div class="feedback-user-info col-8">
                             <div class="user-name">{{ ($feedback->user)->user_name }}<div>
                             <div class="user-category">{{ ($feedback->course)->name }}</div>

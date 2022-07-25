@@ -22,7 +22,7 @@ class Review extends Model
 
     public function scopeFeedback($query)
     {
-        return $query->take(config('config_queries.show_feedback_homepage'))->get();
+        return $query->take(config('config.home_feedback_order'))->get();
     }
 
     public function course()

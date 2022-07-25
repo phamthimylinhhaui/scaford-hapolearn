@@ -20,9 +20,9 @@ class Review extends Model
         'rate',
     ];
 
-    public function scopeFeedback()
+    public function scopeFeedback($query)
     {
-        return $this->with('course', 'user')->take(config('config_queries.show_feedback_homepage'))->get();
+        return $query->take(config('config_queries.show_feedback_homepage'))->get();
     }
 
     public function course()

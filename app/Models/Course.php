@@ -17,7 +17,7 @@ class Course extends Model
         'price',
         'description'
     ];
-
+    
     public function scopeMain($query)
     {
         return $query->take(config('config.home_course_order'))->get();

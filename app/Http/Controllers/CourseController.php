@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Course;
+use App\Models\Tag;
+use App\Models\TeacherCourse;
 use Illuminate\Http\Request;
 
 class CourseController extends Controller
@@ -14,7 +16,11 @@ class CourseController extends Controller
      */
     public function index()
     {
-        return view('course/index');
+        $teachers = TeacherCourse::getListTeacher();
+        $tags = Tag::all();
+        $courseResult = Course::GetCourse();
+        dd($courseResult);
+        return view('course/index', compact('teachers', 'tags'));
     }
 
     /**

@@ -12,7 +12,7 @@
         <div class="row col-6 float-left course-search">
             <div class="col-12 box-search">
                 <form>
-                    <input type="text" class="col-7 box-search-text" placeholder="Search...">
+                    <input type="text" class="col-7 box-search-text" placeholder="Search..." name="course_name">
                     <button type="submit" class="icon-search"><i class="fas fa-search"></i></button>
                     <input type="submit" class="col-3 col-sm-4 btn-primary box-search-button" value="Tìm kiếm">
 
@@ -21,31 +21,41 @@
                             <div class="col-12 row attribute-top">
                                 <div class="col-lg-4 col-md-5 col-sm-6 course-filter-with">
                                     <label class="col-3 label-filter-with">Lọc theo</label>
-                                    <input type="radio" class="btn-check" name="options" id="option1" autocomplete="off" hidden>
+                                    <input type="radio" class="btn-check" name="course_create" id="option1" autocomplete="off" hidden>
                                     <label class="col-3 btn btn-light" for="option1">Mới nhất</label>
-                                    <input type="radio" class="btn-check" name="options" id="option2" autocomplete="off" hidden>
+                                    <input type="radio" class="btn-check" name="course_create" id="option2" autocomplete="off" hidden>
                                     <label class="col-3 btn btn-light" for="option2">Cũ nhất</label>
                                 </div>
                                 <div class="col-2 filter-teacher">
-                                   <select class="col-12" name="teacher">
+                                   <select class="col-12" name="teacher_name">
                                        <option selected>Teacher</option>
-                                       <option value="1">Teacher A</option>
+                                       @foreach($teachers as $teacher)
+                                           <option value="{{ $teacher->id }}">{{ $teacher->user_name }}</option>
+                                       @endforeach
                                    </select>
                                 </div>
                                 <div class="col-2">
-                                    <select class="col-12">
+                                    <select class="col-12" name="learners">
                                         <option selected>Số người học</option>
-                                        <option value="1">50</option>
+                                        <option value="1">0</option>
+                                        <option value="25">25</option>
+                                        <option value="50">50</option>
+                                        <option value="100">100</option>
+                                        <option value="200">200</option>
                                     </select>
                                 </div>
                                 <div class="col-2">
                                    <select class="col-12">
-                                       <option selected>Thời gian học</option>
-                                       <option value="1">120h</option>
+                                       <option selected name="time">Thời gian học (h)</option>
+                                       <option value="120">120</option>
+                                       <option value="200">200</option>
+                                       <option value="250">250</option>
+                                       <option value="300">300</option>
+                                       <option value="500">500</option>
                                    </select>
                                 </div>
                                 <div class="col-2">
-                                    <select class="col-12">
+                                    <select class="col-12" name="order_by_lesson">
                                         <option selected>Số bài học</option>
                                         <option value="1">Tăng dần</option>
                                         <option value="2">Giảm dần</option>
@@ -55,15 +65,21 @@
 
                             <div class="col-12 row attribute-bottom">
                                 <div class="col-2 filter-tag">
-                                    <select class="col-12">
+                                    <select class="col-12" name="tag_name">
                                         <option selected>Tags</option>
-                                        <option value="1">Tag A</option>
+                                        @foreach($tags as $tag)
+                                            <option value="{{ $tag->id }}">{{ $tag->name }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                                 <div class="col-2">
-                                    <select class="col-12">
-                                        <option selected>Review</option>
-                                        <option value="1">Review A</option>
+                                    <select class="col-12" name="review">
+                                        <option selected>Review (star)</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
                                     </select>
                                 </div>
                             </div>

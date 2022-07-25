@@ -18,6 +18,16 @@ class Course extends Model
         'description'
     ];
 
+    public function scopeMain($query)
+    {
+        return $query->take(config('config.home_course_order'))->get();
+    }
+
+    public function scopeOtherCourse($query)
+    {
+        return $query->inRandomOrder()->take(config('config.home_course_order'))->get();
+    }
+
     public function lessons()
     {
         return $this->hasMany(Lesson::class, 'course_id');

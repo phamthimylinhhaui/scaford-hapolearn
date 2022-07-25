@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\DB;
 
 class Review extends Model
 {
@@ -18,6 +19,11 @@ class Review extends Model
         'parent_id',
         'rate',
     ];
+
+    public function scopeFeedback($query)
+    {
+        return $query->take(config('config.home_feedback_order'))->get();
+    }
 
     public function course()
     {

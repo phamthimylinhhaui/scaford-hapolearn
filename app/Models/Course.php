@@ -18,7 +18,7 @@ class Course extends Model
         'description'
     ];
 
-    public function scopeShowCourseAtHomepage($query)
+    public function scopeMain($query)
     {
         return $query->take(config('config_queries.show_course_homepage'))->get();
     }

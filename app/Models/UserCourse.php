@@ -18,7 +18,7 @@ class UserCourse extends Model
         'course_id'
     ];
     
-    public function scopeTotalLearner($query)
+    public function scopeLearner($query)
     {
         return $query->distinct()->count('user_id');
     }

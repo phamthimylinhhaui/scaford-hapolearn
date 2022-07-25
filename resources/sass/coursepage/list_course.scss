@@ -1,23 +1,23 @@
 .list-course {
   background-color: $gray-background;
-  overflow: overlay;
 
   .list-course-container {
-    padding: 2rem 0;
+    padding: 2rem 3rem;
 
     .course-search {
       align-items: center;
-      margin: auto;
     }
   }
 }
 
 .course-filter {
+  margin-right: 1rem;
+
   .button-filter {
     border: 1px solid gray;
     border-radius: 5px;
     width: 100%;
-    padding: 5px;
+    padding: 5px 15px;
     font-weight: 700;
     font-size: 16px;
     color: $gray-login;
@@ -30,12 +30,20 @@
     margin-left: -1rem;
 
     .box-search-text {
+      position: relative;
       border: 1px solid gray;
       border-radius: 5px;
       padding: 4px;
       font-size: 16px;
-      width: 70%;
       margin-right: 0.2rem;
+    }
+
+    .icon-search {
+      position: absolute;
+      border: none;
+      background: none;
+      top: 0.3rem;
+      right: 19vw;
     }
 
     .box-search-button {
@@ -50,7 +58,6 @@
   }
 }
 
-
 .attribute-filter {
   display: block;
 
@@ -59,18 +66,205 @@
   }
 }
 
-.list-course-container {
-  .attribute-filter{
-    background-color: $gray-background;
-    z-index: 5;
-    position: absolute;
-    top: 10.25rem;
-    padding: 1rem 3rem;
-    width: 101%;
+.box-search {
+  form {
+    .attribute-filter{
+      background: white;
+      width: 220%;
+      margin-left: -7rem;
+      margin-top: 1rem;
+      padding: 2rem;
+      border-radius: 5px;
+    }
+  }
+}
 
-    form{
+.col-2 {
+  select.col-12 {
+    border-radius: 3px;
+    padding: 5px;
+    color: $gray-login;
+  }
+}
+.attribute-container {
+  margin-left: -2rem;
 
+  .attribute-top {
+    .filter-teacher {
+      margin-left: -4.5rem;
+    }
+  }
+}
+
+.btn-light {
+  margin-right: 0.3rem;
+}
+
+.btn-light:focus {
+  color: white;
+  background-color: $main-color;
+  border-color: $main-color;
+}
+
+.attribute-bottom {
+  margin-top: 10px;
+  margin-left: 4.3rem;
+
+  .filter-tag {
+    margin-left: -2rem;
+  }
+}
+
+.card-list-course {
+  display: block;
+}
+
+.list-course-main {
+  font-family: $font-main;
+
+  .list-course-image {
+    margin: 0.5rem;
+    border-radius: 50%;
+    transform: scale(0.75);
+  }
+}
+
+.card-body {
+  color: $footer-color;
+  font-size: 18px;
+
+  .course-card-title {
+    font-size: 25px;
+    font-weight: 700;
+    color: $gray-login;
+    padding-left: 1rem;
+  }
+
+  .course-card-button {
+    color: white;
+    float: right;
+    font-size: 18px;
+    font-weight: 700;
+  }
+}
+
+.card-footer {
+  font-family: $font-main;
+  text-align: center;
+
+  .row {
+    margin: auto;
+  }
+}
+
+.footer-course-item {
+  .list-title {
+    font-size: 25px;
+    font-weight: 700;
+    text-transform: capitalize;
+  }
+
+  .list-data {
+    color: $main-color;
+    font-weight: 700;
+    font-size: 28px;
+  }
+}
+
+@media (min-width: 577px) and (max-width: 991px) {
+  .course-filter {
+    .button-filter {
+      font-size: 14px;
+    }
+  }
+
+  .box-search {
+    form {
+      .box-search-button {
+        font-size: 13px;
+      }
+    }
+  }
+
+  .attribute-container {
+    .attribute-top {
+      .filter-teacher {
+        margin-left: -4.3rem;
+      }
+    }
+  }
+
+  .course-search {
+    .box-search {
+      form {
+        font-size: 14px;
+      }
+    }
+  }
+
+  .btn-light {
+    font-size: 14px;
+  }
+
+  .footer-course-item {
+    .list-title {
+      font-size: 22px;
     }
 
+    .list-data {
+      font-size: 24px;
+    }
+  }
+}
+
+@media (min-width: 375px) and (max-width: 576px) {
+  .course-filter {
+    .button-filter {
+      font-size: 12px;
+    }
+  }
+
+  .box-search {
+    form {
+      .box-search-button {
+        font-size: 12px;
+      }
+    }
+  }
+
+  .attribute-container {
+    font-size: 14px;
+
+    .attribute-top {
+      .course-filter-with {
+        margin-left: -1rem;
+      }
+      
+      .filter-teacher {
+        margin-left: -3rem;
+      }
+    }
+  }
+
+  .course-search {
+    .box-search {
+      form {
+        font-size: 12px;
+      }
+    }
+  }
+
+  .btn-light {
+    font-size: 12px;
+  }
+
+  .footer-course-item {
+    .list-title {
+      font-size: 20px;
+    }
+
+    .list-data {
+      font-size: 22px;
+    }
   }
 }

@@ -18,9 +18,4 @@ class TeacherCourse extends Model
         'course_id',
         'teach_time'
     ];
-
-    public function scopeGetListTeacher()
-    {
-        return $this->join('users', 'users.id', '=', 'teacher_course.user_id')->get();
-    }
 }

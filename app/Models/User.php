@@ -47,6 +47,11 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function scopeGetListTeacher()
+    {
+        return $this->where('role', 1);
+    }
+
     public function courses()
     {
         return $this->belongsToMany(Course::class, 'user_course', 'user_id');

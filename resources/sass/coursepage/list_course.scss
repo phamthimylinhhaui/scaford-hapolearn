@@ -108,7 +108,7 @@
 
 .attribute-bottom {
   margin-top: 10px;
-  margin-left: 4.3rem;
+  margin-left: 7.3rem;
 
   .filter-tag {
     margin-left: -2rem;
@@ -123,9 +123,9 @@
   font-family: $font-main;
 
   .list-course-image {
-    margin: 0.5rem;
+    margin: 1rem;
     border-radius: 50%;
-    transform: scale(0.75);
+    height: 22vh;
   }
 }
 
@@ -169,6 +169,32 @@
     font-weight: 700;
     font-size: 28px;
   }
+}
+
+.list-course-container {
+  nav {
+    color: $main-color !important;
+  }
+
+  .justify-between {
+    width: 100%;
+  }
+}
+
+.rounded-md {
+  display: flex;
+  float: right;
+
+  span, a{
+    margin-right: 1vw;
+  }
+}
+.select2-container--below {
+  width: 90%!important;
+}
+
+.select2-dropdown--above {
+  width: 170px;
 }
 
 @media (min-width: 577px) and (max-width: 991px) {
@@ -239,7 +265,7 @@
       .course-filter-with {
         margin-left: -1rem;
       }
-      
+
       .filter-teacher {
         margin-left: -3rem;
       }

@@ -18,9 +18,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $courses = Course::main();
-        $otherCourses = Course::otherCourse();
-        $feedbacks = Review::feedback();
+        $courses = Course::main()->get();
+        $otherCourses = Course::otherCourse()->get();
+        $feedbacks = Review::feedback()->get();
         $totalCourse = Course::count();
         $totalLesson = Lesson::count();
         $totalLearner = UserCourse::learner();

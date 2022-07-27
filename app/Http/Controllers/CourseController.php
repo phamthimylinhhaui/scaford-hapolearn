@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Course;
 use App\Models\Tag;
 use App\Models\TeacherCourse;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class CourseController extends Controller
@@ -14,13 +15,22 @@ class CourseController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $teachers = TeacherCourse::getListTeacher();
+        $data = $request->all();
+//        dd($data);
+//        dd(Course::all()->pluck('learners', 'id'));
+//        dd(Course::get());
+//        $test = Course::withCount('userCourse')->select("user_course_count");
+//        dd($test);
+
+        $teachers = User::getListTeacher()->get();
         $tags = Tag::all();
-        $courseResult = Course::GetCourse();
-        dd($courseResult);
-        return view('course/index', compact('teachers', 'tags'));
+        $courses = Course::Search($data)->paginate(8);
+        dd($courses);
+
+
+        return view('course/index', compact('teachers', 'tags', 'courses', 'data'));
     }
 
     /**

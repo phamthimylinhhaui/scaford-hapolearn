@@ -24,9 +24,9 @@ class Course extends Model
             $query->where('name', 'LIKE', "%". $data['course_name'] ."%");
         }
 
-//        if (isset($data['course_create']) && !empty($data['course_create'])) {
-//            $data['course_create'] == "newest" ? $query->orderby('courses.created_at', 'DESC') : $query->orderby('courses.created_at');
-//        }
+        if (isset($data['course_create']) && !empty($data['course_create'])) {
+            $data['course_create'] == "newest" ? $query->orderby('courses.created_at', 'DESC') : $query->orderby('courses.created_at');
+        }
 
         if (isset($data['teacher_id']) && !empty($data['teacher_id'])) {
             $query->join('teacher_course', 'courses.id', '=', 'teacher_course.course_id')
@@ -38,7 +38,6 @@ class Course extends Model
         if (isset($data['order_by_learner']) && !empty($data['order_by_learner'])) {
 //            $data['order_by_learner'] == "asc" ? $query->get()->sortby('users_count') : $query->get()->sortByDESC('users_count', 'DESC');
              $query->get()->sortby('users_count');
-
         }
 
         return $query;

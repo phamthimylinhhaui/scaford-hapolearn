@@ -18,17 +18,9 @@ class CourseController extends Controller
     public function index(Request $request)
     {
         $data = $request->all();
-//        dd($data);
-//        dd(Course::all()->pluck('learners', 'id'));
-//        dd(Course::get());
-//        $test = Course::withCount('userCourse')->select("user_course_count");
-//        dd($test);
-
         $teachers = User::getListTeacher()->get();
         $tags = Tag::all();
         $courses = Course::Search($data)->paginate(8);
-        dd($courses);
-
 
         return view('course/index', compact('teachers', 'tags', 'courses', 'data'));
     }

@@ -108,7 +108,7 @@
 
 .attribute-bottom {
   margin-top: 10px;
-  margin-left: 7.3rem;
+  margin-left: 3rem;
 
   .filter-tag {
     margin-left: -2rem;
@@ -125,7 +125,7 @@
   .list-course-image {
     margin: 1rem;
     border-radius: 50%;
-    height: 22vh;
+    height: 8rem;
   }
 }
 
@@ -141,10 +141,14 @@
   }
 
   .course-card-button {
-    color: white;
     float: right;
-    font-size: 18px;
-    font-weight: 700;
+
+    a {
+      text-decoration: none;
+      color: white;
+      font-size: 18px;
+      font-weight: 700;
+    }
   }
 }
 
@@ -189,6 +193,11 @@
     margin-right: 1vw;
   }
 }
+
+.select2 {
+  float: right;
+}
+
 .select2-container--below {
   width: 90%!important;
 }

@@ -64,22 +64,19 @@
 
                             <div class="col-12 row attribute-bottom">
                                 <div class="form-group col-2 filter-tag">
-                                    <select class="form-control select2-enable col-12" name="tag_name[]" multiple>
-                                        <option selected value="">Tags</option>
+                                    <select class="form-control select2-enable col-12" name="tags[]" multiple>
+                                        <option selected disabled>Tags</option>
                                         @foreach($tags as $tag)
-                                            <option value="{{ $tag->id }}" @if (isset($data['tag_name']) && in_array($tag->id, $data['tag_name'])) selected @endif >
+                                            <option value="{{ $tag->id }}" @if (isset($data['tags']) && in_array($tag->id, $data['tags'])) selected @endif >
                                                 {{ $tag->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
                                 <div class="form-group col-2">
-                                    <select class="form-control select2-enable col-12" name="review">
-                                        <option selected>Review (star)</option>
-                                        <option value="1" @if (isset($data['review']) && $data['review'] == 1) selected @endif>1</option>
-                                        <option value="2" @if (isset($data['review']) && $data['review'] == 2) selected @endif>2</option>
-                                        <option value="3" @if (isset($data['review']) && $data['review'] == 3) selected @endif>3</option>
-                                        <option value="4" @if (isset($data['review']) && $data['review'] == 4) selected @endif>4</option>
-                                        <option value="5" @if (isset($data['review']) && $data['review'] == 5) selected @endif>5</option>
+                                    <select class="form-control select2-enable col-12" name="reviews">
+                                        <option selected value="">Review</option>
+                                        <option value="asc" @if (isset($data['reviews']) && $data['reviews'] == 'asc') selected @endif>Tăng dần</option>
+                                        <option value="desc" @if (isset($data['reviews']) && $data['reviews'] == 'desc') selected @endif>Giảm dần</option>
                                     </select>
                                 </div>
                             </div>
@@ -99,7 +96,7 @@
                                 <div class="col-8 card-body">
                                     <h5 class="course-card-title text-left">{{ $course->name }}</h5>
                                     <p class="card-text text-left">{{ $course->description }}</p>
-                                    <button class="btn-main course-card-button">More</button>
+                                    <button class="btn-main course-card-button"><a href="#">More</a></button>
                                 </div>
                             </div>
                             <div class="card-footer">
@@ -123,7 +120,7 @@
                 @endforeach
             </div>
         </div>
-        {{ $courses->links() }}
+        {{ $courses->withQueryString()->links() }}
     </div>
     @if(count($courses) == 0)
         <h2 class="align-content-center">No result found</h2>

@@ -24,7 +24,7 @@ class Course extends Model
             $query->where('name', 'LIKE', "%". $data['course_name'] ."%");
         }
 
-        if (isset($data['course_create']) && !empty($data['course_create'])) {
+        if (isset($data['course_create'])) {
             $data['course_create'] == "newest" ? $query->orderby('courses.created_at', 'DESC') : $query->orderby('courses.created_at');
         }
 
@@ -33,11 +33,29 @@ class Course extends Model
                 ->where('user_id', $data['teacher_id']);
         }
 
-        $query->withCount(['lessons', 'reviews', 'users', 'tags'])->withSum('lessons', 'times')->dd();
-
         if (isset($data['order_by_learner']) && !empty($data['order_by_learner'])) {
-//            $data['order_by_learner'] == "asc" ? $query->get()->sortby('users_count') : $query->get()->sortByDESC('users_count', 'DESC');
-             $query->get()->sortby('users_count');
+            $query->withCount('users');
+            $query->orderBy('users_count', $data['order_by_learner']);
+        }
+
+        if (isset($data['order_by_time']) && !empty($data['order_by_time'])) {
+            $query->withCount('lessons')->withSum('lessons', 'times');
+            $query->orderBy('lessons_sum_times', $data['order_by_time']);
+        }
+
+        if (isset($data['order_by_lesson']) && !empty($data['order_by_lesson'])) {
+            $query->withCount('lessons');
+            $query->orderBy('lessons_count', $data['order_by_lesson']);
+        }
+
+        if (isset($data['tags']) && count($data['tags']) > 0) {
+            $query->join('course_tag', 'courses.id', '=', 'course_tag.course_id')
+                ->whereIn('tag_id', $data['tags']);
+        }
+
+        if (isset($data['reviews']) && !empty($data['reviews'])) {
+            $query->withCount('reviews');
+            $query->orderBy('reviews_count', $data['reviews'])->dd();
         }
 
         return $query;
@@ -47,11 +65,6 @@ class Course extends Model
     {
         return $query->withCount(['users', 'lessons', 'reviews', 'tags'])->withSum('lessons', 'times');
     }
-
-//    public function scopeGetLearners($query, $id)
-//    {
-//        return $query->users()->count($id);
-//    }
 
     public function getLearnersAttribute()
     {
@@ -82,11 +95,6 @@ class Course extends Model
     {
         return $this->hasMany(Lesson::class, 'course_id');
     }
-
-//    public function userCourse()
-//    {
-//        return $this->hasMany(UserCourse::class, 'course_id');
-//    }
 
     public function reviews()
     {

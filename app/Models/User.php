@@ -47,7 +47,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function scopeGetListTeacher()
+    public function scopeTeachers()
     {
         return $this->where('role', 1);
     }

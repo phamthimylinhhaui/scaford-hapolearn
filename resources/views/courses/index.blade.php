@@ -31,10 +31,10 @@
                                 </div>
 
                                 <div class="form-group col-2 filter-teacher">
-                                   <select class="form-control col-12 select2-enable" name="teacher_id">
-                                       <option value="">Teacher</option>
+                                   <select class="form-control col-12 select2-enable" name="teachers[]" multiple>
+                                       <option selected disabled>Teacher</option>
                                        @foreach($teachers as $teacher)
-                                           <option value="{{ $teacher->id }}" @if (isset($data['teacher_id']) && $data['teacher_id'] == $teacher->id) selected @endif>
+                                           <option value="{{ $teacher->id }}" @if (isset($data['teachers']) && in_array($teacher->id, $data['teachers'])) selected @endif>
                                                {{ $teacher->user_name }}</option>
                                        @endforeach
                                    </select>

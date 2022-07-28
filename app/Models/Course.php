@@ -28,9 +28,9 @@ class Course extends Model
             $query->orderBy('courses.created_at', $data['created_time']);
         }
 
-        if (isset($data['teacher_id']) && !empty($data['teacher_id'])) {
+        if (isset($data['teachers']) && count($data['teachers']) > 0) {
             $query->join('teacher_course', 'courses.id', '=', 'teacher_course.course_id')
-                ->where('user_id', $data['teacher_id']);
+                ->whereIn('user_id', $data['teachers']);
         }
 
         if (isset($data['learner']) && !empty($data['learner'])) {
@@ -38,7 +38,7 @@ class Course extends Model
         }
 
         if (isset($data['time']) && !empty($data['time'])) {
-            $query->withCount('lessons')->withSum('lessons', 'times')->orderBy('lessons_sum_times', $data['time']);
+            $query->withSum('lessons', 'times')->orderBy('lessons_sum_times', $data['time']);
         }
 
         if (isset($data['lesson']) && !empty($data['lesson'])) {

@@ -106,6 +106,12 @@
   border-color: $main-color;
 }
 
+.btn-light:not(:disabled):not(.disabled):active {
+  color: white;
+  background-color: $main-color;
+  border-color: white;
+}
+
 .attribute-bottom {
   margin-top: 10px;
   margin-left: 3rem;

@@ -55,15 +55,10 @@ class Course extends Model
 
         if (isset($data['reviews']) && !empty($data['reviews'])) {
             $query->withCount('reviews');
-            $query->orderBy('reviews_count', $data['reviews'])->dd();
+            $query->orderBy('reviews_count', $data['reviews']);
         }
 
         return $query;
-    }
-
-    public function scopeGetAllCourse($query)
-    {
-        return $query->withCount(['users', 'lessons', 'reviews', 'tags'])->withSum('lessons', 'times');
     }
 
     public function getLearnersAttribute()

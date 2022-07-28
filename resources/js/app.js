@@ -11,8 +11,7 @@ require('./bootstrap');
 require('./message');
 require('./slick');
 require('./filter');
-require('./select');
-require('select2');
+require('./select2');
 
 window.Vue = require('vue').default;
 

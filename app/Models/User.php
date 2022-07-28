@@ -49,7 +49,7 @@ class User extends Authenticatable
 
     public function scopeTeachers()
     {
-        return $this->where('role', 1);
+        return $this->where('role', config('roles.teacher'));
     }
 
     public function courses()

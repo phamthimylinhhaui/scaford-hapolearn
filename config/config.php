@@ -4,4 +4,6 @@ return [
     'home_feedback_order' => 4,
     'newest' => 'DESC',
     'oldest' => 'ASC',
+    'desc' => 'DESC',
+    'asc' => 'ASC',
 ];

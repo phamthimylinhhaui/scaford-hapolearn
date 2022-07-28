@@ -22,12 +22,12 @@
                             <div class="col-12 row attribute-top">
                                 <div class="form-group col-lg-4 col-md-5 col-sm-6 course-filter-with">
                                     <label class="col-3 label-filter-with">Lọc theo</label>
-                                    <input type="radio" class="btn-check" name="created_time" id="option1" autocomplete="off" value="{{ config('config.newest') }}"
+                                    <input type="radio" class="btn-check" name="created_time" id="newest" autocomplete="off" value="{{ config('config.newest') }}"
                                         @if (isset($data['created_time']) && $data['created_time'] == config('config.newest')|| empty($data['created_time'])) checked @endif  >
-                                    <label class="col-3 btn btn-light" for="option1" >Mới nhất</label>
-                                    <input type="radio" class="btn-check" name="created_time" id="option2" autocomplete="off" value="{{ config('config.oldest') }}"
+                                    <label class="col-3 btn btn-light" for="newest" >Mới nhất</label>
+                                    <input type="radio" class="btn-check" name="created_time" id="oldest" autocomplete="off" value="{{ config('config.oldest') }}"
                                         @if (isset($data['created_time']) && $data['created_time'] == config('config.oldest')) checked @endif>
-                                    <label class="col-3 btn btn-light" for="option2">Cũ nhất</label>
+                                    <label class="col-3 btn btn-light" for="oldest">Cũ nhất</label>
                                 </div>
 
                                 <div class="form-group col-2 filter-teacher">
@@ -41,23 +41,23 @@
                                 </div>
                                 <div class="form-group col-2">
                                     <select class="form-control select2-enable col-12" name="learner">
-                                        <option value="" selected>Số người học</option>
-                                        <option value="asc" @if (isset($data['learner']) && $data['learner'] == 'asc') selected @endif>Tăng dần</option>
-                                        <option value="desc" @if (isset($data['learner']) && $data['learner'] == 'desc') selected @endif>Giảm dần</option>
+                                        <option value="" selected disabled>Số người học</option>
+                                        <option value="{{ config('config.asc') }}" @if (isset($data['learner']) && $data['learner'] == config('config.asc')) selected @endif>Tăng dần</option>
+                                        <option value="{{ config('config.desc') }}" @if (isset($data['learner']) && $data['learner'] == config('config.desc')) selected @endif>Giảm dần</option>
                                     </select>
                                 </div>
                                 <div class="form-group col-2">
                                    <select class="form-control select2-enable col-12" name="time">
-                                       <option selected value="" >Thời gian học</option>
-                                       <option value="asc" @if (isset($data['time']) && $data['time'] == 'asc') selected @endif>Tăng dần</option>
-                                       <option value="desc" @if (isset($data['time']) && $data['time'] == 'desc') selected @endif>Giảm dần</option>
+                                       <option selected value="" disabled>Thời gian học</option>
+                                       <option value="{{ config('config.asc') }}" @if (isset($data['time']) && $data['time'] == config('config.asc')) selected @endif>Tăng dần</option>
+                                       <option value="{{ config('config.desc') }}" @if (isset($data['time']) && $data['time'] == config('config.desc')) selected @endif>Giảm dần</option>
                                    </select>
                                 </div>
                                 <div class="form-group col-2">
                                     <select class="form-control select2-enable col-12" name="lesson">
-                                        <option selected value="">Số bài học</option>
-                                        <option value="asc" @if (isset($data['lesson']) && $data['lesson'] == 'asc') selected @endif>Tăng dần</option>
-                                        <option value="desc" @if (isset($data['lesson']) && $data['lesson'] == 'desc') selected @endif>Giảm dần</option>
+                                        <option selected value="" disabled>Số bài học</option>
+                                        <option value="{{ config('config.asc') }}" @if (isset($data['lesson']) && $data['lesson'] == config('config.asc')) selected @endif>Tăng dần</option>
+                                        <option value="{{ config('config.desc') }}" @if (isset($data['lesson']) && $data['lesson'] == config('config.desc')) selected @endif>Giảm dần</option>
                                     </select>
                                 </div>
                             </div>
@@ -74,9 +74,9 @@
                                 </div>
                                 <div class="form-group col-2">
                                     <select class="form-control select2-enable col-12" name="rate">
-                                        <option selected value="">Review</option>
-                                        <option value="asc" @if (isset($data['rate']) && $data['rate'] == 'asc') selected @endif>Tăng dần</option>
-                                        <option value="desc" @if (isset($data['rate']) && $data['rate'] == 'desc') selected @endif>Giảm dần</option>
+                                        <option selected value="" disabled>Review</option>
+                                        <option value="{{ config('config.asc') }}" @if (isset($data['rate']) && $data['rate'] == config('config.asc')) selected @endif>Tăng dần</option>
+                                        <option value="{{ config('config.desc') }}" @if (isset($data['rate']) && $data['rate'] == config('config.desc')) selected @endif>Giảm dần</option>
                                     </select>
                                 </div>
                             </div>

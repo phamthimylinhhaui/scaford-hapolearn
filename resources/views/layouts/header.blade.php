@@ -16,7 +16,7 @@
                     <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">All Courses</a>
+                    <a class="nav-link" href="/courses">All Courses</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link " href="/login">Login/Register</a>

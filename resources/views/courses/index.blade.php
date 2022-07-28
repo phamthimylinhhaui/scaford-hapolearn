@@ -12,8 +12,8 @@
         <div class="row col-6 float-left course-search">
             <div class="col-12 box-search">
                 <form method="GET" action="{{ route('courses.index') }}">
-                    <input type="text" class="col-7 box-search-text" placeholder="Search..." name="course_name"
-                           value="{{ isset( $data['course_name'] ) ? $data['course_name'] : '' }}">
+                    <input type="text" class="col-7 box-search-text" placeholder="Search..." name="keyword"
+                           value="{{ isset( $data['keyword'] ) ? $data['keyword'] : '' }}">
                     <button type="submit" class="icon-search"><i class="fas fa-search"></i></button>
                     <input type="submit" class="col-3 col-sm-4 btn-primary box-search-button" name="submit" value="Tìm kiếm">
 
@@ -22,11 +22,11 @@
                             <div class="col-12 row attribute-top">
                                 <div class="form-group col-lg-4 col-md-5 col-sm-6 course-filter-with">
                                     <label class="col-3 label-filter-with">Lọc theo</label>
-                                    <input type="radio" class="btn-check" name="course_create" id="option1" autocomplete="off" value="newest"
-                                        @if (isset($data['course_create']) && $data['course_create'] == 'newest'|| empty($data['course_create'])) checked @endif  >
+                                    <input type="radio" class="btn-check" name="created_time" id="option1" autocomplete="off" value="{{ config('config.newest') }}"
+                                        @if (isset($data['created_time']) && $data['created_time'] == config('config.newest')|| empty($data['created_time'])) checked @endif  >
                                     <label class="col-3 btn btn-light" for="option1" >Mới nhất</label>
-                                    <input type="radio" class="btn-check" name="course_create" id="option2" autocomplete="off" value="oldest"
-                                        @if (isset($data['course_create']) && $data['course_create'] == 'oldest') checked @endif>
+                                    <input type="radio" class="btn-check" name="created_time" id="option2" autocomplete="off" value="{{ config('config.oldest') }}"
+                                        @if (isset($data['created_time']) && $data['created_time'] == config('config.oldest')) checked @endif>
                                     <label class="col-3 btn btn-light" for="option2">Cũ nhất</label>
                                 </div>
 
@@ -40,24 +40,24 @@
                                    </select>
                                 </div>
                                 <div class="form-group col-2">
-                                    <select class="form-control select2-enable col-12" name="order_by_learner">
+                                    <select class="form-control select2-enable col-12" name="learner">
                                         <option value="" selected>Số người học</option>
-                                        <option value="asc" @if (isset($data['order_by_learner']) && $data['order_by_learner'] == 'asc') selected @endif>Tăng dần</option>
-                                        <option value="desc" @if (isset($data['order_by_learner']) && $data['order_by_learner'] == 'desc') selected @endif>Giảm dần</option>
+                                        <option value="asc" @if (isset($data['learner']) && $data['learner'] == 'asc') selected @endif>Tăng dần</option>
+                                        <option value="desc" @if (isset($data['learner']) && $data['learner'] == 'desc') selected @endif>Giảm dần</option>
                                     </select>
                                 </div>
                                 <div class="form-group col-2">
-                                   <select class="form-control select2-enable col-12" name="order_by_time">
+                                   <select class="form-control select2-enable col-12" name="time">
                                        <option selected value="" >Thời gian học</option>
-                                       <option value="asc" @if (isset($data['order_by_time']) && $data['order_by_time'] == 'asc') selected @endif>Tăng dần</option>
-                                       <option value="desc" @if (isset($data['order_by_time']) && $data['order_by_time'] == 'desc') selected @endif>Giảm dần</option>
+                                       <option value="asc" @if (isset($data['time']) && $data['time'] == 'asc') selected @endif>Tăng dần</option>
+                                       <option value="desc" @if (isset($data['time']) && $data['time'] == 'desc') selected @endif>Giảm dần</option>
                                    </select>
                                 </div>
                                 <div class="form-group col-2">
-                                    <select class="form-control select2-enable col-12" name="order_by_lesson">
+                                    <select class="form-control select2-enable col-12" name="lesson">
                                         <option selected value="">Số bài học</option>
-                                        <option value="asc" @if (isset($data['order_by_lesson']) && $data['order_by_lesson'] == 'asc') selected @endif>Tăng dần</option>
-                                        <option value="desc" @if (isset($data['order_by_lesson']) && $data['order_by_lesson'] == 'desc') selected @endif>Giảm dần</option>
+                                        <option value="asc" @if (isset($data['lesson']) && $data['lesson'] == 'asc') selected @endif>Tăng dần</option>
+                                        <option value="desc" @if (isset($data['lesson']) && $data['lesson'] == 'desc') selected @endif>Giảm dần</option>
                                     </select>
                                 </div>
                             </div>
@@ -73,10 +73,10 @@
                                     </select>
                                 </div>
                                 <div class="form-group col-2">
-                                    <select class="form-control select2-enable col-12" name="reviews">
+                                    <select class="form-control select2-enable col-12" name="rate">
                                         <option selected value="">Review</option>
-                                        <option value="asc" @if (isset($data['reviews']) && $data['reviews'] == 'asc') selected @endif>Tăng dần</option>
-                                        <option value="desc" @if (isset($data['reviews']) && $data['reviews'] == 'desc') selected @endif>Giảm dần</option>
+                                        <option value="asc" @if (isset($data['rate']) && $data['rate'] == 'asc') selected @endif>Tăng dần</option>
+                                        <option value="desc" @if (isset($data['rate']) && $data['rate'] == 'desc') selected @endif>Giảm dần</option>
                                     </select>
                                 </div>
                             </div>

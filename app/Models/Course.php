@@ -20,12 +20,12 @@ class Course extends Model
 
     public function scopeSearch($query, $data)
     {
-        if (isset($data['course_name'])) {
-            $query->where('name', 'LIKE', "%". $data['course_name'] ."%");
+        if (isset($data['keyword'])) {
+            $query->where('name', 'LIKE', "%". $data['keyword'] ."%")->orWhere('description', 'LIKE', "%". $data['keyword'] ."%");
         }
 
-        if (isset($data['course_create'])) {
-            $data['course_create'] == "newest" ? $query->orderby('courses.created_at', 'DESC') : $query->orderby('courses.created_at');
+        if (isset($data['created_time'])) {
+            $query->orderBy('courses.created_at', $data['created_time']);
         }
 
         if (isset($data['teacher_id']) && !empty($data['teacher_id'])) {
@@ -33,19 +33,16 @@ class Course extends Model
                 ->where('user_id', $data['teacher_id']);
         }
 
-        if (isset($data['order_by_learner']) && !empty($data['order_by_learner'])) {
-            $query->withCount('users');
-            $query->orderBy('users_count', $data['order_by_learner']);
+        if (isset($data['learner']) && !empty($data['learner'])) {
+            $query->withCount('users')->orderBy('users_count', $data['learner']);
         }
 
-        if (isset($data['order_by_time']) && !empty($data['order_by_time'])) {
-            $query->withCount('lessons')->withSum('lessons', 'times');
-            $query->orderBy('lessons_sum_times', $data['order_by_time']);
+        if (isset($data['time']) && !empty($data['time'])) {
+            $query->withCount('lessons')->withSum('lessons', 'times')->orderBy('lessons_sum_times', $data['time']);
         }
 
-        if (isset($data['order_by_lesson']) && !empty($data['order_by_lesson'])) {
-            $query->withCount('lessons');
-            $query->orderBy('lessons_count', $data['order_by_lesson']);
+        if (isset($data['lesson']) && !empty($data['lesson'])) {
+            $query->withCount('lessons')->orderBy('lessons_count', $data['lesson']);
         }
 
         if (isset($data['tags']) && count($data['tags']) > 0) {
@@ -53,9 +50,8 @@ class Course extends Model
                 ->whereIn('tag_id', $data['tags']);
         }
 
-        if (isset($data['reviews']) && !empty($data['reviews'])) {
-            $query->withCount('reviews');
-            $query->orderBy('reviews_count', $data['reviews']);
+        if (isset($data['rate']) && !empty($data['rate'])) {
+            $query->withCount('reviews')->orderBy('reviews_count', $data['rate']);
         }
 
         return $query;

@@ -21,4 +21,4 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/profile', [UserController::class, 'profile'])->name('profile')->middleware('auth');
 
-Route::resource('courses', CourseController::class);
+Route::resource('courses', CourseController::class)->only(['index']);

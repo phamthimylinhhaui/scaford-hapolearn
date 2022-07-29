@@ -113,7 +113,7 @@
                                     </div>
                                     <div class="col-4 footer-course-item">
                                         <div class="list-title">times</div>
-                                        <div class="list-data">{{ number_format(($course->total_times)/config('config.convert_hours'), 1, ',', ' ') }} (h)</div>
+                                        <div class="list-data">{{ number_format(($course->total_times)/config('config.convert_hours'), 0, ',', ' ') }} (h)</div>
                                     </div>
                                 </div>
                             </div>

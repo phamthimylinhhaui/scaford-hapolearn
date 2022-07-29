@@ -29,8 +29,9 @@ class Course extends Model
         }
 
         if (isset($data['teachers']) && count($data['teachers']) > 0) {
-            $query->join('teacher_course', 'courses.id', '=', 'teacher_course.course_id')
-                ->whereIn('user_id', $data['teachers']);
+            $query->whereHas('users', function ($query) use ($data) {
+                $query->where('users.role', config('roles.teacher'))->whereIn('user_id', $data['teachers']);
+            });
         }
 
         if (isset($data['learner']) && !empty($data['learner'])) {
@@ -46,8 +47,9 @@ class Course extends Model
         }
 
         if (isset($data['tags']) && count($data['tags']) > 0) {
-            $query->join('course_tag', 'courses.id', '=', 'course_tag.course_id')
-                ->whereIn('tag_id', $data['tags']);
+            $query->whereHas('tags', function ($query) use ($data) {
+                $query->whereIn('tag_id', $data['tags']);
+            });
         }
 
         if (isset($data['rate']) && !empty($data['rate'])) {

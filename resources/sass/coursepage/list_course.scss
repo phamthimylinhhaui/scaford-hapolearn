@@ -100,16 +100,30 @@
   margin-right: 0.3rem;
 }
 
-.btn-light:focus {
-  color: white;
-  background-color: $main-color;
-  border-color: $main-color;
-}
+.course-filter-with {
+  .new {
+    background-color: gray;
+  }
 
-.btn-light:not(:disabled):not(.disabled):active {
-  color: white;
-  background-color: $main-color;
-  border-color: white;
+  .old {
+    background-color: $main-color;
+    color: white;
+  }
+
+  label.btn {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  input[type="radio"]:checked + .new{
+    background: $main-color;
+    border: 1px solid black;
+    color: white;
+  }
 }
 
 .attribute-bottom {

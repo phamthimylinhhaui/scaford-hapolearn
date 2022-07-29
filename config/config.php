@@ -6,4 +6,5 @@ return [
     'oldest' => 'ASC',
     'desc' => 'DESC',
     'asc' => 'ASC',
+    'convert_hours' => 3600,
 ];

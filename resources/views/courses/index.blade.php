@@ -14,20 +14,22 @@
                 <form method="GET" action="{{ route('courses.index') }}">
                     <input type="text" class="col-7 box-search-text" placeholder="Search..." name="keyword"
                            value="{{ isset( $data['keyword'] ) ? $data['keyword'] : '' }}">
-                    <button type="submit" class="icon-search"><i class="fas fa-search"></i></button>
-                    <input type="submit" class="col-3 col-sm-4 btn-primary box-search-button" name="submit" value="Tìm kiếm">
+                    <span  class="icon-search"><i class="fas fa-search"></i></span>
+                    <button type="submit" class="col-3 col-sm-4 btn-primary box-search-button">Tìm kiếm</button>
 
                     <div class="attribute-filter active row" id="contentFilter">
                         <div class="attribute-container">
                             <div class="col-12 row attribute-top">
                                 <div class="form-group col-lg-4 col-md-5 col-sm-6 course-filter-with">
-                                    <label class="col-3 label-filter-with">Lọc theo</label>
+                                    <span class="col-3 label-filter-with">Lọc theo</span>
+
                                     <input type="radio" class="btn-check" name="created_time" id="newest" autocomplete="off" value="{{ config('config.newest') }}"
-                                        @if (isset($data['created_time']) && $data['created_time'] == config('config.newest')|| empty($data['created_time'])) checked @endif  >
-                                    <label class="col-3 btn btn-light" for="newest" >Mới nhất</label>
+                                        @if (isset($data['created_time']) && $data['created_time'] == config('config.newest')|| empty($data['created_time'])) checked @endif  hidden>
+                                    <label class="col-3 btn new" for="newest" >Mới nhất</label>
+
                                     <input type="radio" class="btn-check" name="created_time" id="oldest" autocomplete="off" value="{{ config('config.oldest') }}"
-                                        @if (isset($data['created_time']) && $data['created_time'] == config('config.oldest')) checked @endif>
-                                    <label class="col-3 btn btn-light" for="oldest">Cũ nhất</label>
+                                        @if (isset($data['created_time']) && $data['created_time'] == config('config.oldest')) checked @endif hidden>
+                                    <label class="col-3 btn old" for="oldest">Cũ nhất</label>
                                 </div>
 
                                 <div class="form-group col-2 filter-teacher">
@@ -111,7 +113,7 @@
                                     </div>
                                     <div class="col-4 footer-course-item">
                                         <div class="list-title">times</div>
-                                        <div class="list-data">{{ number_format($course->total_times) }} (h)</div>
+                                        <div class="list-data">{{ number_format(($course->total_times)/config('config.convert_hours'), 1, ',', ' ') }} (h)</div>
                                     </div>
                                 </div>
                             </div>

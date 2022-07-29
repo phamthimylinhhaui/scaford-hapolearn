@@ -5,6 +5,9 @@
 @import '~@fortawesome/fontawesome-free/scss/solid';
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
 
+//select2
+@import '~select2/dist/css/select2.css';
+
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito');
 
@@ -31,3 +34,5 @@
 @import 'authpage/login';
 
 @import 'authpage/register';
+
+@import 'coursepage/course_index';

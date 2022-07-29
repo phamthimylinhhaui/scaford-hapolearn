@@ -5,10 +5,13 @@
  */
 // main.js
 import 'slick-carousel/slick/slick';
+import 'select2';
 
 require('./bootstrap');
 require('./message');
 require('./slick');
+require('./filter');
+require('./select2');
 
 window.Vue = require('vue').default;
 

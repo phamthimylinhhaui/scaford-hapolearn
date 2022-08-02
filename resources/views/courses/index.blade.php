@@ -98,7 +98,7 @@
                                 <div class="col-8 card-body">
                                     <h5 class="course-card-title text-left">{{ $course->name }}</h5>
                                     <p class="card-text text-left">{{ $course->description }}</p>
-                                    <button class="btn-main course-card-button"><a href="#">More</a></button>
+                                    <button class="btn-main course-card-button"><a href="{{ route('courses.show', $course->id) }}">More</a></button>
                                 </div>
                             </div>
                             <div class="card-footer">

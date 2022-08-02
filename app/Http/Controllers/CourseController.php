@@ -25,4 +25,15 @@ class CourseController extends Controller
 
         return view('courses.index', compact('teachers', 'tags', 'courses', 'data'));
     }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        return view('courses.show');
+    }
 }

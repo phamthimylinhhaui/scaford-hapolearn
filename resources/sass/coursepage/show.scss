@@ -1,0 +1,319 @@
+.breadcrumb {
+  font-family: $font-main;
+
+  .breadcrumb-item {
+    a {
+      font-family: $font-main;
+      color: $gray-login;
+      font-size: 16px;
+      font-weight: 400;
+    }
+  }
+
+  .breadcrumb-item + .breadcrumb-item::before {
+    content: '>';
+  }
+}
+
+.course-show {
+  background-color: $gray-background;
+}
+
+.course-show-left{
+  .course-image {
+    background-color: $blue-background;
+    border-radius: 0.5rem;
+    margin-bottom: 2rem;
+
+    img {
+      width: 90%;
+      margin: auto;
+      padding: 3rem;
+    }
+  }
+
+  .name-course-other,
+  .key-info {
+    font-family: $font-main;
+
+    .list-group-flush {
+      border-radius: 5px;
+      overflow: hidden;
+      margin-left: -1.5rem;
+    }
+  }
+
+  .show-tab {
+    background-color: white;
+    border-radius: 0.5rem;
+  }
+
+  .tab-content {
+    display: none;
+  }
+
+  .tab-content.current {
+    display: block;
+  }
+
+  .tabs {
+    padding: 0;
+    list-style: none;
+    background-color: white;
+    border-bottom: 2px solid $gray-border;
+  }
+
+  .tabs li {
+    font-family: "UTM BryantLG";
+    display: inline-block;
+    cursor: pointer;
+    margin-right: 1rem;
+    padding: 1rem;
+    transition: 0.3s;
+    font-size: 20px;
+    font-weight: 700;
+    color: $gray-login;
+
+    &:hover {
+      background-color: $main-color;
+      color: white;
+    }
+  }
+
+  ul .current {
+    color: $main-color;
+    cursor: initial;
+    border-bottom: 2px solid $main-color;
+  }
+
+  .tab_lesson {
+    .search-show-course {
+      justify-content: space-between;
+      margin: 2rem 0;
+    }
+  }
+
+  .tab-link {
+    button {
+      border: 0;
+      background: none;
+      font-family: $font-main;
+      font-size: 20px;
+      font-weight: 700;
+      color: $gray-login;
+    }
+  }
+}
+
+.search-show-course {
+  color: $gray-login;
+
+  form {
+    button {
+      font-weight: $font-main;
+      color: white;
+      background-color: $main-color;
+      padding: 0.25rem;
+      border-radius: 5px;
+      border-color: $main-color;
+      margin-left: 0.5rem;
+    }
+
+    .box-search-lesson {
+      position: relative;
+      padding: 0.25rem;
+      border-radius: 3px;
+    }
+
+    .icon-search {
+      position: absolute;
+      top: 0.3rem;
+      right: 14vw;
+      z-index: 2;
+    }
+  }
+}
+
+.lesson-show-course {
+  color: $gray-login;
+}
+
+.teacher-container {
+  color: $gray-login;
+  font-family: $font-main;
+  padding-bottom: 0.1rem;
+
+  .title-main-teacher {
+    font-weight: 700;
+    text-transform: capitalize;
+    font-size: 25px;
+    margin: 1rem 0;
+  }
+
+  .teacher-content {
+    margin: 3rem 1rem;
+
+    .teacher-info {
+      margin: auto;
+    }
+  }
+
+  .teacher-description {
+    color: $gray-exp;
+    margin: 0.5rem 0;
+    font-size: 18px;
+    line-height: 26px;
+  }
+}
+
+.details {
+  .name {
+    line-height: 22.07px;
+    font-size: 18px;
+    text-transform: capitalize;
+    font-weight: 700;
+  }
+
+  .exp {
+    font-size: 14px;
+    color: $gray-exp;
+    text-transform: capitalize;
+    line-height: 17.17px;
+  }
+
+  .contact {
+    margin: 0.5rem 0;
+    justify-content: space-between;
+    width: 55%;
+  }
+}
+.contact {
+  a {
+    .fa-google-plus-g {
+      color: red;
+      border: 1px solid red;
+      border-radius: 50%;
+      padding: 0.2rem 0.1rem;
+    }
+
+    .fa-facebook-f {
+      border: 1px solid blue;
+      border-radius: 50%;
+      padding: 0.2rem 0.45rem;
+      color: blue;
+    }
+
+    .fa-slack {
+      border: 1px solid red;
+      border-radius: 50%;
+      padding: 0.2rem 0.25rem;
+    }
+  }
+}
+
+.course-show-right {
+  .description {
+    font-family: "UTM BryantLG";
+    background-color: white;
+    border-radius: 0.5rem;
+    margin-bottom: 2rem;
+    text-align: justify;
+    width: 94%;
+    margin-left: 11px;
+
+    .description-title {
+      font-size: 25px;
+      font-weight: 700;
+      border-bottom: 2px solid $main-color;
+      line-height: 3;
+    }
+
+    .description-content {
+      font-size: 18px;
+      line-height: 1.5;
+      color: $gray-text;
+      padding-bottom: 1rem;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box !important;
+      -webkit-line-clamp: 15;
+      -webkit-box-orient: vertical;
+    }
+  }
+
+  .show-info-other {
+    .key-info {
+      margin-bottom: 3rem;
+    }
+  }
+}
+
+
+
+.btn-join-course {
+  a {
+    font-weight: $font-main;
+    color: white;
+    font-size: 18px;
+  }
+}
+
+.list-group-item {
+  display: flex;
+  font-family: $font-main;
+  font-size: 18px;
+}
+
+.btn-learn {
+  button {
+    background-color: $main-color;
+
+    .link-learn-lesson {
+      color: white;
+      font-size: 15px;
+      padding: 1px 5px;
+    }
+  }
+}
+
+.key-item {
+  font-weight: $font-main;
+  font-size: 19px;
+
+  .key-name {
+    margin-left: -1.5rem;
+
+    i {
+      font-size: 28px;
+    }
+  }
+
+  .key-data {
+    text-align: left;
+  }
+}
+
+.course-other-info {
+  background-color: $main-color;
+  padding: 0.5rem 0;
+  text-align: center;
+  color: white;
+  font-size: 25px;
+}
+
+.other-course-item {
+  font-size: 16px;
+}
+
+.hidden {
+  display: none;
+
+  //&.active {
+  //  display: block;
+  //}
+}
+.name-course-other {
+  //display: none;
+}
+
+

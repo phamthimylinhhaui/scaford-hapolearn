@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Auth;
 
 class Course extends Model
 {
@@ -17,6 +18,20 @@ class Course extends Model
         'price',
         'description'
     ];
+
+    public function scopeIsJoined()
+    {
+        return Auth::check() && $this->users()->whereExists(function ($query) {
+            $query->where('user_id', Auth::id());
+        })->count() > 0;
+    }
+
+    public function scopeIsSoftDelete()
+    {
+        return Auth::check() && $this->users()->whereExists(function ($query) {
+                $query->where('user_id', Auth::id());
+        })->where('user_course.deleted_at', '<>', null)->count() > 0;
+    }
 
     public function scopeSearch($query, $data)
     {
@@ -81,7 +96,7 @@ class Course extends Model
 
     public function scopeOtherCourse($query)
     {
-        return $query->inRandomOrder()->take(config('config.home_course_order'));
+        return $query->inRandomOrder();
     }
 
     public function lessons()
@@ -99,9 +114,9 @@ class Course extends Model
         return $this->belongsToMany(User::class, 'user_course', 'course_id');
     }
 
-    public function teacherCourse()
+    public function teachers()
     {
-        return $this->belongsToMany(User::class, 'user_course', 'course_id');
+        return $this->belongsToMany(User::class, 'teacher_course', 'course_id');
     }
 
     public function tags()

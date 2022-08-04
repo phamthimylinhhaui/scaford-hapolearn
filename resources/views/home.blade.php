@@ -1,14 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-    <section class="alert-success">
-        @if (session('success'))
-            <div class="alert alert-success">
-                <span class="alert-success"> {{ session('success') }}</span>
-            </div>
-        @endif
-    </section>
-
     <section class="banner">
         <div class="container-banner">
             <div class="content">

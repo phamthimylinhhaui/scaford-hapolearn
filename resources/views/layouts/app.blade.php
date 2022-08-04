@@ -18,6 +18,20 @@
 </head>
 <body>
     @include('layouts.header')
+    <section class="alert-success">
+        @if (session('success'))
+            <div class="alert alert-success">
+                <span class="alert-success"> {{ session('success') }}</span>
+            </div>
+        @endif
+    </section>
+    <section class="alert-error">
+        @if (session('error'))
+            <div class="alert alert-error alert-error-item">
+                <span class="alert-error"> {{ session('error') }}</span>
+            </div>
+        @endif
+    </section>
     <main>
         @yield('content')
     </main>

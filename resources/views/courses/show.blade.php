@@ -4,184 +4,145 @@
 <section>
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item"><a href="#">Library</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Data</li>
+            <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('courses.index') }}">All course</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Course detail</li>
         </ol>
     </nav>
 </section>
+
 <section>
-    <div class="container-fluid course-show row">
+    <div class="container-fluid course-show row" id="accordion">
         <div class="col-8 course-show-left">
             <div class="col-12 course-image">
-                <img src="{{ asset('images/logo-html.png') }}" alt="hình ảnh" class="">
+                <img src="{{ asset($course->image) }}" alt="hình ảnh" class="">
             </div>
 
             <div class="col-12 show-tab">
                 <div class="col-12">
-                    <ul class="tabs">
-                        <li class="tab-link " data-tab="tab_lesson">Lessons</li>
-                        <li class="tab-link " data-tab="tab_teacher">Teachers</li>
-                        <li class="tab-link current" data-tab="tab_review">Reviews</li>
+                    <ul class="tabs" >
+                        <li class="btn btn-link" data-toggle="collapse" data-target=".collapseLesson" aria-expanded="true" aria-controls="collapseLesson">
+                            Lessons
+                        </li>
+
+                        <li class="btn btn-link collapsed" data-toggle="collapse" data-target=".collapseTeacher" aria-expanded="false" aria-controls="collapseTeacher">
+                            Teacher
+                        </li>
+
+                        <li class="btn btn-link collapsed" data-toggle="collapse" data-target=".collapseReview" aria-expanded="false" aria-controls="collapseReview">
+                            Review
+                        </li>
                     </ul>
                 </div>
 
                 <div class="col-12">
-                    <div id="tab_lesson" class="tab-content">
+                    <div class="collapse show collapseLesson" data-parent="#accordion">
                         <div class="row search-show-course">
-                            <form action="" method="" class="col-6">
-                                <input type="text" class="col-7 box-search-lesson" placeholder="Search...">
+                            <form action="{{ route('courses.show', [$course->id]) }}" method="GET" class="col-6">
+                                <input type="text" class="col-7 box-search-lesson" placeholder="Search..." name="lesson_name">
                                 <span class="icon-search"><i class="fas fa-search"></i></span>
                                 <button type="submit" class="col-3 col-sm-4 btn-primary">Tìm kiếm</button>
                             </form>
-                            <button class="btn-main btn-join-course"><a href="#" class="">Tham gia khoá học</a></button>
+
+                            @if($checkFinishCourse)
+                                <button class="btn btn-primary" disabled>Đã hoàn thành</button>
+                            @elseif($checkJoined)
+                                <button class="btn-danger btn-destroy" data-toggle="modal" data-target="#endCourse">Kết thúc khóa học</button>
+                                @include('components.sotfdelete_user_course_modal')
+                            @else
+                                <form action="{{ route('user_course.store') }}" method="POST">
+                                @csrf
+                                <input type="hidden" name="course_id" value="{{ $course->id }}" class="form-control @error('course_id') is-invalid @enderror">
+                                <button type="submit" class="btn-main btn-join-course">Tham gia khoá học</button>
+                            </form>
+                            @endif
                         </div>
                         <div class="lesson-show-course">
                             <ul class="list-group list-group-flush">
-                                <li class="list-group-item">
-                                    <div class="number-order">1. </div>
-                                    <div class="col-10 lesson-name">Lorem ipsum dolor sit amet, consectetur adipiscing
-                                        elit.</div>
-                                    <div class="btn-learn"><button class="btn-main"><a href="#"
-                                                class="link-learn-lesson">Learn</a></button></div>
-                                </li>
-                                <li class="list-group-item">
-                                    <div class="number-order">1. </div>
-                                    <div class="col-10 lesson-name">Lorem ipsum dolor sit amet, consectetur adipiscing
-                                        elit.</div>
-                                    <div class="btn-learn"><button class="btn-main"><a href="#"
-                                                class="link-learn-lesson">Learn</a></button></div>
-                                </li>
+                                @foreach($lessons as $index => $lesson)
+                                    <li class="list-group-item">
+                                        <div class="number-order">{{ $index +1 }}.</div>
+                                        <div class="col-10 lesson-name">{{ $lesson->name }}</div>
+                                        <div class="btn-learn"><button class="btn-main"><a href="{{ route('lessons.show', [$lesson->id]) }}" class="link-learn-lesson">Learn</a></button></div>
+                                    </li>
+                                @endforeach
+
+                                @if(count($lessons) == 0)
+                                    <li class="list-group-item">Chưa có bài học nào</li>
+                                @endif
                             </ul>
+
+                            {{ $lessons->withQueryString()->links() }}
                         </div>
                     </div>
 
-                    <div id="tab_teacher" class="tab-content">
+                    <div class="collapse collapseTeacher"  data-parent="#accordion">
                         <div class="teacher-container">
                             <div class="title-main-teacher">Main Teacher</div>
+                            @foreach($teachers as $teacher)
                             <div class="teacher-content">
                                 <div class="row teacher-info">
-                                    <div class="col-2 avatar">
-                                        <img src="{{asset('images/icon-teacher-avatar.png')}}" alt="avatar">
+                                    <div class="col-2 ">
+                                        <img src="{{ empty($teacher->avatar) ? asset('images/icon-teacher-avatar.png') : asset($teacher->avatar)}}" alt="avatar" class="avatar">
                                     </div>
                                     <div class="col-3 details">
-                                        <div class="name">Lưu Trung Nghĩa</div>
-                                        <div class="exp">second year teacher</div>
+                                        <div class="name">{{ $teacher->user_name }}</div>
+                                        <div class="exp">{{ $teacher->exp }} year teacher</div>
                                         <div class="row contact">
-                                            <a href="#"><i class="fab fa-google-plus-g"></i></a>
-                                            <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
-                                            <a href="#"><i class="fa-brands fa-slack"></i></a>
+                                            <a href="{{ empty($teacher->link_google) ? '#' : $teacher->link_google }}"><i class="fab fa-google-plus-g"></i></a>
+                                            <a href="{{ empty($teacher->link_facebook) ? '#' : $teacher->link_facebook }}"><i class="fa-brands fa-facebook-f"></i></a>
+                                            <a href="{{ empty($teacher->link_slack) ? '#' : $teacher->link_slack }}"><i class="fa-brands fa-slack"></i></a>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="teacher-description">
-                                    Vivamus volutpat eros pulvinar velit laoreet, sit amet egestas erat dignissim. Sed
-                                    quis rutrum tellus, sit amet viverra felis. Cras sagittis sem sit amet urna feugiat
-                                    rutrum. Nam nulla ipsum, venenatis malesuada felis quis, ultricies convallis neque.
-                                    Pellentesque tristique
+                                    {{ $teacher->about_me }}
                                 </div>
                             </div>
-                            <div class="teacher-content">
-                                <div class="row teacher-info">
-                                    <div class="col-2 avatar">
-                                        <img src="{{asset('images/icon-teacher-avatar.png')}}" alt="avatar">
-                                    </div>
-                                    <div class="col-3 details">
-                                        <div class="name">Lưu Trung Nghĩa</div>
-                                        <div class="exp">second year teacher</div>
-                                        <div class="row contact">
-                                            <a href="#"><i class="fab fa-google-plus-g"></i></a>
-                                            <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
-                                            <a href="#"><i class="fa-brands fa-slack"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="teacher-description">
-                                    Vivamus volutpat eros pulvinar velit laoreet, sit amet egestas erat dignissim. Sed
-                                    quis rutrum tellus, sit amet viverra felis. Cras sagittis sem sit amet urna feugiat
-                                    rutrum. Nam nulla ipsum, venenatis malesuada felis quis, ultricies convallis neque.
-                                    Pellentesque tristique
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
 
-                    <div id="tab_review" class="tab-content current">
+                    <div class="collapse collapseReview" data-parent="#accordion">
                         <div>
-                            here are review!
+                            <div>
+                                <input type="range" min="1" max="10" value="2" disabled> <label> 5</label>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="col-4 course-show-right">
+        <div class="col-4 course-show-right collapse show collapseLesson" data-parent="#accordion">
             <div class="col-12 description">
-                <div class="description-title">Description course</div>
-                <div class="description-content">
-                    <span class="description-content-item">Vivamus volutpat eros pulvinar velit laoreet, sit amet
-                        egestas erat dignissim. Sed quis rutrum tellus, sit amet viverra felis. Cras sagittis sem sit
-                        amet urna feugiat rutrum. Nam nulla ipsum, venenatis malesuada felis quis, ultricies convallis
-                        neque. Pellentesque tristique fringilla tempus. Vivamus bibendum nibh in dolor pharetra, a
-                        euismod nulla dignissim. Aenean viverra tincidunt nibh, in imperdiet nunc. Suspendisse eu ante
-                        pretium, consectetur leo at, congue quam. Nullam hendrerit porta ante vitae tristique.</span>
-                </div>
+                @include('components.description_course_show')
             </div>
-
             <div class="col-12 show-info-other">
-                <div class="key-info">
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item key-item">
-                            <div class="col-6 key-name"><i class="fas fa-users"></i> Learners</div>
-                            <div class="col-6 key-data">: 500</div>
-                        </li>
-                        <li class="list-group-item key-item">
-                            <div class="col-6 key-name"><i class="fas fa-list-alt"></i> Lessons</div>
-                            <div class="col-6 key-data">: 100 lesson</div>
-                        </li>
-                        <li class="list-group-item key-item">
-                            <div class="col-6 key-name"><i class="fa-solid fa-clock"></i> Times</div>
-                            <div class="col-6 key-data">: 80 hours</div>
-                        </li>
-                        <li class="list-group-item key-item">
-                            <div class="col-6 key-name"><i class="fa-solid fa-key"></i> Tags</div>
-                            <div class="col-6 key-data">:
-                                <a href="#">#learn</a>
-                                <a href="#">#code</a>
-                            </div>
-                        </li>
-                        <li class="list-group-item key-item">
-                            <div class="col-6 key-name"><i class="fa-solid fa-money-bill-1"></i> Price</div>
-                            <div class="col-6 key-data">: Free</div>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="name-course-other">
-                    <ul class="list-group list-group-flush">
-                        <li class="course-other-info">Other Course</li>
-
-                        <li class="list-group-item other-course-item">
-                            <div class="number-order">1. </div>
-                            <div class="col-11 course-other-name">Lorem ipsum dolor sit amet, consectetur adipiscing
-                                elit.</div>
-                        </li>
-                        <li class="list-group-item other-course-item">
-                            <div class="number-order">1. </div>
-                            <div class="col-11 course-other-name">Lorem ipsum dolor sit amet, consectetur adipiscing
-                                elit.</div>
-                        </li>
-                    </ul>
-                </div>
+                @include('components.statistic_course_show')
+            </div>
+            <div class="col-12 show-info-other">
+                @include('components.suggestion_course_other')
             </div>
         </div>
-    </div>
 
+        <div class="col-4 course-show-right collapse collapseTeacher" data-parent="#accordion">
+            <div class="col-12 description">
+                @include('components.description_course_show')
+            </div>
+            <div class="col-12 show-info-other">
+                @include('components.statistic_course_show')
+            </div>
+        </div>
 
-    <div class="message">
-        {{--        <h1 class="content active" id="contentTest">Hello! This is toggle show/hide content!</h1>--}}
-        {{--        <button class="btn btn-primary"id="tab_le2sson">Click Me!</button>--}}
-
+        <div class="col-4 course-show-right collapse collapseReview" data-parent="#accordion">
+            <div class="col-12 show-info-other">
+                @include('components.statistic_course_show')
+            </div>
+            <div class="col-12 show-info-other">
+                @include('components.suggestion_course_other')
+            </div>
+        </div>
     </div>
 </section>
 @endsection

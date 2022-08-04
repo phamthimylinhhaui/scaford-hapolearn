@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -25,7 +26,10 @@ class User extends Authenticatable
         'address',
         'date_of_birth',
         'role',
-        'about_me'
+        'about_me',
+        'link_google',
+        'link_facebook',
+        'link_slack',
     ];
 
     /**
@@ -46,6 +50,11 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function getExpAttribute()
+    {
+        return $this['created_at']->diffInYears(Carbon::now());
+    }
 
     public function scopeTeachers()
     {

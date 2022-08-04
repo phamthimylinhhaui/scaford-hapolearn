@@ -48,14 +48,6 @@
     border-radius: 0.5rem;
   }
 
-  .tab-content {
-    display: none;
-  }
-
-  .tab-content.current {
-    display: block;
-  }
-
   .tabs {
     padding: 0;
     list-style: none;
@@ -72,7 +64,6 @@
     transition: 0.3s;
     font-size: 20px;
     font-weight: 700;
-    color: $gray-login;
 
     &:hover {
       background-color: $main-color;
@@ -80,17 +71,15 @@
     }
   }
 
-  ul .current {
+  ul .btn-link {
     color: $main-color;
     cursor: initial;
     border-bottom: 2px solid $main-color;
   }
 
-  .tab_lesson {
-    .search-show-course {
-      justify-content: space-between;
-      margin: 2rem 0;
-    }
+  ul .collapsed {
+    color: $gray-login;
+    border-bottom: 2px solid $gray-border;
   }
 
   .tab-link {
@@ -106,15 +95,20 @@
 }
 
 .search-show-course {
+  justify-content: space-between;
+  margin: 2rem 0;
+}
+
+.search-show-course {
   color: $gray-login;
 
   form {
     button {
-      font-weight: $font-main;
+      font-family: $font-main;
       color: white;
       background-color: $main-color;
-      padding: 0.25rem;
-      border-radius: 5px;
+      border-radius: 2rem;
+      padding: 0.3rem 1rem;
       border-color: $main-color;
       margin-left: 0.5rem;
     }
@@ -132,6 +126,13 @@
       z-index: 2;
     }
   }
+}
+
+.btn-destroy {
+  border-radius: 1rem;
+  padding: 0.5rem;
+  color: white;
+  font-family: $font-main;
 }
 
 .lesson-show-course {
@@ -163,6 +164,16 @@
     margin: 0.5rem 0;
     font-size: 18px;
     line-height: 26px;
+  }
+}
+
+.teacher-info {
+  .col-2 {
+    .avatar {
+      width: 85%;
+      border-radius: 50%;
+      height: 100%;
+    }
   }
 }
 
@@ -199,7 +210,7 @@
     .fa-facebook-f {
       border: 1px solid blue;
       border-radius: 50%;
-      padding: 0.2rem 0.45rem;
+      padding: 0.2rem 0.4rem;
       color: blue;
     }
 
@@ -248,8 +259,6 @@
   }
 }
 
-
-
 .btn-join-course {
   a {
     font-weight: $font-main;
@@ -262,6 +271,10 @@
   display: flex;
   font-family: $font-main;
   font-size: 18px;
+}
+
+.list-group-flush {
+  border-radius: 5px;
 }
 
 .btn-learn {
@@ -290,30 +303,27 @@
 
   .key-data {
     text-align: left;
+
+    a {
+      font-size: 16px;
+    }
   }
 }
 
 .course-other-info {
+  list-style: none;
+  text-transform: capitalize;
   background-color: $main-color;
   padding: 0.5rem 0;
   text-align: center;
   color: white;
   font-size: 25px;
+  border-radius: 5px;
 }
 
 .other-course-item {
   font-size: 16px;
 }
 
-.hidden {
-  display: none;
-
-  //&.active {
-  //  display: block;
-  //}
-}
-.name-course-other {
-  //display: none;
-}
 
 

@@ -34,6 +34,9 @@ class UserFactory extends Factory
             'date_of_birth' => $this->faker->date('Y-m-d'),
             'role' => $this->faker->numberBetween(0, 2),
             'about_me' => $this->faker->realText(200, 2),
+            'link_google' => $this->faker->url(),
+            'link_facebook' => $this->faker->url(),
+            'link_slack' => $this->faker->url(),
         ];
     }
 

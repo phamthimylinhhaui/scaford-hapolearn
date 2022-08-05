@@ -84,6 +84,6 @@ class CourseController extends Controller
 //        }
 //        dd($x);
 
-        return view('courses.show', compact('course', 'lessons', 'otherCourses', 'tags', 'teachers', 'checkJoined', 'checkFinishCourse'));
+        return view('courses.show.show', compact('course', 'lessons', 'otherCourses', 'tags', 'teachers', 'checkJoined', 'checkFinishCourse'));
     }
 }

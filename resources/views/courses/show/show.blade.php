@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<section>
+<div>
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
@@ -9,7 +9,7 @@
             <li class="breadcrumb-item active" aria-current="page">Course detail</li>
         </ol>
     </nav>
-</section>
+</div>
 
 <section>
     <div class="container-fluid course-show row" id="accordion">
@@ -48,7 +48,7 @@
                                 <button class="btn btn-primary" disabled>Đã hoàn thành</button>
                             @elseif($checkJoined)
                                 <button class="btn-danger btn-destroy" data-toggle="modal" data-target="#endCourse">Kết thúc khóa học</button>
-                                @include('components.sotfdelete_user_course_modal')
+                                @include('courses.show.sotfdelete_user_course_modal')
                             @else
                                 <form action="{{ route('user_course.store') }}" method="POST">
                                 @csrf
@@ -104,22 +104,17 @@
                     </div>
 
                     <div class="collapse collapseReview" data-parent="#accordion">
-                        <div>
-                            <div>
-                                <input type="range" min="1" max="10" value="2" disabled> <label> 5</label>
-                            </div>
-                        </div>
+                        @include('courses.show.review_course_show')
                     </div>
                 </div>
             </div>
         </div>
-
         <div class="col-4 course-show-right collapse show collapseLesson" data-parent="#accordion">
             <div class="col-12 description">
-                @include('components.description_course_show')
+                @include('courses.show.description_course_show')
             </div>
             <div class="col-12 show-info-other">
-                @include('components.statistic_course_show')
+                @include('courses.show.statistic_course_show')
             </div>
             <div class="col-12 show-info-other">
                 @include('components.suggestion_course_other')
@@ -128,16 +123,16 @@
 
         <div class="col-4 course-show-right collapse collapseTeacher" data-parent="#accordion">
             <div class="col-12 description">
-                @include('components.description_course_show')
+                @include('courses.show.description_course_show')
             </div>
             <div class="col-12 show-info-other">
-                @include('components.statistic_course_show')
+                @include('courses.show.statistic_course_show')
             </div>
         </div>
 
         <div class="col-4 course-show-right collapse collapseReview" data-parent="#accordion">
             <div class="col-12 show-info-other">
-                @include('components.statistic_course_show')
+                @include('courses.show.statistic_course_show')
             </div>
             <div class="col-12 show-info-other">
                 @include('components.suggestion_course_other')

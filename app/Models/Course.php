@@ -19,6 +19,32 @@ class Course extends Model
         'description'
     ];
 
+    public function scopeGetCountStars()
+    {
+        return [
+            'one_star' => $this->reviews()->where('rate', 1)->count(),
+            'two_star' => $this->reviews()->where('rate', 2)->count(),
+            'three_star' => $this->reviews()->where('rate', 3)->count(),
+            'four_star' => $this->reviews()->where('rate', 4)->count(),
+            'five_star' => $this->reviews()->where('rate', 5)->count(),
+        ];
+    }
+
+    public function scopeGetReviewDesc()
+    {
+        return $this->reviews()->orderBy('reviews.created_at', config('config.desc'))->take(2)->dd();
+    }
+
+    public function getRateAttribute()
+    {
+        return $this->reviews()->avg('rate');
+    }
+
+    public function getCountReviewAttribute()
+    {
+        return $this->reviews()->count();
+    }
+
     public function scopeIsJoined()
     {
         return Auth::check() && $this->users()->whereExists(function ($query) {

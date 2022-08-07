@@ -14,7 +14,7 @@
                 <form method="GET" action="{{ route('courses.index') }}">
                     <input type="text" class="col-7 box-search-text" placeholder="Search..." name="keyword"
                            value="{{ isset( $data['keyword'] ) ? $data['keyword'] : '' }}">
-                    <span  class="icon-search"><i class="fas fa-search"></i></span>
+                    <span  class="icon-search"></span>
                     <button type="submit" class="col-3 col-sm-4 btn-primary box-search-button">Tìm kiếm</button>
 
                     <div class="attribute-filter active row" id="contentFilter">

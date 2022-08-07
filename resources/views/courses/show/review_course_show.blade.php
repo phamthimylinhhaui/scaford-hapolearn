@@ -1,47 +1,45 @@
 <div class="review-top">
-    <div class="review-title">05 Review</div>
+    <div class="review-title">{{ $course->count_review }} Reviews</div>
     <div class="row review-avg">
         <div class="col-4 review-avg-left">
-            <div class="review-number">5</div>
+            <div class="review-number">{{ round($course->rate) }}</div>
             <div class="stars">
+                @for($i = 0 ; $i < round($course->rate); $i++)
                 <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
+                @endfor
             </div>
-            <div class="review-course-count">2 Ratings</div>
+            <div class="review-course-count">{{ $course->count_review }} Ratings</div>
         </div>
 
         <div class="col-7 review-avg-right">
             <div class="row">
                 <div class="col-3">5 stars </div>
-                <div class="col-7 percent-total"><div class="percent" style="width: 50%;"></div></div>
-                <div class="col-2">2 </div>
+                <div class="col-7 percent-total"><div class="percent" style="width: {{ $countStar['five_star'] * 100 / $course->count_review}}%;"></div></div>
+                <div class="col-2">{{ $countStar['five_star'] }} </div>
             </div>
 
             <div class="row">
                 <div class="col-3">4 stars </div>
-                <div class="col-7 percent-total"><div class="percent" style="width: 40%;"></div></div>
-                <div class="col-2">2 </div>
+                <div class="col-7 percent-total"><div class="percent" style="width: {{ $countStar['four_star'] * 100 / $course->count_review}}%;"></div></div>
+                <div class="col-2">{{ $countStar['four_star'] }}</div>
             </div>
 
             <div class="row">
                 <div class="col-3">3 stars </div>
-                <div class="col-7 percent-total"><div class="percent" style="width: 30%;"></div></div>
-                <div class="col-2">2 </div>
+                <div class="col-7 percent-total"><div class="percent" style="width: {{ $countStar['three_star'] * 100 / $course->count_review}}%;"></div></div>
+                <div class="col-2">{{ $countStar['three_star'] }}</div>
             </div>
 
             <div class="row">
                 <div class="col-3">2 stars </div>
-                <div class="col-7 percent-total"><div class="percent" style="width: 20%;"></div></div>
-                <div class="col-2">2 </div>
+                <div class="col-7 percent-total"><div class="percent" style="width: {{ $countStar['two_star'] * 100 / $course->count_review}}%;"></div></div>
+                <div class="col-2">{{ $countStar['two_star'] }}</div>
             </div>
 
             <div class="row">
                 <div class="col-3">1 stars </div>
-                <div class="col-7 percent-total"><div class="percent" style="width: 10%;"></div></div>
-                <div class="col-2">2 </div>
+                <div class="col-7 percent-total"><div class="percent" style="width: {{ $countStar['one_star'] * 100 / $course->count_review}}%;"></div></div>
+                <div class="col-2">{{ $countStar['one_star'] }}</div>
             </div>
         </div>
     </div>
@@ -65,71 +63,108 @@
     <div id="showReviewDefault" class="collapse show" data-parent="#accordionReview">
         <div class="rate">
             <div class="user-thread">
+                @foreach ($reviews as $review)
                 <div class="thread-container">
                     <div class="row thread-user-info">
                         <div class="col-1 image">
                             <img src="{{ asset('images/image-user.png') }}" class="user-avatar">
                         </div>
-                        <div class="col-3 name">Nam Hoàng Anh</div>
+                        <div class="col-3 name">{{ !empty($review->user) ? $review->user['user_name'] : 'no name' }}</div>
                         <div class="col-3 stars">
+                            @for($i = 0; $i < $review->rate; $i++)
                             <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
+                            @endfor
                         </div>
-                        <div class="col-4 created">August 4, 2020 at 1:30 pm</div>
+                        <div class="col-4 created">{{ $review->created_at }}</div>
                         <div class="btn-link btn-reply" data-toggle="collapse" data-target="#reply" aria-expanded="true" aria-controls="reply">reply</div>
                     </div>
-                    <div class="thread-user-comment">
-                        Vivamus volutpat eros pulvinar velit laoreet, sit amet egestas erat dignissim.
-                        Sed quis rutrum tellus, sit amet viverra felis. Cras sagittis sem sit amet urna feugiat rutrum.
-                        Nam nulla ipsum, venenatis malesuada felis quis, ultricies convallis neque. Pellentesque tristique
+                    <div class="thread-user-comment">{{ $review->content }}</div>
+                    <div id="reply" class="reply collapse">
+                        <div class="display-rep-other">
+                            <div class="row thread-user-info">
+                                <div class="col-1 image">
+                                    <img src="{{ asset('images/image-user.png') }}" class="user-avatar">
+                                </div>
+                                <div class="col-3 name">Nga Nguyen</div>
+                                <div class="col-4 created">August 4, 2020 at 1:30 pm</div>
+                            </div>
+                            <div class="thread-user-comment">
+                                Vivamus volutpat eros pulvinar velit laoreet, sit amet egestas erat dignissim.
+                                Sed quis rutrum tellus, sit amet viverra felis. Cras sagittis sem sit amet urna feugiat rutrum.
+                                Nam nulla ipsum, venenatis malesuada felis quis, ultricies convallis neque. Pellentesque tristique
+                            </div>
+                        </div>
+                        <div class="display-rep-other">
+                            <div class="row thread-user-info">
+                                <div class="col-1 image">
+                                    <img src="{{ asset('images/image-user.png') }}" class="user-avatar">
+                                </div>
+                                <div class="col-3 name">Nga Nguyen</div>
+                                <div class="col-4 created">August 4, 2020 at 1:30 pm</div>
+                            </div>
+                            <div class="thread-user-comment">
+                                Vivamus volutpat eros pulvinar velit laoreet, sit amet egestas erat dignissim.
+                                Sed quis rutrum tellus, sit amet viverra felis. Cras sagittis sem sit amet urna feugiat rutrum.
+                                Nam nulla ipsum, venenatis malesuada felis quis, ultricies convallis neque. Pellentesque tristique
+                            </div>
+                        </div>
+
+                        <div class="rep-content">
+                            <form>
+                                <div class="form-group">
+                                    <label>Comment</label>
+                                    <textarea class="form-control" name="message"> </textarea>
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary right"><i class="fa-solid fa-paper-plane"></i></button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
+                @endforeach
+{{--                <div id="reply" class="reply collapse">--}}
+{{--                    <div class="display-rep-other">--}}
+{{--                        <div class="row thread-user-info">--}}
+{{--                            <div class="col-1 image">--}}
+{{--                                <img src="{{ asset('images/image-user.png') }}" class="user-avatar">--}}
+{{--                            </div>--}}
+{{--                            <div class="col-3 name">Nga Nguyen</div>--}}
+{{--                            <div class="col-4 created">August 4, 2020 at 1:30 pm</div>--}}
+{{--                        </div>--}}
+{{--                        <div class="thread-user-comment">--}}
+{{--                            Vivamus volutpat eros pulvinar velit laoreet, sit amet egestas erat dignissim.--}}
+{{--                            Sed quis rutrum tellus, sit amet viverra felis. Cras sagittis sem sit amet urna feugiat rutrum.--}}
+{{--                            Nam nulla ipsum, venenatis malesuada felis quis, ultricies convallis neque. Pellentesque tristique--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                    <div class="display-rep-other">--}}
+{{--                        <div class="row thread-user-info">--}}
+{{--                            <div class="col-1 image">--}}
+{{--                                <img src="{{ asset('images/image-user.png') }}" class="user-avatar">--}}
+{{--                            </div>--}}
+{{--                            <div class="col-3 name">Nga Nguyen</div>--}}
+{{--                            <div class="col-4 created">August 4, 2020 at 1:30 pm</div>--}}
+{{--                        </div>--}}
+{{--                        <div class="thread-user-comment">--}}
+{{--                            Vivamus volutpat eros pulvinar velit laoreet, sit amet egestas erat dignissim.--}}
+{{--                            Sed quis rutrum tellus, sit amet viverra felis. Cras sagittis sem sit amet urna feugiat rutrum.--}}
+{{--                            Nam nulla ipsum, venenatis malesuada felis quis, ultricies convallis neque. Pellentesque tristique--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
 
-                <div id="reply" class="reply collapse">
-                    <div class="display-rep-other">
-                        <div class="row thread-user-info">
-                            <div class="col-1 image">
-                                <img src="{{ asset('images/image-user.png') }}" class="user-avatar">
-                            </div>
-                            <div class="col-3 name">Nga Nguyen</div>
-                            <div class="col-4 created">August 4, 2020 at 1:30 pm</div>
-                        </div>
-                        <div class="thread-user-comment">
-                            Vivamus volutpat eros pulvinar velit laoreet, sit amet egestas erat dignissim.
-                            Sed quis rutrum tellus, sit amet viverra felis. Cras sagittis sem sit amet urna feugiat rutrum.
-                            Nam nulla ipsum, venenatis malesuada felis quis, ultricies convallis neque. Pellentesque tristique
-                        </div>
-                    </div>
-                    <div class="display-rep-other">
-                        <div class="row thread-user-info">
-                            <div class="col-1 image">
-                                <img src="{{ asset('images/image-user.png') }}" class="user-avatar">
-                            </div>
-                            <div class="col-3 name">Nga Nguyen</div>
-                            <div class="col-4 created">August 4, 2020 at 1:30 pm</div>
-                        </div>
-                        <div class="thread-user-comment">
-                            Vivamus volutpat eros pulvinar velit laoreet, sit amet egestas erat dignissim.
-                            Sed quis rutrum tellus, sit amet viverra felis. Cras sagittis sem sit amet urna feugiat rutrum.
-                            Nam nulla ipsum, venenatis malesuada felis quis, ultricies convallis neque. Pellentesque tristique
-                        </div>
-                    </div>
-
-                    <div class="rep-content">
-                        <form>
-                            <div class="form-group">
-                                <label>Comment</label>
-                                <textarea class="form-control" name="message"> </textarea>
-                            </div>
-                            <div class="form-group">
-                                <button type="submit" class="btn btn-primary right"><i class="fa-solid fa-paper-plane"></i></button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
+{{--                    <div class="rep-content">--}}
+{{--                        <form>--}}
+{{--                            <div class="form-group">--}}
+{{--                                <label>Comment</label>--}}
+{{--                                <textarea class="form-control" name="message"> </textarea>--}}
+{{--                            </div>--}}
+{{--                            <div class="form-group">--}}
+{{--                                <button type="submit" class="btn btn-primary right"><i class="fa-solid fa-paper-plane"></i></button>--}}
+{{--                            </div>--}}
+{{--                        </form>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
             </div>
         </div>
     </div>

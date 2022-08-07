@@ -18,8 +18,6 @@ class CheckJoinCourse
     public function handle(Request $request, Closure $next)
     {
         $course = Course::find($request['course_id']);
-//dd($course);
-//dd($course->IsJoined());
         if ($course->IsJoined()) {
             return redirect()->back()->with('error', config('config.cannot_join_course'));
         }

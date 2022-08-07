@@ -8,7 +8,6 @@ use App\Http\Controllers\CourseController;
 use App\Http\Controllers\UserCourseController;
 use App\Http\Controllers\LessonController;
 use App\Http\Controllers\TagController;
-use \App\Http\Middleware\CheckJoinCourse;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,7 +26,7 @@ Route::get('/profile', [UserController::class, 'profile'])->name('profile')->mid
 
 Route::resource('courses', CourseController::class)->only(['index', 'show']);
 
-Route::resource('user_course', UserCourseController::class)->only(['store'])->middleware(['auth', CheckJoinCourse::class]);
+Route::resource('user_course', UserCourseController::class)->only(['store'])->middleware(['auth', 'canJoin']);
 
 Route::resource('user_course', UserCourseController::class)->only(['update'])->middleware('auth');
 

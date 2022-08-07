@@ -46,12 +46,45 @@ class CourseController extends Controller
         $teachers = $course->teachers()->get();
         $checkJoined = $course->isJoined();
         $checkFinishCourse = $course->isSoftDelete();
+        $countStar = $course->getCountStars();
+
+        $reviews = $course->reviews()->get();
+//        $reviews = $course->reviews()->orderBy('created_at', config('config.desc'))->get();
+
+//        $user = $reviews->find(1)->user()->first();
+
+//        dd($reviews->user);
+//        foreach ($reviews as $review)
+//        {
+//           dd($review->user->dd());
+//        }
+
+        return view('courses.show.show', compact(
+            'course',
+            'lessons',
+            'otherCourses',
+            'tags',
+            'teachers',
+            'checkJoined',
+            'checkFinishCourse',
+            'countStar',
+            'reviews'
+        ));
+
+
+
+//        $reviewsAsc = $course->reviews()->get()->orderby('created_at')->take(2);
+//        $review = $reviews->user()->get();
+
+
+//        $reviews = $course->reviews()->where('rate', 3)->dd();
+//        dd($reviews);
 
 
 //        $x = $course->users()->whereExists(function ($query) {
 //            $query->where('user_id', Auth::id());
 //        })->where('user_course.deleted_at', '<>', null)->dd();
-//        dd($check);
+//        dd($x);
         //show
         //  review
         //      review co the dung relationship hoac scope de sap xep review moi nhat
@@ -61,29 +94,5 @@ class CourseController extends Controller
         //      dùng middleware ở route đối với review khi
         //      check nút gửi review nếu ng dùng chưa đăng ký khóa học, chưa đk thì k dc review
         //      dùng carbon để format date, viết lại thành attribute
-
-
-        // tham gia khoa hoc co
-        //      form request
-        //      dung laravel attach để create usercourse
-        //      dk khi da dang nhap (dung auth() se luu id phien user dang dang nhap)
-        //      check đã đăng nhập chưa $this->users()->where('id', auth()->user()->id)->count()
-        //      function return true, false thì getIsJoinedAttribute
-
-        // giao diện
-        //  https://getbootstrap.com/docs/4.1/components/collapse/
-
-
-
-
-//        foreach ($teachers as $index => $teacher)
-//        {
-//            echo "<pre>";
-//            print_r($teacher->exp);
-//            echo "</pre";
-//        }
-//        dd($x);
-
-        return view('courses.show.show', compact('course', 'lessons', 'otherCourses', 'tags', 'teachers', 'checkJoined', 'checkFinishCourse'));
     }
 }

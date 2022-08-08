@@ -36,7 +36,7 @@
                 </div>
 
                 <div class="col-12" id="accordion">
-                    <div class="collapse collapseLesson @if (!session('review'))  {{ 'show' }} @endif" data-parent="#accordion">
+                    <div class="collapse collapseLesson @if (!isset($_REQUEST['tab']) || (isset($_REQUEST['tab']) && $_REQUEST['tab'] == "lesson")) {{ 'show' }} @endif" data-parent="#accordion">
                         @include('courses.show.lesson_course_show')
                     </div>
 
@@ -44,7 +44,9 @@
                         @include('courses.show.teacher_course_show')
                     </div>
 
-                    <div class="collapse collapseReview @if (session('review'))  {{ session('review') }} @endif" data-parent="#accordion">
+{{--                    {{dd($_REQUEST['tab'])}}--}}
+
+                    <div class="collapse collapseReview @if (session('review') || (isset($_REQUEST['tab']) && $_REQUEST['tab'] == "review"))  {{ "show" }} @endif" data-parent="#accordion">
                         @include('courses.show.review_course_show')
                     </div>
                 </div>

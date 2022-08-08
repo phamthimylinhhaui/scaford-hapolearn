@@ -71,12 +71,12 @@
                             <img src="{{ !empty($review->user) ? asset($review->user['avatar']) : asset('images/image-user.png') }}" class="user-avatar">
                         </div>
                         <div class="col-2 name">{{ !empty($review->user) ? $review->user['user_name'] : 'no name' }}</div>
-                        <div class="col-4 stars">
+                        <div class="col-3 stars">
                             @for($i = 0; $i < $review->rate; $i++)
                             <i class="fa-solid fa-star"></i>
                             @endfor
                         </div>
-                        <div class="col-3 created">{{ $review->created_at }}</div>
+                        <div class="col-4 created">{{ $review->created_at }}</div>
                         <div class="col-1 btn-link btn-reply" data-toggle="collapse" data-target="#reply{{ $review->id }}" aria-expanded="true" aria-controls="reply">reply</div>
                         @if(auth()->check() && $review->user['id'] == auth()->id())
                             <div class="col-1 btn-link btn-reply" data-toggle="collapse" data-target="#update{{ $review->id }}" aria-expanded="true" aria-controls="reply">edit</div>
@@ -173,8 +173,8 @@
                     </div>
                 </div>
                 @endforeach
+                {{ $reviews->appends(['review' => $reviews->currentPage()])->links() }}
             </div>
-
             @else
             <div class="user-thread">Chưa có đánh giá nào!</div>
             @endif

@@ -40,12 +40,11 @@ class CourseController extends Controller
         $course = Course::find($id);
         $otherCourses = Course::otherCourse()->take(config('courses.show_other_course'))->get();
         $tags = $course->tags;
-        $lessons = $course->lessons()->search($request->all())->paginate(config('courses.paginate_course_show_lesson'));
+        $lessons = $course->lessons()->search($request->all())->paginate(config('courses.paginate_course_show_lesson'), ['*'], 'lesson')->appends(['tab' => 'lesson']);
         $teachers = $course->teachers()->get();
-        $checkJoined = $course->isJoined();
-        $checkFinishCourse = $course->isSoftDelete();
         $countStar = $course->getCountStars();
-        $reviews = $course->reviews()->orderBy('created_at', config('config.desc'))->get();
+        $reviews = $course->reviews()->orderBy('created_at', config('config.desc'))
+            ->paginate(config('courses.paginate_course_show_review'), ['*'], 'review')->appends(['tab' => 'review']);
 
         return view('courses.show.show', compact(
             'course',
@@ -53,8 +52,6 @@ class CourseController extends Controller
             'otherCourses',
             'tags',
             'teachers',
-            'checkJoined',
-            'checkFinishCourse',
             'countStar',
             'reviews'
         ));

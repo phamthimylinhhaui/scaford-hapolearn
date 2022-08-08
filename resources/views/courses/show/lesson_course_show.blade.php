@@ -5,9 +5,9 @@
         <button type="submit" class="col-3 col-sm-4 btn-primary">Tìm kiếm</button>
     </form>
 
-    @if($checkFinishCourse)
+    @if($course->isSoftDelete())
         <button class="btn btn-primary" disabled>Đã hoàn thành</button>
-    @elseif($checkJoined)
+    @elseif($course->isJoined())
         <button class="btn-danger btn-destroy" data-toggle="modal" data-target="#endCourse">Kết thúc khóa học</button>
         @include('courses.show.soft_delete_user_course_modal')
     @else
@@ -41,5 +41,5 @@
         @endif
     </ul>
 
-    {{ $lessons->withQueryString()->links() }}
+    {{ $lessons->appends(['lesson' => $lessons->currentPage()])->links() }}
 </div>

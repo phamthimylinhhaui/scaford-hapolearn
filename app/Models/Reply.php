@@ -13,6 +13,17 @@ class Reply extends Model
 
     protected $fillable = [
         'review_id',
+        'user_id',
         'content'
     ];
+
+    public function review()
+    {
+        return $this->belongsTo(Review::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

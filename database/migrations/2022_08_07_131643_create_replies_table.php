@@ -16,6 +16,7 @@ class CreateRepliesTable extends Migration
         Schema::create('replies', function (Blueprint $table) {
             $table->id();
             $table->integer('review_id')->unsigned();
+            $table->integer('user_id')->unsigned();
             $table->text('content')->nullable();
             $table->timestamps();
             $table->softDeletes();

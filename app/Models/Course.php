@@ -19,6 +19,13 @@ class Course extends Model
         'description'
     ];
 
+    public function scopeIsReview()
+    {
+        return Auth::check() && $this->reviews()->whereExists(function ($query) {
+                $query->where('user_id', Auth::id());
+        })->count() > 0;
+    }
+
     public function scopeGetCountStars()
     {
         return [
@@ -28,11 +35,6 @@ class Course extends Model
             'four_star' => $this->reviews()->where('rate', 4)->count(),
             'five_star' => $this->reviews()->where('rate', 5)->count(),
         ];
-    }
-
-    public function scopeGetReviewDesc()
-    {
-        return $this->reviews()->orderBy('reviews.created_at', config('config.desc'))->take(2)->dd();
     }
 
     public function getRateAttribute()

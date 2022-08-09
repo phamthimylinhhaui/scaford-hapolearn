@@ -20,19 +20,20 @@ class Course extends Model
 
     public function scopeIsReview()
     {
-        return auth()->check() && $this->reviews()->whereExists(function ($query) {
+        return $this->reviews()->whereExists(function ($query) {
                 $query->where('user_id', auth()->id());
         })->count() > 0;
     }
 
     public function scopeGetCountStars()
     {
+        $reviews = $this->reviews;
         return [
-            'one_star' => $this->reviews()->where('rate', 1)->count(),
-            'two_star' => $this->reviews()->where('rate', 2)->count(),
-            'three_star' => $this->reviews()->where('rate', 3)->count(),
-            'four_star' => $this->reviews()->where('rate', 4)->count(),
-            'five_star' => $this->reviews()->where('rate', 5)->count(),
+            'one_star' => $reviews->where('rate', 1)->count(),
+            'two_star' => $reviews->where('rate', 2)->count(),
+            'three_star' => $reviews->where('rate', 3)->count(),
+            'four_star' => $reviews->where('rate', 4)->count(),
+            'five_star' => $reviews->where('rate', 5)->count(),
         ];
     }
 
@@ -46,18 +47,18 @@ class Course extends Model
         return $this->reviews()->count();
     }
 
-    public function scopeIsJoined()
+    public function getIsJoinedAttribute()
     {
-        return auth()->check() && $this->users()->whereExists(function ($query) {
-            $query->where('user_id', auth()->id());
-        })->count() > 0;
+        return $this->users()->whereExists(function ($query) {
+                $query->where('user_id', auth()->id());
+        })->count();
     }
 
-    public function scopeIsSoftDelete()
+    public function getIsSoftDeleteAttribute()
     {
-        return auth()->check() && $this->users()->whereExists(function ($query) {
+        return $this->users()->whereExists(function ($query) {
                 $query->where('user_id', auth()->id());
-        })->where('user_course.deleted_at', '<>', null)->count() > 0;
+        })->where('user_course.deleted_at', '<>', null)->count();
     }
 
     public function scopeSearch($query, $data)

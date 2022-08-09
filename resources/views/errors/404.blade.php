@@ -6,7 +6,7 @@
 
 @section('image')
 
-    <div style="background-image: url('/images/404-bg.jpg');" class="absolute pin bg-no-repeat md:bg-left lg:bg-center">
+    <div class="absolute pin bg-no-repeat md:bg-left lg:bg-center">
     </div>
 
 @endsection

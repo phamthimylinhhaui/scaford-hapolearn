@@ -4,10 +4,9 @@
         <span class="icon-search"></span>
         <button type="submit" class="col-3 col-sm-4 btn-primary">Tìm kiếm</button>
     </form>
-
-    @if($course->isSoftDelete())
+    @if(auth()->check() && $course->is_soft_delete)
         <button class="btn btn-primary" disabled>Đã hoàn thành</button>
-    @elseif($course->isJoined())
+    @elseif(auth()->check() && $course->is_joined)
         <button class="btn-danger btn-destroy" data-toggle="modal" data-target="#endCourse">Kết thúc khóa học</button>
         @include('courses.show.soft_delete_user_course_modal')
     @else
@@ -16,8 +15,8 @@
             <input type="hidden" name="course_id" value="{{ $course->id }}" class="form-control @error('course_id') is-invalid @enderror">
             @error('course_id')
             <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+                <strong>{{ $message }}</strong>
+            </span>
             @enderror
             <button type="submit" class="btn-main btn-join-course">Tham gia khoá học</button>
 

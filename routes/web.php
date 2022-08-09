@@ -30,7 +30,7 @@ Route::get('/profile', [UserController::class, 'profile'])->name('profile')->mid
 Route::resource('courses', CourseController::class)->only(['index', 'show']);
 
 Route::resource('user_course', UserCourseController::class)->only(['store'])->middleware(['auth', 'canJoin']);
-Route::resource('user_course', UserCourseController::class)->only(['update'])->middleware('auth');
+Route::resource('user_course', UserCourseController::class)->only(['destroy'])->middleware('auth');
 
 Route::resource('lessons', LessonController::class)->only(['show'])->middleware('auth');
 

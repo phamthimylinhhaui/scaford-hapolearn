@@ -34,7 +34,7 @@ class CourseController extends Controller
     public function show(Request $request, $id)
     {
         if (!is_numeric($id)) {
-            $messageError = 'the Course you are looking for could not be found.';
+            $messageError = __('courses.404_course');
             return view('errors.404', compact('messageError'));
         }
 
@@ -46,6 +46,9 @@ class CourseController extends Controller
         $countStar = $course->getCountStars();
         $reviews = $course->reviews()->orderBy('created_at', config('config.desc'))
             ->paginate(config('courses.paginate_course_show_review'), ['*'], 'review')->appends(['tab' => 'review']);
+
+//        $x = $course->isSoftDelete();
+//        dd($x);
 
         return view('courses.show.show', compact(
             'course',

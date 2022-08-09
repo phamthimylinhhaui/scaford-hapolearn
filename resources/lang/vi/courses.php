@@ -6,4 +6,5 @@ return [
     'home' => 'Trang chủ',
     'all_course' => 'Danh sách khóa học',
     'course_detail' => 'Chi tiết khóa học',
+    '404_course' => 'The Course you are looking for could not be found.',
 ];

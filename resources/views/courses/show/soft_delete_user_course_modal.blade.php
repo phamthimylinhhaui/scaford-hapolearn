@@ -8,9 +8,9 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="{{ route('user_course.update', [$course->id]) }}" method="POST">
+                <form action="{{ route('user_course.destroy', [$course->id]) }}" method="POST">
                     @csrf
-                    <input type="hidden" name="_method" value="PUT">
+                    {{ method_field('DELETE') }}
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
                         <button type="submit" class="btn btn-danger btn-yes-delete">Yes</button>

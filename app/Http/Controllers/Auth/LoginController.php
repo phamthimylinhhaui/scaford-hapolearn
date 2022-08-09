@@ -45,7 +45,6 @@ class LoginController extends Controller
         $credentials = $request->only('user_name', 'password');
 
         if (Auth::attempt($credentials)) {
-//            return redirect('/')->with('success', __('message.login_success'));
             return redirect()->intended($this->redirectPath())->with('success', __('message.login_success'));
         }
 

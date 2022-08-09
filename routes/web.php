@@ -23,6 +23,7 @@ use App\Http\Controllers\ReplyController;
 */
 Auth::routes();
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::get('/profile', [UserController::class, 'profile'])->name('profile')->middleware('auth');
 

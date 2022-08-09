@@ -34,7 +34,8 @@ class CourseController extends Controller
     public function show(Request $request, $id)
     {
         if (!is_numeric($id)) {
-            return redirect('/courses')->with('error', config('config.404_course_show'));
+            $messageError = 'the Course you are looking for could not be found.';
+            return view('errors.404', compact('messageError'));
         }
 
         $course = Course::find($id);

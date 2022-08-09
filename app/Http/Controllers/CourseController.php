@@ -41,7 +41,7 @@ class CourseController extends Controller
         $otherCourses = Course::otherCourse()->take(config('courses.show_other_course'))->get();
         $tags = $course->tags;
         $lessons = $course->lessons()->search($request->all())->paginate(config('courses.paginate_course_show_lesson'), ['*'], 'lesson')->appends(['tab' => 'lesson']);
-        $teachers = $course->teachers()->get();
+        $teachers = $course->teachers;
         $countStar = $course->getCountStars();
         $reviews = $course->reviews()->orderBy('created_at', config('config.desc'))
             ->paginate(config('courses.paginate_course_show_review'), ['*'], 'review')->appends(['tab' => 'review']);

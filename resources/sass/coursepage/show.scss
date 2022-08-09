@@ -364,10 +364,10 @@
 
   .reply {
     margin: 1rem;
+  }
 
-    .display-rep-other {
-      margin: 1.5rem;
-    }
+  .display-rep-other {
+    margin: 1.5rem;
   }
 }
 
@@ -474,4 +474,8 @@ nav.flex.items-center.justify-between {
 
 span.relative.z-0.inline-flex.shadow-sm.rounded-md {
   display: flex;
+}
+
+.invalid-feedback {
+  display: block;
 }

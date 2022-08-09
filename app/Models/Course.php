@@ -5,7 +5,6 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Support\Facades\Auth;
 
 class Course extends Model
 {
@@ -21,8 +20,8 @@ class Course extends Model
 
     public function scopeIsReview()
     {
-        return Auth::check() && $this->reviews()->whereExists(function ($query) {
-                $query->where('user_id', Auth::id());
+        return auth()->check() && $this->reviews()->whereExists(function ($query) {
+                $query->where('user_id', auth()->id());
         })->count() > 0;
     }
 
@@ -49,15 +48,15 @@ class Course extends Model
 
     public function scopeIsJoined()
     {
-        return Auth::check() && $this->users()->whereExists(function ($query) {
-            $query->where('user_id', Auth::id());
+        return auth()->check() && $this->users()->whereExists(function ($query) {
+            $query->where('user_id', auth()->id());
         })->count() > 0;
     }
 
     public function scopeIsSoftDelete()
     {
-        return Auth::check() && $this->users()->whereExists(function ($query) {
-                $query->where('user_id', Auth::id());
+        return auth()->check() && $this->users()->whereExists(function ($query) {
+                $query->where('user_id', auth()->id());
         })->where('user_course.deleted_at', '<>', null)->count() > 0;
     }
 

@@ -22,7 +22,7 @@
         </li>
         <li class="list-group-item key-item">
             <div class="col-6 key-name"><i class="fa-solid fa-money-bill-1"></i> Price</div>
-            <div class="col-6 key-data">: {{ number_format($course->price) }}</div>
+            <div class="col-6 key-data">: {{ ($course->price == 0) ? 'Free' : number_format($course->price) }}</div>
         </li>
     </ul>
 </div>

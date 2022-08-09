@@ -4,9 +4,9 @@
 <div>
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{{ route('home') }}">Home</a></li>
-            <li class="breadcrumb-item"><a href="{{ route('courses.index') }}">All course</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Course detail</li>
+            <li class="breadcrumb-item"><a href="{{ route('home') }}">{{  __('courses.home') }}</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('courses.index') }}">{{  __('courses.all_course') }}</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{  __('courses.course_detail') }}</li>
         </ol>
     </nav>
 </div>
@@ -36,24 +36,22 @@
                 </div>
 
                 <div class="col-12" id="accordion">
-                    <div class="collapse collapseLesson @if (!isset($_REQUEST['tab']) || (isset($_REQUEST['tab']) && $_REQUEST['tab'] == "lesson")) {{ 'show' }} @endif" data-parent="#accordion">
+                    <div class="tab-lesson collapse collapseLesson @if (!isset($_REQUEST['tab']) || (isset($_REQUEST['tab']) && $_REQUEST['tab'] == "lesson")) {{ 'show' }} @endif" data-parent="#accordion">
                         @include('courses.show.lesson_course_show')
                     </div>
 
-                    <div class="collapse collapseTeacher @if (session('teacher'))  {{ session('teacher') }} @endif" data-parent="#accordion">
+                    <div class="tab-teacher collapse collapseTeacher @if (session('teacher'))  {{ session('teacher') }} @endif" data-parent="#accordion">
                         @include('courses.show.teacher_course_show')
                     </div>
 
-{{--                    {{dd($_REQUEST['tab'])}}--}}
-
-                    <div class="collapse collapseReview @if (session('review') || (isset($_REQUEST['tab']) && $_REQUEST['tab'] == "review"))  {{ "show" }} @endif" data-parent="#accordion">
+                    <div class="tab-review collapse collapseReview @if (session('review') || (isset($_REQUEST['tab']) && $_REQUEST['tab'] == "review"))  {{ "show" }} @endif" data-parent="#accordion">
                         @include('courses.show.review_course_show')
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="col-4 course-show-right collapse @if (!session('review'))  {{ 'show' }} @endif collapseLesson" data-parent="#accordion">
+        <div class="col-4 course-show-right collapse @if (!isset($_REQUEST['tab']) || (isset($_REQUEST['tab']) && $_REQUEST['tab'] == "lesson")) {{ 'show' }} @endif collapseLesson" data-parent="#accordion">
             <div class="col-12 description">
                 @include('courses.show.description_course_show')
             </div>
@@ -74,7 +72,7 @@
             </div>
         </div>
 
-        <div class="col-4 course-show-right collapse @if (session('review'))  {{ session('review') }} @endif collapseReview" data-parent="#accordion">
+        <div class="col-4 course-show-right collapse @if (session('review') || (isset($_REQUEST['tab']) && $_REQUEST['tab'] == "review"))  {{ "show" }} @endif collapseReview" data-parent="#accordion">
             <div class="col-12 show-info-other">
                 @include('courses.show.statistic_course_show')
             </div>

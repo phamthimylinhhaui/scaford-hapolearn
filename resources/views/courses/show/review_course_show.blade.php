@@ -64,6 +64,8 @@
         <div class="rate">
             @if($reviews->count() > 0)
             <div class="user-thread">
+
+{{--                <button id="checkchovui">click</button>--}}
                 @foreach ($reviews->take(2) as $review)
                 <div class="col-12 thread-container">
                     <div class="row thread-user-info">
@@ -76,22 +78,27 @@
                             <i class="fa-solid fa-star"></i>
                             @endfor
                         </div>
-                        <div class="col-4 created">{{ $review->created_at }}</div>
-                        <div class="col-1 btn-link btn-reply" data-toggle="collapse" data-target="#reply{{ $review->id }}" aria-expanded="true" aria-controls="reply">reply</div>
+                        <div class="col-4 created">{{ empty($review->updated_at) ? $review->created_at : $review->updated_at }}</div>
+                        <div class="col-1 btn-link btn-reply" data-toggle="collapse" data-target=".reply{{ $review->id }}" aria-expanded="true" aria-controls="reply">reply</div>
                         @if(auth()->check() && $review->user['id'] == auth()->id())
-                            <div class="col-1 btn-link btn-reply" data-toggle="collapse" data-target="#update{{ $review->id }}" aria-expanded="true" aria-controls="reply">edit</div>
+                            <div class="col-1 btn-link btn-reply" data-toggle="collapse" data-target=".update{{ $review->id }}" aria-expanded="true" aria-controls="reply">edit</div>
                         @endif
                     </div>
                     <div class="thread-user-comment">{{ $review->content }}</div>
                 {{-- Form update review --}}
-                    <div class="col-12 update-rate collapse" id="update{{ $review->id }}">
+                    <div  class="col-12 update-rate collapse update{{ $review->id }}" id="showEdit">
                         <form action="{{ route('reviews.update', [$review->id]) }}" method="POST">
                             @csrf
                             {{ method_field('PUT') }}
                             <div class="form-group">
                                 <input type="hidden" name="course_id" value="{{ $course->id }}" id="course_id" class="form-control @error('course_id') is-invalid @enderror">
                                 <label>update message</label>
-                                <textarea class="form-control" name="content">@if(!empty($review->content)) {{ $review->content }} @endif</textarea>
+                                <textarea class="form-control @error('content') is-invalid @enderror"  required autocomplete="content" autofocus name="content">@if(!empty($review->content)) {{ $review->content }} @endif</textarea>
+                                @error('content')
+                                <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                             <div class="form-group">
                                 <div class="check-stars">
@@ -110,12 +117,12 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <button type="submit" class="btn btn-primary btn-main float-right">Update</button>
+                                <button type="submit" id="submitUpdateReview" class="btn btn-primary btn-main float-right">Update</button>
                             </div>
                         </form>
                     </div>
                 {{-- List reply--}}
-                    <div id="reply{{ $review->id }}" class="reply collapse">
+                    <div>
                         @if($review->replies->count() > 0)
                             @foreach($review->replies as $reply)
                             <div class="display-rep-other">
@@ -148,10 +155,11 @@
                             </div>
                             @endforeach
                         @else
-                            <h2>Chưa có phản hồi nào cho đánh giá này</h2>
+                            <h5>Chưa có phản hồi nào cho đánh giá này!</h5>
                         @endif
+
                         {{-- Create reply--}}
-                        <div class="rep-content">
+                        <div class="rep-content reply collapse reply{{ $review->id }}">
                             <form class="form-border" method="POST" action="{{ route('replies.store') }}">
                                 @csrf
                                 <input type="hidden" name="review_id" value="{{ $review->id }}">
@@ -193,6 +201,11 @@
                 <input type="hidden" name="course_id" value="{{ $course->id }}" id="course_id" class="form-control @error('course_id') is-invalid @enderror">
                 <label>message</label>
                 <textarea class="form-control" name="content" id="content" class="form-control @error('content') is-invalid @enderror"> </textarea>
+                @error('content')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
             </div>
             <div class="form-group">
                 <div class="check-stars">
@@ -216,5 +229,4 @@
         </form>
     </div>
 </div>
-
 @endif

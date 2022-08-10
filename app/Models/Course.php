@@ -18,6 +18,13 @@ class Course extends Model
         'description'
     ];
 
+    public function scopeMyCourses($query)
+    {
+        return $query->withTrashed()->whereHas('users', function ($query) {
+            $query->where('user_id', auth()->id());
+        });
+    }
+
     public function scopeSearch($query, $data)
     {
         if (isset($data['keyword'])) {

@@ -4,34 +4,32 @@
     <div class="container-fluid row profile">
         <div class="col-4 list-group list-group-flush profile-left">
             <div class="list-group-item profile-avatar">
-                <img id="avatar" src="{{ asset('images/image-user.png') }}" class="col-9 image-avatar">
+                <img id="avatar" src="{{ empty(auth()->user()->avatar) ? asset('images/image-user.png') : asset(auth()->user()->avatar) }}" class="col-9 image-avatar">
                 <label for="input-avatar" class="lable-avatar"><i class="fa-solid fa-camera"></i></label>
-                <div class="profile-name">Võ Hoài Nam</div>
-                <div class="profile-email">hoainamvo@gmail.com</div>
+                <div class="profile-name">{{ auth()->user()->user_name }}</div>
+                <div class="profile-email">{{ auth()->user()->email }}</div>
             </div>
             <div class="list-group-item">
                 <span class="profile-birthday">
                     <i class="fa-solid fa-cake-candles"></i>
-                    10/10/2998
+                    {{ date( 'd-m-Y', strtotime(auth()->user()->date_of_birth)) }}
                 </span>
             </div>
             <div class="list-group-item">
                 <span class="profile-birthday">
                    <i class="fa-solid fa-phone"></i>
-                    03456214659
+                    {{ auth()->user()->phone }}
                 </span>
             </div>
             <div class="list-group-item">
                 <span class="profile-address">
                     <i class="fa-solid fa-house-chimney"></i>
-                    Cau Giay, Ha Noi
+                    {{ auth()->user()->address }}
                 </span>
             </div>
             <div class="list-group-item">
                 <span class="profile-description">
-                   Vivamus volutpat eros pulvinar velit laoreet, sit amet egestas erat dignissim.
-                    Sed quis rutrum tellus, sit amet viverra felis. Cras sagittis sem sit amet urna feugiat rutrum.
-                    Nam nulla ippsumipsum, them venenatis
+                  {{ auth()->user()->about_me }}
                 </span>
             </div>
         </div>
@@ -39,38 +37,25 @@
         <div class=" col-8 profile-right">
             <div class="profile-my-course">
                 <div class="title">My courses</div>
-                <div class="col-9 course-joined row">
+                <div class="row row-cols-7 col-9 course-joined row">
+                    @foreach($myCourses as $myCourse)
                     <div class="course-item">
                         <img src="{{ asset('images/image-user.png') }}" class="course-joined-item">
-                        <div class="course-joined-text">HTML</div>
+                        <div class="course-joined-text">{{ $myCourse->name }}</div>
                     </div>
-                    <div class="course-item">
-                        <img src="{{ asset('images/image-user.png') }}" class="course-joined-item">
-                        <div class="course-joined-text">HTML</div>
-                    </div>
-                    <div class="course-item">
-                        <img src="{{ asset('images/image-user.png') }}" class="course-joined-item">
-                        <div class="course-joined-text">HTML</div>
-                    </div>
-                    <div class="course-item">
-                        <img src="{{ asset('images/image-user.png') }}" class="course-joined-item">
-                        <div class="course-joined-text">HTML</div>
-                    </div>
-                    <div class="course-item">
-                        <img src="{{ asset('images/image-user.png') }}" class="course-joined-item">
-                        <div class="course-joined-text">HTML</div>
-                    </div>
+                    @endforeach
                     <div class="course-item">
                         <div class="course-joined-add"><a href="{{ route('courses.index') }}"><i class="fa-solid fa-plus"></i></a></div>
-                        <div class="course-joined-text">HTML</div>
+                        <div class="course-joined-text">Add course</div>
                     </div>
                 </div>
             </div>
 
             <div class="edit-profile">
                 <div class="title-edit-profile">Edit profile</div>
-                <form class="row" method="POST" action="" enctype="multipart/form-data">
+                <form class="row" method="POST" action="{{ route('profile.update', [auth()->id()]) }}" enctype="multipart/form-data">
                     @csrf
+                    {{ method_field('PUT') }}
                     <input type="file" style="display: none;" id="input-avatar" name="avatar">
                     <div class=" col-6 form-profile-left">
                         <div class="form-group">

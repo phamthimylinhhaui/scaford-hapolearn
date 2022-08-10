@@ -17,6 +17,9 @@
 }
 
 .profile-left {
+  font-size: 18px;
+  line-height: 2;
+
   .profile-name {
     font-size: 24px;
     font-weight: 700;
@@ -91,11 +94,39 @@
   .course-item {
     text-align: center;
     margin-right: 0.5rem;
+    width: 15%;
+
+    &:hover {
+      transform: scale(1.2);
+      -webkit-transform: scale(1.2);
+      -moz-transform: scale(1.2);
+      -o-transform: scale(1.2);
+      -ms-transform: scale(1.2);
+      cursor: pointer;
+
+      .course-joined-text {
+        overflow: inherit;
+        z-index: 2;
+        background-color: white;
+        text-align: left;
+        font-size: 12px;
+        -webkit-line-clamp: 2;
+        width: 100%;
+      }
+    }
 
     .course-joined-item {
       margin: 0.5rem;
       border: 1px solid $main-color;
       border-radius: 50%;
+    }
+
+    .course-joined-text {
+      display: block;
+      width: 100%;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
     }
   }
 }
@@ -104,7 +135,7 @@
   margin: 0.5rem;
   border: 1px solid $main-color;
   border-radius: 50%;
-  padding: 1.1rem 1.35rem;
+  padding: 1.1rem;
   background-color: white;
 
   a {

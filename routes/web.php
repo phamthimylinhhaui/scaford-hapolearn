@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +20,6 @@ use App\Http\Controllers\CourseController;
 Auth::routes();
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
-Route::get('/profile', [UserController::class, 'profile'])->name('profile')->middleware('auth');
+Route::resource('profile', ProfileController::class)->only(['edit', 'update'])->middleware('auth');
 
 Route::resource('courses', CourseController::class)->only(['index']);

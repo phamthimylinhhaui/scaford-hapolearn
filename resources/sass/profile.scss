@@ -1,0 +1,115 @@
+.profile {
+  margin: auto;
+  justify-content: space-around;
+  font-family: $font-main;
+  background-color: $gray-background;
+
+  .profile-left {
+    .profile-avatar {
+      display: block;
+      text-align: center;
+    }
+
+    .list-group-item {
+      background-color: $gray-background;
+    }
+  }
+}
+
+.profile-left {
+  .profile-name {
+    font-size: 24px;
+    font-weight: 700;
+    color: $gray-2;
+    margin-top: 1rem;
+  }
+}
+
+.profile-avatar {
+  .image-avatar {
+    border-radius: 50%;
+    height: 67%;
+    width: 67%;
+    position: relative;
+  }
+
+  label {
+    position: absolute;
+    bottom: 30%;
+    left: 48%;
+    color: white;
+    font-size: 32px;
+    color: white;
+    text-align: center;
+  }
+}
+
+.list-group-item {
+  span {
+    i {
+      margin-right: 0.5rem;
+    }
+
+    .fa-cake-candles {
+      color: orangered;
+    }
+
+    .fa-phone {
+      color: $main-color;
+    }
+
+    .fa-house-chimney {
+      color: #662E93;
+    }
+  }
+
+  .profile-description {
+    text-align: justify;
+  }
+}
+
+.profile-right {
+  .profile-my-course {
+    .course-joined {
+      margin: auto;
+      padding: 1rem;
+    }
+  }
+}
+
+.title-edit-profile,
+.title {
+  font-size: 36px;
+  font-weight: 700;
+  color: $gray-2;
+  border-color: $main-color;
+  border-bottom-style: double;
+  margin-bottom: 1rem;
+}
+
+.course-joined {
+  .course-item {
+    text-align: center;
+    margin-right: 0.5rem;
+
+    .course-joined-item {
+      margin: 0.5rem;
+      border: 1px solid $main-color;
+      border-radius: 50%;
+    }
+  }
+}
+
+.course-joined-add {
+  margin: 0.5rem;
+  border: 1px solid $main-color;
+  border-radius: 50%;
+  padding: 1.1rem 1.35rem;
+  background-color: white;
+
+  a {
+    .fa-plus {
+      color: $main-color;
+    }
+  }
+}

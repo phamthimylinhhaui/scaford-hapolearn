@@ -181,7 +181,8 @@
                     </div>
                 </div>
                 @endforeach
-                {{ $reviews->appends(['review' => $reviews->currentPage()])->links() }}
+
+                {{ $reviews->links() }}
             </div>
             @else
             <div class="user-thread">Chưa có đánh giá nào!</div>

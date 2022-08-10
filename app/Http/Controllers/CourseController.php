@@ -41,11 +41,11 @@ class CourseController extends Controller
         $course = Course::find($id);
         $otherCourses = Course::otherCourse()->take(config('courses.show_other_course'))->get();
         $tags = $course->tags;
-        $lessons = $course->lessons()->search($request->all())->paginate(config('courses.paginate_course_show_lesson'), ['*'], 'lesson')->appends(['tab' => 'lesson']);
+        $lessons = $course->lessons()->search($request->all())->paginate(config('courses.paginate_course_show_lesson'));
         $teachers = $course->teachers;
         $getCountStars = $course->getCountStars();
         $reviews = $course->reviews()->orderBy('created_at', config('config.desc'))
-            ->paginate(config('courses.paginate_course_show_review'), ['*'], 'review')->appends(['tab' => 'review']);
+            ->paginate(config('courses.paginate_course_show_review'), ['*'], 'review');
 
         return view('courses.show.show', compact(
             'course',

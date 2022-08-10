@@ -18,11 +18,11 @@ class Course extends Model
         'description'
     ];
 
-    public function scopeIsReview()
+    public function isReview()
     {
         return $this->reviews()->whereExists(function ($query) {
                 $query->where('user_id', auth()->id());
-        })->count() > 0;
+        })->exists();
     }
 
     public function scopeGetCountStars()
@@ -47,18 +47,18 @@ class Course extends Model
         return $this->reviews()->count();
     }
 
-    public function getIsJoinedAttribute()
+    public function isJoined()
     {
         return $this->users()->whereExists(function ($query) {
-                $query->where('user_id', auth()->id());
-        })->count();
+            $query->where('user_id', auth()->id());
+        })->exists();
     }
 
-    public function getIsSoftDeleteAttribute()
+    public function isSoftDelete()
     {
         return $this->users()->whereExists(function ($query) {
-                $query->where('user_id', auth()->id());
-        })->where('user_course.deleted_at', '<>', null)->count();
+            $query->where('user_id', auth()->id());
+        })->where('user_course.deleted_at', '<>', null)->exists();
     }
 
     public function scopeSearch($query, $data)

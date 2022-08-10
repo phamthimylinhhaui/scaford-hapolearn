@@ -35,8 +35,8 @@
                     </ul>
                 </div>
 
-                <div class="col-12" id="accordion">
-                    <div class="tab-lesson collapse collapseLesson @if (!isset($_REQUEST['tab']) || (isset($_REQUEST['tab']) && $_REQUEST['tab'] == "lesson")) {{ 'show' }} @endif" data-parent="#accordion">
+                <div class="col-12">
+                    <div class="tab-lesson collapse collapseLesson {{ ( session('review') || (isset($_REQUEST['review']))) ? '' : 'show'  }}" data-parent="#accordion">
                         @include('courses.show.lesson_course_show')
                     </div>
 
@@ -44,14 +44,14 @@
                         @include('courses.show.teacher_course_show')
                     </div>
 
-                    <div class="tab-review collapse collapseReview @if (session('review') || (isset($_REQUEST['tab']) && $_REQUEST['tab'] == "review"))  {{ "show" }} @endif" data-parent="#accordion">
+                    <div class="tab-review collapse collapseReview @if (session('review') || (isset($_REQUEST['review'])) )  {{ "show" }} @endif" data-parent="#accordion">
                         @include('courses.show.review_course_show')
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="col-4 course-show-right collapse @if (!isset($_REQUEST['tab']) || (isset($_REQUEST['tab']) && $_REQUEST['tab'] == "lesson")) {{ 'show' }} @endif collapseLesson" data-parent="#accordion">
+        <div class="col-4 course-show-right collapse collapseLesson {{ ( session('review') || (isset($_REQUEST['review']))) ? '' : 'show'  }}" data-parent="#accordion">
             <div class="col-12 description">
                 @include('courses.show.description_course_show')
             </div>
@@ -72,7 +72,7 @@
             </div>
         </div>
 
-        <div class="col-4 course-show-right collapse @if (session('review') || (isset($_REQUEST['tab']) && $_REQUEST['tab'] == "review"))  {{ "show" }} @endif collapseReview" data-parent="#accordion">
+        <div class="col-4 course-show-right collapse @if (session('review') || (isset($_REQUEST['review'])) )  {{ "show" }} @endif collapseReview" data-parent="#accordion">
             <div class="col-12 show-info-other">
                 @include('courses.show.statistic_course_show')
             </div>

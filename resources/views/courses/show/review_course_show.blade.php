@@ -85,7 +85,7 @@
                         @endif
                     </div>
                     <div class="thread-user-comment">{{ $review->content }}</div>
-                {{-- Form update review --}}
+
                     <div  class="col-12 update-rate collapse update{{ $review->id }}" id="showEdit">
                         <form action="{{ route('reviews.update', [$review->id]) }}" method="POST">
                             @csrf

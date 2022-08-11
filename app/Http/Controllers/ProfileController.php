@@ -8,12 +8,9 @@ use Illuminate\Http\Request;
 class ProfileController extends Controller
 {
 
-    public function edit($id)
+    public function index()
     {
         $myCourses = Course::myCourses()->get();
-        if (auth()->id() <> $id) {
-            return 'khong phai user dang dang nhap';
-        }
 
         return view('profile', compact('myCourses'));
     }

@@ -20,6 +20,6 @@ use App\Http\Controllers\ProfileController;
 Auth::routes();
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
-Route::resource('profile', ProfileController::class)->only(['edit', 'update'])->middleware('auth');
+Route::resource('profile', ProfileController::class)->only(['index', 'update'])->middleware('auth');
 
 Route::resource('courses', CourseController::class)->only(['index']);

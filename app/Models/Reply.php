@@ -29,6 +29,6 @@ class Reply extends Model
 
     public function isMyReply()
     {
-        return $this->where('replies.user_id', auth()->id())->exists();
+        return $this->where('replies.id', $this->id)->where('replies.user_id', auth()->id())->exists();
     }
 }

@@ -20,7 +20,7 @@ class CanReply
         $course = Course::find($request['course_id']);
 
         if (!$course->isJoined()) {
-            return redirect()->back()->with('error', config('config.cannot_reply'));
+            return redirect()->back()->with('error', __('course_show.cannot_reply'));
         }
 
         return $next($request);

@@ -43,7 +43,7 @@ class CourseController extends Controller
         $tags = $course->tags;
         $lessons = $course->lessons()->search($request->all())->paginate(config('courses.paginate_course_show_lesson'));
         $teachers = $course->teachers;
-        $getCountStars = $course->getCountStars();
+        $numberOfStars = $course->getNumberOfStars();
         $reviews = $course->reviews()->orderBy('created_at', config('config.desc'))
             ->paginate(config('courses.paginate_course_show_review'), ['*'], 'review');
 
@@ -53,7 +53,7 @@ class CourseController extends Controller
             'otherCourses',
             'tags',
             'teachers',
-            'getCountStars',
+            'numberOfStars',
             'reviews'
         ));
     }

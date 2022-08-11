@@ -21,10 +21,15 @@ class ReviewController extends Controller
 
     public function update(UpdateReviewRequest $request, $id)
     {
+        $review = Review::find($id);
+
+        if (!$review->isMyReview()) {
+            return redirect()->back()->with('error', __('course_show.cannot_update_review'));
+        }
+
         $data = $request->all();
         $data['user_id'] = auth()->id();
 
-        $review = Review::find($id);
         $review->update($data);
 
         return redirect()->back()->with('review', 'show');

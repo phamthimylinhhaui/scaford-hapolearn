@@ -4,7 +4,8 @@
         <span class="icon-search"></span>
         <button type="submit" class="col-3 col-sm-4 btn-primary">Tìm kiếm</button>
     </form>
-    @if(auth()->check() && $course->isSoftDelete())
+
+    @if(auth()->check() && $course->isDeleted())
         <button class="btn btn-primary" disabled>Đã hoàn thành</button>
     @elseif(auth()->check() && $course->isJoined())
         <button class="btn-danger btn-destroy" data-toggle="modal" data-target="#endCourse">Kết thúc khóa học</button>

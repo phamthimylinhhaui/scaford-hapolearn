@@ -22,6 +22,10 @@ class ReplyController extends Controller
     {
         $reply = Reply::find($id);
 
+        if (!$reply->isMyReply()) {
+            return redirect()->back()->with('error', __('course_show.cannot_update_reply'));
+        }
+
         $data = $request->all();
         $data['user_id'] = auth()->id();
 

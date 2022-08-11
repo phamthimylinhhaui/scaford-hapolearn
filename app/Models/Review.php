@@ -42,6 +42,6 @@ class Review extends Model
 
     public function isMyReview()
     {
-        return $this->where('reviews.user_id', auth()->id())->exists();
+        return$this->user->id == auth()->id();
     }
 }

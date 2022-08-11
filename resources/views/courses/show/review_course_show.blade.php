@@ -14,32 +14,32 @@
         <div class="col-7 review-avg-right">
             <div class="row">
                 <div class="col-3">5 stars </div>
-                <div class="col-7 percent-total"><div class="percent" style="width: {{ $getCountStars['five_star'] <> 0 ? $getCountStars['five_star'] * 100 / $course->count_review : 0 }}%;"></div></div>
-                <div class="col-2">{{ $getCountStars['five_star'] }} </div>
+                <div class="col-7 percent-total"><div class="percent" style="width: {{ $numberOfStars['five_star'] <> 0 ? $numberOfStars['five_star'] * 100 / $course->count_review : 0 }}%;"></div></div>
+                <div class="col-2">{{ $numberOfStars['five_star'] }} </div>
             </div>
 
             <div class="row">
                 <div class="col-3">4 stars </div>
-                <div class="col-7 percent-total"><div class="percent" style="width: {{ $getCountStars['four_star'] <> 0 ? $getCountStars['four_star'] * 100 / $course->count_review : 0 }}%;"></div></div>
-                <div class="col-2">{{ $getCountStars['four_star'] }}</div>
+                <div class="col-7 percent-total"><div class="percent" style="width: {{ $numberOfStars['four_star'] <> 0 ? $numberOfStars['four_star'] * 100 / $course->count_review : 0 }}%;"></div></div>
+                <div class="col-2">{{ $numberOfStars['four_star'] }}</div>
             </div>
 
             <div class="row">
                 <div class="col-3">3 stars </div>
-                <div class="col-7 percent-total"><div class="percent" style="width: {{ $getCountStars['three_star'] <> 0 ? $getCountStars['three_star'] * 100 / $course->count_review : 0 }}%;"></div></div>
-                <div class="col-2">{{ $getCountStars['three_star'] }}</div>
+                <div class="col-7 percent-total"><div class="percent" style="width: {{ $numberOfStars['three_star'] <> 0 ? $numberOfStars['three_star'] * 100 / $course->count_review : 0 }}%;"></div></div>
+                <div class="col-2">{{ $numberOfStars['three_star'] }}</div>
             </div>
 
             <div class="row">
                 <div class="col-3">2 stars </div>
-                <div class="col-7 percent-total"><div class="percent" style="width: {{ $getCountStars['two_star'] <> 0 ? $getCountStars['two_star'] * 100 / $course->count_review : 0 }}%;"></div></div>
-                <div class="col-2">{{ $getCountStars['two_star'] }}</div>
+                <div class="col-7 percent-total"><div class="percent" style="width: {{ $numberOfStars['two_star'] <> 0 ? $numberOfStars['two_star'] * 100 / $course->count_review : 0 }}%;"></div></div>
+                <div class="col-2">{{ $numberOfStars['two_star'] }}</div>
             </div>
 
             <div class="row">
                 <div class="col-3">1 stars </div>
-                <div class="col-7 percent-total"><div class="percent" style="width: {{ $getCountStars['one_star'] <> 0 ? $getCountStars['one_star'] * 100 / $course->count_review : 0 }}%;"></div></div>
-                <div class="col-2">{{ $getCountStars['one_star'] }}</div>
+                <div class="col-7 percent-total"><div class="percent" style="width: {{ $numberOfStars['one_star'] <> 0 ? $numberOfStars['one_star'] * 100 / $course->count_review : 0 }}%;"></div></div>
+                <div class="col-2">{{ $numberOfStars['one_star'] }}</div>
             </div>
         </div>
     </div>

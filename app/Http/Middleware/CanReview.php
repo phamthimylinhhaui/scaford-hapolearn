@@ -20,7 +20,7 @@ class CanReview
         $course = Course::find($request['course_id']);
 
         if (!$course->isJoined() || $course->isReview()) {
-            return redirect()->back()->with('error', config('config.cannot_review'));
+            return redirect()->back()->with('error', __('course_show.cannot_review'));
         }
 
         return $next($request);

@@ -25,7 +25,7 @@ class Course extends Model
         })->exists();
     }
 
-    public function scopeGetCountStars()
+    public function getNumberOfStars()
     {
         $reviews = $this->reviews;
         return [
@@ -54,11 +54,11 @@ class Course extends Model
         })->exists();
     }
 
-    public function isSoftDelete()
+    public function isDeleted()
     {
         return $this->users()->whereExists(function ($query) {
             $query->where('user_id', auth()->id());
-        })->where('user_course.deleted_at', '<>', null)->exists();
+        })->whereNotNull('user_course.deleted_at')->exists();
     }
 
     public function scopeSearch($query, $data)

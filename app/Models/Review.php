@@ -39,4 +39,9 @@ class Review extends Model
     {
         return $this->hasMany(Reply::class, 'review_id');
     }
+
+    public function isMyReview()
+    {
+        return $this->where('reviews.user_id', auth()->id())->exists();
+    }
 }

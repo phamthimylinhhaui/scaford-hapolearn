@@ -65,8 +65,7 @@
             @if($reviews->count() > 0)
             <div class="user-thread">
 
-{{--                <button id="checkchovui">click</button>--}}
-                @foreach ($reviews->take(2) as $review)
+                @foreach ($reviews as $review)
                 <div class="col-12 thread-container">
                     <div class="row thread-user-info">
                         <div class="col-1 image">
@@ -80,7 +79,7 @@
                         </div>
                         <div class="col-4 created">{{ empty($review->updated_at) ? $review->created_at : $review->updated_at }}</div>
                         <div class="col-1 btn-link btn-reply" data-toggle="collapse" data-target=".reply{{ $review->id }}" aria-expanded="true" aria-controls="reply">reply</div>
-                        @if(auth()->check() && $review->user['id'] == auth()->id())
+                        @if(auth()->check() && $review->isMyReview())
                             <div class="col-1 btn-link btn-reply" data-toggle="collapse" data-target=".update{{ $review->id }}" aria-expanded="true" aria-controls="reply">edit</div>
                         @endif
                     </div>
@@ -132,7 +131,7 @@
                                     </div>
                                     <div class="col-3 name">{{ $reply->user['user_name'] }}</div>
                                     <div class="col-4 created">{{ $reply->user['created_at'] }}</div>
-                                    @if(auth()->check() && $reply->user['id'] == auth()->id())
+                                    @if(auth()->check() && $reply->isMyReply())
                                         <div class="col-1 btn-link btn-reply" data-toggle="collapse" data-target="#update{{ $reply->id }}" aria-expanded="true" aria-controls="reply">edit</div>
                                     @endif
                                 </div>

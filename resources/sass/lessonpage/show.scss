@@ -1,0 +1,57 @@
+.lesson-detail {
+  font-family: $font-main;
+
+  .lesson-description-title {
+    font-weight: 700;
+    font-size: 25px;
+    color: $gray-login;
+    margin: 1rem 0;
+  }
+
+  .lesson-content {
+    font-size: 18px;
+    color: $gray-text;
+  }
+}
+
+.lesson-progress {
+  font-family: $font-main;
+  margin: auto;
+
+  .description-title {
+    font-weight: 700;
+    font-size: 25px;
+    color: $gray-login;
+    margin: 1rem 0;
+  }
+}
+
+.lesson-tag {
+  font-family: $font-main;
+  margin: 2rem 0;
+
+  span {
+    font-weight: 700;
+    font-size: 25px;
+    color: $gray-login;
+  }
+}
+
+.btn-tag {
+  a {
+    text-decoration: none;
+    color: $gray-text;
+  }
+}
+
+.program-title {
+  padding: 0.75rem 1.25rem;
+  background-color: #fff;
+  border-bottom: 1px solid $gray-text;
+}
+
+.btn-finish {
+  margin: auto;
+  background-color: $main-color;
+  border-color: $main-color;
+}

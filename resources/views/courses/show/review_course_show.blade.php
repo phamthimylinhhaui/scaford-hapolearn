@@ -133,6 +133,8 @@
                                     <div class="col-4 created">{{ $reply->user['created_at'] }}</div>
                                     @if(auth()->check() && $reply->isMyReply())
                                         <div class="col-1 btn-link btn-reply" data-toggle="collapse" data-target="#update{{ $reply->id }}" aria-expanded="true" aria-controls="reply">edit</div>
+                                        <div  class="col-1 text-danger" data-toggle="modal" data-target="#deleteReply">Delete</div>
+                                        @include('courses.show.delete_reply_modal')
                                     @endif
                                 </div>
                                 <div class="thread-user-comment">{{ $reply->content }}</div>

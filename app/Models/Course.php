@@ -139,16 +139,16 @@ class Course extends Model
 
     public function users()
     {
-        return $this->belongsToMany(User::class, 'user_course', 'course_id');
+        return $this->belongsToMany(User::class, 'user_course', 'course_id')->withTimestamps();
     }
 
     public function teachers()
     {
-        return $this->belongsToMany(User::class, 'teacher_course', 'course_id');
+        return $this->belongsToMany(User::class, 'teacher_course', 'course_id')->withTimestamps();
     }
 
     public function tags()
     {
-        return $this->belongsToMany(Tag::class, 'course_tag', 'course_id');
+        return $this->belongsToMany(Tag::class, 'course_tag', 'course_id')->withTimestamps();
     }
 }

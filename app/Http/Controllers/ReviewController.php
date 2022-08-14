@@ -16,7 +16,7 @@ class ReviewController extends Controller
 
         Review::create($data);
 
-        return redirect()->back()->with('review', 'show');
+        return redirect()->back()->with('review', 'show')->with('success', __('course_show.success_store_review'));
     }
 
     public function update(UpdateReviewRequest $request, $id)
@@ -24,14 +24,13 @@ class ReviewController extends Controller
         $review = Review::find($id);
 
         if (!$review->isMyReview()) {
-            return redirect()->back()->with('error', __('course_show.cannot_update_review'));
+            return redirect()->back()->with('review', 'show')->with('error', __('course_show.cannot_update_review'));
         }
 
         $data = $request->all();
         $data['user_id'] = auth()->id();
-
         $review->update($data);
 
-        return redirect()->back()->with('review', 'show');
+        return redirect()->back()->with('review', 'show')->with('success', __('course_show.success_update_review'));
     }
 }

@@ -14,7 +14,7 @@ class UserCourseController extends Controller
         $course = Course::find($request['course_id']);
         $course->users()->attach(Auth::id());
 
-        return redirect()->back()->with('success', config('courses.register_course_success'));
+        return redirect()->back()->with('success', __('course_show.register_course_success'));
     }
 
     public function destroy($id)
@@ -24,6 +24,6 @@ class UserCourseController extends Controller
             'user_id' => auth()->id()
         ])->delete();
 
-        return redirect()->back()->with('success', config('courses.success_soft_delete'));
+        return redirect()->back()->with('success', __('course_show.success_soft_delete'));
     }
 }

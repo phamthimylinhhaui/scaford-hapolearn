@@ -15,7 +15,7 @@ class ReplyController extends Controller
 
         Reply::create($data);
 
-        return redirect()->back()->with('review', 'show');
+        return redirect()->back()->with('review', 'show')->with('success', __('course_show.success_store_reply'));
     }
 
     public function update(UpdateReplyRequest $request, $id)
@@ -31,6 +31,13 @@ class ReplyController extends Controller
 
         $reply->update($data);
 
-        return redirect()->back()->with('review', 'show');
+        return redirect()->back()->with('review', 'show')->with('success', __('course_show.success_update_reply'));
+    }
+
+    public function destroy($id)
+    {
+        Reply::destroy($id);
+
+        return redirect()->back()->with('review', 'show')->with('success', __('course_show.success_delete_reply'));
     }
 }

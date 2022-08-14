@@ -35,5 +35,4 @@ class ProfileController extends Controller
 //        $path = $request->file('avatar')->store('public/profile');
 //        dd(asset(substr($path, strlen('public/'))));
     }
-
 }

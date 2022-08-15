@@ -15,24 +15,17 @@ class ProfileController extends Controller
 
         return view('profile', compact('myCourses'));
     }
-//dd(array_filter($request->all()));
 
-    public function update(ProfileFormRequest $request, $id)
+    public function update(ProfileFormRequest $request)
     {
         if ($request->has('image')) {
-            $fileName = time() .'-'. 'user-avatar'. '.' . $request->file('image')->extension();
-            $path = $request->file('image')->storeAs('public/profile', $fileName);
-            $request['avatar'] = 'storage/'. substr($path, strlen('public/'));
-//            dd($path);
+            $imageName = time() .config('profile.config_name_avatar') .$request->file('image')->extension();
+            $imagePath = request('image')->storeAs(config('profile.store_path'), $imageName);
+
+            $request['avatar'] = config('profile.db_path'). $imagePath;
         }
-//                dd($request->all());
 
-        auth()->user()->update($request->all());
-        return redirect()->route('profile.index');
-
-//       dd($request->file('avatar'));
-//       dd($request->file('avatar')->store('profiles'));
-//        $path = $request->file('avatar')->store('public/profile');
-//        dd(asset(substr($path, strlen('public/'))));
+        auth()->user()->update(array_filter($request->all()));
+        return redirect()->route('profile.index')->with('success', __('profile.success_update_profile'));
     }
 }

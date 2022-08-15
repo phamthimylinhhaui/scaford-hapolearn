@@ -5,9 +5,8 @@
         <div class="col-4 list-group list-group-flush profile-left">
             <div class="list-group-item profile-avatar">
                 <img id="avatar" src="{{ empty(auth()->user()->avatar) ? asset('images/image-user.png') : asset(auth()->user()->avatar) }}" class="col-9 image-avatar">
-{{--                <img id="avatar" src="{{ asset('images/image-user.png') }} class="col-9 image-avatar">--}}
                 <label for="input-avatar" class="lable-avatar"><i class="fa-solid fa-camera"></i></label>
-                <div class="profile-name">{{ empty(auth()->user()->name) ? auth()->user()->user_name : auth()->user()->name}}</div>
+                <div class="profile-name">{{ empty(auth()->user()->full_name) ? auth()->user()->user_name : auth()->user()->full_name}}</div>
                 <div class="profile-email">{{ auth()->user()->email }}</div>
             </div>
             <div class="list-group-item">
@@ -65,10 +64,10 @@
                     @enderror
                     <div class=" col-6 form-profile-left">
                         <div class="form-group">
-                            <label for="name" class="col-md-12 col-form-label text-md-left">Name</label>
+                            <label for="full_name" class="col-md-12 col-form-label text-md-left">Name</label>
                             <div class="col-md-12">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
-                                @error('name')
+                                <input id="full_name" type="text" class="form-control @error('full_name') is-invalid @enderror" name="full_name" value="{{ old('full_name') }}" required autocomplete="name" autofocus>
+                                @error('full_name')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -79,7 +78,7 @@
                         <div class="form-group">
                             <label for="full_name" class="col-md-12 col-form-label text-md-left">Date of birthday</label>
                             <div class="col-md-12">
-                                <input id="date-of-birth" type="date" class="form-control @error('date-of-birth') is-invalid @enderror" name="date_of_birth" value="{{ old('date-of-birth') }}" required autocomplete="date-of-birth" autofocus>
+                                <input id="date-of-birth" type="date" class="form-control @error('date-of-birth') is-invalid @enderror" name="date_of_birth" value="{{ old('date-of-birth') }}" autocomplete="date-of-birth" autofocus>
                                 @error('date-of-birth')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -91,7 +90,7 @@
                         <div class="form-group">
                             <label for="address" class="col-md-12 col-form-label text-md-left">Address</label>
                             <div class="col-md-12">
-                                <input id="address" type="text" class="form-control @error('address') is-invalid @enderror" name="address" value="{{ old('address') }}" required autocomplete="address" autofocus>
+                                <input id="address" type="text" class="form-control @error('address') is-invalid @enderror" name="address" value="{{ old('address') }}" autocomplete="address" autofocus>
                                 @error('address')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -105,7 +104,7 @@
                         <div class="form-group">
                             <label for="email" class="col-md-12 col-form-label text-md-left">Email</label>
                             <div class="col-md-12">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" autocomplete="email" autofocus>
                                 @error('email')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -117,7 +116,7 @@
                         <div class="form-group">
                             <label for="full_name" class="col-md-12 col-form-label text-md-left">Phone</label>
                             <div class="col-md-12">
-                                <input id="phone" type="text" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone') }}" required autocomplete="phone" autofocus>
+                                <input id="phone" type="text" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone') }}" autocomplete="phone" autofocus>
                                 @error('phone')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -129,7 +128,7 @@
                         <div class="form-group">
                             <label for="address" class="col-md-12 col-form-label text-md-left">About me</label>
                             <div class="col-md-12">
-                                <textarea id="about_me" class="form-control @error('about_me') is-invalid @enderror" name="about_me" value="{{ old('about_me') }}" required autocomplete="about_me" autofocus></textarea>
+                                <textarea id="about_me" class="form-control @error('about_me') is-invalid @enderror" name="about_me" value="{{ old('about_me') }}" autocomplete="about_me" autofocus></textarea>
                                 @error('about_me')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>

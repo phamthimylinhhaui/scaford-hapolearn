@@ -25,12 +25,34 @@ class ProfileFormRequest extends FormRequest
     {
         return [
             'avatar' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'name' => 'required|min:6',
-            'date_of_birth' => 'required|date',
-            'address' => 'required',
-            'email' => 'required|email|unique:users',
-            'phone' => 'required|digits:10',
-            'about_me' => 'required',
+            'full_name' => 'required|min:6',
+            'date_of_birth' => 'nullable|date',
+            'address' => 'nullable',
+            'email' => 'nullable|email|unique:users',
+            'phone' => 'nullable|digits:10|regex:/[0-9]{9,}/',
+            'about_me' => 'nullable',
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'required' => __('validation.required'),
+            'max' => __('validation.max'),
+            'min' => __('validation.min'),
+        ];
+    }
+
+    public function attributes()
+    {
+        return [
+            'full_name' => __('artribute.full_name'),
+            'avatar' => __('artribute.avatar'),
+            'phone' => __('artribute.phone'),
+            'date_of_birth' => __('artribute.birthday'),
+            'address' => __('artribute.address'),
+            'email' => __('artribute.email'),
+            'about_me' => __('artribute.about'),
         ];
     }
 }

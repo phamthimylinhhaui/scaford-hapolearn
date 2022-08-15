@@ -14,7 +14,7 @@ class AddNameAttributeUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('name')->nullable();
+            $table->string('full_name')->nullable();
         });
     }
 
@@ -26,7 +26,7 @@ class AddNameAttributeUsersTable extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('name');
+            $table->dropColumn('full_name');
         });
     }
 }

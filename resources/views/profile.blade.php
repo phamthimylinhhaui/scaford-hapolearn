@@ -40,7 +40,7 @@
                 <div class="row row-cols-7 col-9 course-joined row">
                     @foreach($myCourses as $myCourse)
                     <div class="course-item">
-                        <img src="{{ asset('images/image-user.png') }}" class="course-joined-item">
+                        <img src="{{ empty($myCourse->image) ? asset('images/image-user.png') : asset($myCourse->image) }}" class="course-joined-item">
                         <div class="course-joined-text">{{ $myCourse->name }}</div>
                     </div>
                     @endforeach

@@ -116,6 +116,8 @@
     }
 
     .course-joined-item {
+      width: 70px;
+      height: 70px;
       margin: 0.5rem;
       border: 1px solid $main-color;
       border-radius: 50%;
@@ -132,10 +134,12 @@
 }
 
 .course-joined-add {
+  padding: 1.3rem;
+  width: 70px;
+  height: 70px;
   margin: 0.5rem;
-  border: 1px solid $main-color;
+  border: 1px solid #B2D235;
   border-radius: 50%;
-  padding: 1.1rem;
   background-color: white;
 
   a {

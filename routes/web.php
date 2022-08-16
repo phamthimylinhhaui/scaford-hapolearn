@@ -10,6 +10,7 @@ use App\Http\Controllers\LessonController;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\ReplyController;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,7 +26,7 @@ Auth::routes();
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-Route::get('/profile', [UserController::class, 'profile'])->name('profile')->middleware('auth');
+Route::resource('profile', ProfileController::class)->only(['index', 'update'])->middleware('auth');
 
 Route::resource('courses', CourseController::class)->only(['index', 'show']);
 

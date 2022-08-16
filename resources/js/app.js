@@ -12,6 +12,7 @@ require('./message');
 require('./slick');
 require('./filter');
 require('./select2');
+require('./preview_image');
 
 window.Vue = require('vue').default;
 

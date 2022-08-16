@@ -46,7 +46,7 @@ class CourseController extends Controller
         $reviews = $course->reviews()->orderBy('created_at', config('config.desc'))
             ->paginate(config('courses.paginate_course_show_review'), ['*'], 'review');
 
-        return view('courses.show.show', compact(
+        return view('courses.show.main', compact(
             'course',
             'lessons',
             'otherCourses',

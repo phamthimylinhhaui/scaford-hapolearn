@@ -18,6 +18,49 @@ class Course extends Model
         'description'
     ];
 
+    public function isReview()
+    {
+        return $this->reviews()->whereExists(function ($query) {
+                $query->where('user_id', auth()->id());
+        })->exists();
+    }
+
+    public function getNumberOfStars()
+    {
+        $reviews = $this->reviews;
+        return [
+            'one_star' => $reviews->where('rate', 1)->count(),
+            'two_star' => $reviews->where('rate', 2)->count(),
+            'three_star' => $reviews->where('rate', 3)->count(),
+            'four_star' => $reviews->where('rate', 4)->count(),
+            'five_star' => $reviews->where('rate', 5)->count(),
+        ];
+    }
+
+    public function getRateAttribute()
+    {
+        return $this->reviews()->avg('rate');
+    }
+
+    public function getCountReviewAttribute()
+    {
+        return $this->reviews()->count();
+    }
+
+    public function isJoined()
+    {
+        return $this->users()->whereExists(function ($query) {
+            $query->where('user_id', auth()->id());
+        })->exists();
+    }
+
+    public function isDeleted()
+    {
+        return $this->users()->whereExists(function ($query) {
+            $query->where('user_id', auth()->id());
+        })->whereNotNull('user_course.deleted_at')->exists();
+    }
+
     public function scopeSearch($query, $data)
     {
         if (isset($data['keyword'])) {
@@ -81,7 +124,7 @@ class Course extends Model
 
     public function scopeOtherCourse($query)
     {
-        return $query->inRandomOrder()->take(config('config.home_course_order'));
+        return $query->inRandomOrder();
     }
 
     public function lessons()
@@ -96,16 +139,16 @@ class Course extends Model
 
     public function users()
     {
-        return $this->belongsToMany(User::class, 'user_course', 'course_id');
+        return $this->belongsToMany(User::class, 'user_course', 'course_id')->withTimestamps();
     }
 
-    public function teacherCourse()
+    public function teachers()
     {
-        return $this->belongsToMany(User::class, 'user_course', 'course_id');
+        return $this->belongsToMany(User::class, 'teacher_course', 'course_id')->withTimestamps();
     }
 
     public function tags()
     {
-        return $this->belongsToMany(Tag::class, 'course_tag', 'course_id');
+        return $this->belongsToMany(Tag::class, 'course_tag', 'course_id')->withTimestamps();
     }
 }

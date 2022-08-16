@@ -1,5 +1,6 @@
 // Font-awesome
 @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css");
+@import url("https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css");
 @import '~@fortawesome/fontawesome-free/scss/brands';
 @import '~@fortawesome/fontawesome-free/scss/regular';
 @import '~@fortawesome/fontawesome-free/scss/solid';
@@ -36,3 +37,7 @@
 @import 'authpage/register';
 
 @import 'coursepage/course_index';
+
+@import 'coursepage/show.scss';
+
+@import 'coursepage/show_right.scss';

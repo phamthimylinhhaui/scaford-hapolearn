@@ -5,6 +5,11 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\UserCourseController;
+use App\Http\Controllers\LessonController;
+use App\Http\Controllers\TagController;
+use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\ReplyController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,7 +23,21 @@ use App\Http\Controllers\CourseController;
 */
 Auth::routes();
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::get('/profile', [UserController::class, 'profile'])->name('profile')->middleware('auth');
 
-Route::resource('courses', CourseController::class)->only(['index']);
+Route::resource('courses', CourseController::class)->only(['index', 'show']);
+
+Route::resource('tags', TagController::class)->only(['show']);
+
+Route::group(['middleware' => 'auth'], function () {
+    Route::resource('user_course', UserCourseController::class)->only(['store'])->middleware(['canJoin']);
+    Route::resource('user_course', UserCourseController::class)->only(['destroy']);
+    Route::resource('lessons', LessonController::class)->only(['show']);
+    Route::resource('reviews', ReviewController::class)->only(['store'])->middleware(['canReview']);
+    Route::resource('reviews', ReviewController::class)->only(['update']);
+    Route::resource('replies', ReplyController::class)->only(['store'])->middleware(['canReply']);
+    Route::resource('replies', ReplyController::class)->only(['update']);
+    Route::resource('replies', ReplyController::class)->only(['destroy']);
+});

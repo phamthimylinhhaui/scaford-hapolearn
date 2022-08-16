@@ -19,7 +19,7 @@ class HomeController extends Controller
     public function index()
     {
         $courses = Course::main()->get();
-        $otherCourses = Course::otherCourse()->get();
+        $otherCourses = Course::otherCourse()->take(config('config.home_course_order'))->get();
         $feedbacks = Review::feedback()->get();
         $totalCourse = Course::count();
         $totalLesson = Lesson::count();

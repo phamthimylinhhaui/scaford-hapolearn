@@ -34,4 +34,14 @@ class Review extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function replies()
+    {
+        return $this->hasMany(Reply::class, 'review_id');
+    }
+
+    public function isMyReview()
+    {
+        return $this->user->id == auth()->id();
+    }
 }

@@ -21,6 +21,15 @@ class Lesson extends Model
         'requirement'
     ];
 
+    public function scopeSearch($query, $data)
+    {
+        if (isset($data['lesson_name'])) {
+            $query->where('name', 'LIKE', "%". $data['lesson_name'] ."%");
+        }
+
+        return $query;
+    }
+
     public function programs()
     {
         return $this->hasMany(Program::class, 'lesson_id');

@@ -7,4 +7,5 @@ return [
     'desc' => 'DESC',
     'asc' => 'ASC',
     'convert_hours' => 3600,
+    '404_course_show' => 'Khóa học này không tồn tại!',
 ];

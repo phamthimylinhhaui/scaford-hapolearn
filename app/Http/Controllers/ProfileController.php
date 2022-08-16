@@ -9,6 +9,12 @@ use Illuminate\Http\Request;
 
 class ProfileController extends Controller
 {
+    protected $user;
+
+    public function __construct(UserService $user)
+    {
+        $this->user = $user;
+    }
 
     public function index()
     {
@@ -20,7 +26,7 @@ class ProfileController extends Controller
     public function update(ProfileFormRequest $request)
     {
         if ($request->has('image')) {
-            $request['avatar'] = UserService::uploadAvatar(request('image'));
+            $request['avatar'] = $this->user->uploadAvatar(request('image'));
         }
 
         auth()->user()->update(array_filter($request->all()));

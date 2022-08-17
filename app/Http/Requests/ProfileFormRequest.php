@@ -27,8 +27,8 @@ class ProfileFormRequest extends FormRequest
             'avatar' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'full_name' => 'required|min:6',
             'date_of_birth' => 'nullable|date',
-            'address' => 'nullable',
-            'email' => 'nullable|email|unique:users',
+            'address' => 'nullable|string',
+            'email' => 'required|email|unique:users',
             'phone' => 'nullable|digits:10|regex:/[0-9]{9,}/',
             'about_me' => 'nullable',
         ];
@@ -37,22 +37,30 @@ class ProfileFormRequest extends FormRequest
     public function messages()
     {
         return [
-            'required' => __('validation.required'),
-            'max' => __('validation.max'),
-            'min' => __('validation.min'),
+            'required' => __('message.required'),
+            'string' => __('message.string'),
+            'image' => __('message.image'),
+            'mimes' => __('message.mimes'),
+            'email' => __('message.email'),
+            'max' => __('message.max'),
+            'min' => __('message.min'),
+            'date' => __('message.date'),
+            'email.unique' => __('message.email_unique'),
+            'phone.digits' => __('message.digits_phone'),
+            'phone.regex' => __('message.regex_phone'),
         ];
     }
 
     public function attributes()
     {
         return [
-            'full_name' => __('artribute.full_name'),
-            'avatar' => __('artribute.avatar'),
-            'phone' => __('artribute.phone'),
-            'date_of_birth' => __('artribute.birthday'),
-            'address' => __('artribute.address'),
-            'email' => __('artribute.email'),
-            'about_me' => __('artribute.about'),
+            'full_name' => __('attribute.full_name'),
+            'avatar' => __('attribute.avatar'),
+            'phone' => __('attribute.phone'),
+            'date_of_birth' => __('attribute.birthday'),
+            'address' => __('attribute.address'),
+            'email' => __('attribute.email'),
+            'about_me' => __('attribute.about_me'),
         ];
     }
 }

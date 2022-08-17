@@ -148,3 +148,54 @@
     }
   }
 }
+
+@media (min-width: 577px) and (max-width: 991px) {
+  .profile {
+    display: block;
+  }
+
+  .course-joined {
+    .course-item {
+      .course-joined-item {
+        width: 55px;
+        height: 55px;
+      }
+    }
+  }
+
+  .course-joined-add {
+    width: 50px;
+    height: 50px;
+    padding: 0.7rem;
+  }
+}
+
+@media (min-width: 375px) and (max-width: 576px) {
+  .profile-left {
+    font-size: 14px;
+  }
+
+  .course-joined {
+    .course-item {
+      .course-joined-item {
+        width: 35px;
+        height: 35px;
+      }
+    }
+  }
+
+  .course-joined-add {
+    width: 35px;
+    height: 35px;
+    padding: 0.3rem;
+  }
+
+  .course-joined-text {
+    font-size: 12px;
+  }
+
+  .title,
+  .title-edit-profile {
+    font-size: 24px;
+  }
+}

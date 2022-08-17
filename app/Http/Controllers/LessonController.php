@@ -18,7 +18,7 @@ class LessonController extends Controller
         $programs = $lesson->programs()->paginate(config('lessons.paginate_program'));
         $programLearns = 0;
         foreach ($lesson->programs as $program) {
-            if ($program->isLearned()) {
+            if ($program->isCompleted()) {
                 $programLearns++;
             }
         }

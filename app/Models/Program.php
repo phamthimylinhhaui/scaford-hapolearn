@@ -28,7 +28,7 @@ class Program extends Model
         return $this->belongsTo(Lesson::class);
     }
 
-    public function isLearned()
+    public function isCompleted()
     {
         return $this->whereHas('users', function ($query) {
             $query->where('user_program.user_id', auth()->id())->where('user_program.program_id', $this->id);

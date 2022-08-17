@@ -42,7 +42,7 @@
                 </div>
 
                 <div class="col-12">
-                    <div class="tab-lesson collapse collapseDescription {{ ( session('program') || (isset($_REQUEST['page']))) ? '' : 'show'  }}" data-parent="#lessonTab">
+                    <div class="tab-lesson collapse collapseDescription {{ (session('program') || (isset($_REQUEST['page']))) ? '' : 'show'  }}" data-parent="#lessonTab">
                         <div class="col-12 description">
                             <div class="lesson-detail">
                                 <div class="lesson-description-title">Description lesson</div>
@@ -82,14 +82,20 @@
                                                     <div class="number-order"><i class="fa-solid fa-file-video"></i></div>
                                                     <div class="col-2 lesson-name">Video</div>
                                                 @endif
-                                                <div class="col-8 lesson-name">{{ $program->name }}</div>
-                                                <div class="btn-learn">
-{{--                                                    <a href="{{ $program->path }}" class="btn-main link-learn-lesson learn"  data-id="{{ $program->id }}" id="learn" target="_blank">Learn</a>--}}
-                                                    <form method="POST" action="{{ route('user_program.store') }}">
-                                                        @csrf
-                                                        <input type="hidden" name="program_id" value="{{  $program->id }}">
-                                                        <button type="submit" class="btn-main link-learn-lesson learn"  data-id="{{ $program->id }}" id="learn" target="_blank">Learn</button>
-                                                    </form>
+                                                <div class="col-6 lesson-name">{{ $program->name }}</div>
+                                                    @if(auth()->check() && $course->isJoined())
+                                                        <a href="{{ $program->path }}" class="btn-main" target="_blank">Learn</a>
+                                                    @endif
+                                                    <div class="btn-learn">
+                                                    @if(!$program->isCompleted())
+                                                        <form method="POST" action="{{ route('user_program.store') }}">
+                                                            @csrf
+                                                            <input type="hidden" name="program_id" value="{{  $program->id }}">
+                                                            <button type="submit" class="btn-main link-learn-lesson" id="learn" target="_blank">Complete</button>
+                                                        </form>
+                                                    @else
+                                                        <button class="btn btn-primary learn" disabled>Đã hoàn thành</button>
+                                                    @endif
                                                 </div>
                                             </li>
                                     @endforeach

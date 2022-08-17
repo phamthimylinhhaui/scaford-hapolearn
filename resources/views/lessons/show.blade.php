@@ -20,13 +20,14 @@
             </div>
 
             <div class="col-12 lesson-progress">
-                <div class="description-title">Progress</div>
-                <div class="progress-value">
-                    <progress max="10" value="5" class="col-11"></progress>
-                    <span> 10%</span>
-                </div>
+                @if(auth()->check() && $course->isJoined())
+                    <div class="description-title">Progress</div>
+                    <div class="progress-value">
+                        <progress max="{{ $lesson->total_program }}" value="{{ $programLearns }}" class="col-10"></progress>
+                        <span>{{ empty($lesson->total_program) ? '0' : number_format($programLearns *100 / $lesson->total_program, 2) }} %</span>
+                    </div>
+                @endif
             </div>
-
             <div class="col-12 show-tab">
                 <div class="col-12">
                     <ul class="tabs" >
@@ -41,7 +42,7 @@
                 </div>
 
                 <div class="col-12">
-                    <div class="tab-lesson collapse collapseDescription show" data-parent="#lessonTab">
+                    <div class="tab-lesson collapse collapseDescription {{ ( session('program') || (isset($_REQUEST['page']))) ? '' : 'show'  }}" data-parent="#lessonTab">
                         <div class="col-12 description">
                             <div class="lesson-detail">
                                 <div class="lesson-description-title">Description lesson</div>
@@ -64,41 +65,35 @@
                         </div>
                     </div>
 
-                    <div class="tab-teacher collapse collapseDocument" data-parent="#lessonTab">
+                    <div class="tab-teacher collapse collapseDocument @if (session('program') || (isset($_REQUEST['page'])) )  {{ "show" }} @endif" data-parent="#lessonTab">
                         <div class="program-detail">
                             <div class="lesson-detail">
                                 <div class="program-title lesson-description-title">Program</div>
                                 <ul class="list-group list-group-flush">
                                     @foreach($programs as $program)
-                                        @if($program->type == '.doc')
                                             <li class="list-group-item">
-                                                <div class="number-order"><i class="fa-solid fa-file-word"></i></div>
-                                                <div class="col-2 lesson-name">Lesson</div>
-                                                <div class="col-6 lesson-name">{{ $program->name }}</div>
-                                                <div class="btn-learn"><button class="btn-main"><a href="{{ $program->path }}" class="link-learn-lesson">Learn</a></button></div>
-                                                <div class="btn-learn"><button class="btn-main"><a href="{{ $program->path }}" class="link-learn-lesson">Preview</a></button></div>
+                                                @if($program->type == '.doc')
+                                                    <div class="number-order"><i class="fa-solid fa-file-word"></i></div>
+                                                    <div class="col-2 lesson-name">Lesson</div>
+                                                @elseif($program->type == '.pdf')
+                                                    <div class="number-order"><i class="fa-solid fa-file-pdf"></i></div>
+                                                    <div class="col-2 lesson-name">PDF</div>
+                                                @else
+                                                    <div class="number-order"><i class="fa-solid fa-file-video"></i></div>
+                                                    <div class="col-2 lesson-name">Video</div>
+                                                @endif
+                                                <div class="col-8 lesson-name">{{ $program->name }}</div>
+                                                <div class="btn-learn">
+{{--                                                    <a href="{{ $program->path }}" class="btn-main link-learn-lesson learn"  data-id="{{ $program->id }}" id="learn" target="_blank">Learn</a>--}}
+                                                    <form method="POST" action="{{ route('user_program.store') }}">
+                                                        @csrf
+                                                        <input type="hidden" name="program_id" value="{{  $program->id }}">
+                                                        <button type="submit" class="btn-main link-learn-lesson learn"  data-id="{{ $program->id }}" id="learn" target="_blank">Learn</button>
+                                                    </form>
+                                                </div>
                                             </li>
-                                        @endif
-                                        @if($program->type == '.pdf')
-                                            <li class="list-group-item">
-                                                <div class="number-order"><i class="fa-solid fa-file-pdf"></i></div>
-                                                <div class="col-2 lesson-name">PDF</div>
-                                                <div class="col-6 lesson-name">{{ $program->name }}</div>
-                                                <div class="btn-learn"><button class="btn-main"><a href="{{ $program->path }}" class="link-learn-lesson">Learn</a></button></div>
-                                                <div class="btn-learn"><button class="btn-main"><a href="{{ $program->path }}" class="link-learn-lesson">Preview</a></button></div>
-                                            </li>
-                                        @endif
-                                        @if($program->type == '.mp4')
-                                            <li class="list-group-item">
-                                                <div class="number-order"><i class="fa-solid fa-file-video"></i></div>
-                                                <div class="col-2 lesson-name">Video</div>
-                                                <div class="col-6 lesson-name">{{ $program->name }}</div>
-                                                <div class="btn-learn"><button class="btn-main"><a href="{{ $program->path }}" class="link-learn-lesson">Learn</a></button></div>
-                                                <div class="btn-learn"><button class="btn-main"><a href="{{ $program->path }}" class="link-learn-lesson">Preview</a></button></div>
-                                            </li>
-                                        @endif
                                     @endforeach
-
+                                        {{ $programs->links() }}
                                     @if(!$programs->count())
                                         <li class="list-group-item">Chưa có tài liệu nào cho bài học này!</li>
                                     @endif

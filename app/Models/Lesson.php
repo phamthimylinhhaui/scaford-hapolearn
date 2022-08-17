@@ -21,6 +21,11 @@ class Lesson extends Model
         'requirement'
     ];
 
+    public function getTotalProgramAttribute()
+    {
+        return $this->programs()->count();
+    }
+
     public function scopeSearch($query, $data)
     {
         if (isset($data['lesson_name'])) {

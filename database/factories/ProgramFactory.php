@@ -17,7 +17,7 @@ class ProgramFactory extends Factory
         return [
             'name' => $this->faker->name(),
             'lesson_id' => $this->faker->randomElement(Lesson::pluck('id')),
-            'path' => $this->faker->text(200),
+            'path' => $this->faker->url(),
             'type' => $this->faker->text(200),
         ];
     }

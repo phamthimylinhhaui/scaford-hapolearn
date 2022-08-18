@@ -4,9 +4,9 @@
 <div>
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{{ route('home') }}">home</a></li>
-            <li class="breadcrumb-item"><a href="{{ route('courses.index') }}">all course</a></li>
-            <li class="breadcrumb-item"><a href="{{ route('courses.show', $course->id) }}">course detail</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('home') }}">{{ __('courses.home') }}</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('courses.index') }}">{{ __('courses.all_course') }}</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('courses.show', $course->id) }}">{ __('courses.course_detail') }}<</a></li>
             <li class="breadcrumb-item active" aria-current="page">lessons detail</li>
         </ol>
     </nav>
@@ -21,7 +21,7 @@
 
             <div class="col-12 lesson-progress">
                 @if(auth()->check() && $course->isJoined())
-                    <div class="description-title">Progress</div>
+                    <div class="description-title">{{ __('lesson_show.progress') }}</div>
                     <div class="progress-value">
                         <progress max="{{ $lesson->total_program }}" value="{{ $lesson->total_learned_program }}" class="col-10"></progress>
                         <span>{{ $lesson->total_learned_program == 0 ? 0 : number_format($lesson->total_learned_program * 100 / $lesson->total_program, 2) }} %</span>
@@ -32,11 +32,11 @@
                 <div class="col-12">
                     <ul class="tabs" >
                         <li class="btn btn-link" data-toggle="collapse" data-target=".collapseDescription" aria-expanded="true" aria-controls="collapseDescription">
-                           Description
+                            {{ __('lesson_show.description') }}
                         </li>
 
                         <li class="btn btn-link collapsed" data-toggle="collapse" data-target=".collapseDocument" aria-expanded="false" aria-controls="collapseDocument">
-                            Program
+                            {{ __('lesson_show.program') }}
                         </li>
                     </ul>
                 </div>
@@ -45,13 +45,13 @@
                     <div class="tab-lesson collapse collapseDescription {{ (session('program') || (isset($_REQUEST['page']))) ? '' : 'show'  }}" data-parent="#lessonTab">
                         <div class="col-12 description">
                             <div class="lesson-detail">
-                                <div class="lesson-description-title">Description lesson</div>
+                                <div class="lesson-description-title">{{ __('lesson_show.description_lesson') }}</div>
                                 <div class="lesson-content">
                                     {{ $lesson->description }}
                                 </div>
                             </div>
                             <div class="lesson-detail">
-                                <div class="lesson-description-title">Requirement</div>
+                                <div class="lesson-description-title">{{ __('lesson_show.requirement') }}</div>
                                 <div class="lesson-content">
                                     {{ $lesson->requirement }}
                                 </div>
@@ -74,7 +74,7 @@
                                             <li class="list-group-item">
                                                 @if($program->type == '.doc')
                                                     <div class="number-order"><i class="fa-solid fa-file-word"></i></div>
-                                                    <div class="col-2 lesson-name">Lesson</div>
+                                                    <div class="col-2 lesson-name">Word</div>
                                                 @elseif($program->type == '.pdf')
                                                     <div class="number-order"><i class="fa-solid fa-file-pdf"></i></div>
                                                     <div class="col-2 lesson-name">PDF</div>
@@ -101,7 +101,7 @@
                                     @endforeach
                                         {{ $programs->links() }}
                                     @if(!$programs->count())
-                                        <li class="list-group-item">Chưa có tài liệu nào cho bài học này!</li>
+                                        <li class="list-group-item">{{ __('lesson_show.no_found_program') }}</li>
                                     @endif
                                 </ul>
                             </div>

@@ -1,5 +1,5 @@
 <div class="teacher-container">
-    <div class="title-main-teacher">Main Teacher</div>
+    <div class="title-main-teacher">{{ __('course_show.main_teacher') }}</div>
     @if($teachers->count() >0 )
         @foreach($teachers as $teacher)
             <div class="teacher-content">
@@ -9,7 +9,7 @@
                     </div>
                     <div class="col-3 details">
                         <div class="name">{{ $teacher->user_name }}</div>
-                        <div class="exp">{{ $teacher->exp }} year teacher</div>
+                        <div class="exp">{{ $teacher->exp }} {{ __('course_show.years_teacher') }}</div>
                         <div class="row contact">
                             <a href="{{ empty($teacher->link_google) ? '#' : $teacher->link_google }}"><i class="fab fa-google-plus-g"></i></a>
                             <a href="{{ empty($teacher->link_facebook) ? '#' : $teacher->link_facebook }}"><i class="fa-brands fa-facebook-f"></i></a>
@@ -23,6 +23,6 @@
             </div>
         @endforeach
     @else
-        <h1> no teacher</h1>
+        <h1> {{ __('course_show.not_found_teacher') }}</h1>
     @endif
 </div>

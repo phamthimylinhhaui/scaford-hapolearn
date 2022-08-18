@@ -22,15 +22,15 @@
                 <div class="col-12">
                     <ul class="tabs" >
                         <li class="btn btn-link" data-toggle="collapse" data-target=".collapseLesson" aria-expanded="true" aria-controls="collapseLesson">
-                            Lessons
+                            {{ __('course_show.lessons') }}
                         </li>
 
                         <li class="btn btn-link collapsed" data-toggle="collapse" data-target=".collapseTeacher" aria-expanded="false" aria-controls="collapseTeacher">
-                            Teacher
+                            {{ __('course_show.teacher') }}
                         </li>
 
                         <li class="btn btn-link collapsed" data-toggle="collapse" data-target=".collapseReview" aria-expanded="false" aria-controls="collapseReview">
-                            Review
+                            {{ __('course_show.review') }}
                         </li>
                     </ul>
                 </div>

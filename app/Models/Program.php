@@ -20,11 +20,18 @@ class Program extends Model
 
     public function users()
     {
-        return $this->belongsToMany(User::class, 'user_program', 'program_id');
+        return $this->belongsToMany(User::class, 'user_program', 'program_id')->withTimestamps();
     }
 
     public function lesson()
     {
         return $this->belongsTo(Lesson::class);
+    }
+
+    public function isCompleteProgram()
+    {
+        return $this->users()->whereExists(function ($query) {
+            $query->where('user_program.user_id', auth()->id());
+        })->exists();
     }
 }

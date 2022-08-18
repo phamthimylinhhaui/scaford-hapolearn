@@ -11,6 +11,10 @@ class LessonController extends Controller
 {
     public function show($id)
     {
+        if (!is_numeric($id) || $id > Lesson::count()) {
+            abort(404, 'Not Found.');
+        }
+
         $lesson = Lesson::find($id);
         $course = $lesson->course;
         $tags = $course->tags;

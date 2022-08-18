@@ -21,6 +21,21 @@ class Lesson extends Model
         'requirement'
     ];
 
+    public function getTotalLearnedProgramAttribute()
+    {
+        $programs = $this->programs();
+        return $programs->whereHas('users', function ($query) {
+            $query->where('user_program.user_id', auth()->id())->where('lesson_id', $this->id);
+        })->count();
+    }
+
+    public function isLearnedLesson()
+    {
+        return $this->users()->whereExists(function ($query) {
+            $query->where('user_id', auth()->id());
+        })->exists();
+    }
+
     public function getTotalProgramAttribute()
     {
         return $this->programs()->count();
@@ -42,7 +57,7 @@ class Lesson extends Model
 
     public function users()
     {
-        return $this->belongsToMany(User::class, 'user_lesson', 'lesson_id');
+        return $this->belongsToMany(User::class, 'user_lesson', 'lesson_id')->withTimestamps();
     }
 
     public function course()

@@ -59,3 +59,29 @@
 .learn {
   margin-left: 0.3rem;
 }
+
+@media (min-width: 577px) and (max-width: 991px) {
+  .list-group-flush {
+    border-radius: 10px;
+    width: 107%;
+    margin-left: -3%;
+  }
+  .key-item {
+    padding: 1rem;
+
+    .key-name {
+      margin-left: 0;
+    }
+
+    form {
+      width: 51%;
+      margin: auto;
+    }
+  }
+}
+
+@media (min-width: 375px) and (max-width: 576px) {
+  li.breadcrumb-item {
+    font-size: 14px;
+  }
+}

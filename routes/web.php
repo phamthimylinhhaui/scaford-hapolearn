@@ -12,6 +12,7 @@ use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\ReplyController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserProgramController;
+use App\Http\Controllers\UserLessonController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,5 +42,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('replies', ReplyController::class)->only(['update']);
     Route::resource('replies', ReplyController::class)->only(['destroy']);
     Route::resource('profile', ProfileController::class)->only(['index', 'update']);
-    Route::resource('user_program', UserProgramController::class)->only(['index', 'show', 'store'])->middleware(['canLearn']);
+    Route::resource('user_program', UserProgramController::class)->only(['store'])->middleware(['canLearnProgram']);
+    Route::resource('user_lesson', UserLessonController::class)->only(['store'])->middleware('canLearnLesson');
 });

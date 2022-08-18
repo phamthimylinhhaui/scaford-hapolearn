@@ -14,7 +14,7 @@
 
 <div>
     <div class="container-fluid course-show row" id="lessonTab">
-        <div class="col-8 course-show-left">
+        <div class="col-lg-8 col-xl-8 col-md-11 col-sm-11 col-xs-11 course-show-left">
             <div class="col-12 course-image">
                 <img src="{{ asset($lesson->image) }}" alt="hình ảnh" class="">
             </div>
@@ -23,8 +23,8 @@
                 @if(auth()->check() && $course->isJoined())
                     <div class="description-title">Progress</div>
                     <div class="progress-value">
-                        <progress max="{{ $lesson->total_program }}" value="{{ $programLearns }}" class="col-10"></progress>
-                        <span>{{ empty($lesson->total_program) ? '0' : number_format($programLearns *100 / $lesson->total_program, 2) }} %</span>
+                        <progress max="{{ $lesson->total_program }}" value="{{ $lesson->total_learned_program }}" class="col-10"></progress>
+                        <span>{{ $lesson->total_learned_program == 0 ? 0 : number_format($lesson->total_learned_program * 100 / $lesson->total_program, 2) }} %</span>
                     </div>
                 @endif
             </div>
@@ -86,8 +86,8 @@
                                                     @if(auth()->check() && $course->isJoined())
                                                         <a href="{{ $program->path }}" class="btn-main" target="_blank">Learn</a>
                                                     @endif
-                                                    <div class="btn-learn">
-                                                    @if(!$program->isCompleted())
+                                                    <div class="btn-learn" data-id="{{ $program->id }}">
+                                                    @if(!$program->isCompleteProgram())
                                                         <form method="POST" action="{{ route('user_program.store') }}">
                                                             @csrf
                                                             <input type="hidden" name="program_id" value="{{  $program->id }}">
@@ -111,7 +111,7 @@
             </div>
         </div>
 
-        <div class="col-4 course-show-right">
+        <div class="col-lg-4 col-xl-4 col-md-11 col-sm-11 col-xs-11 course-show-right">
             <div class="col-12 show-info-other">
                 @include('courses.show.statistic_course_show')
             </div>

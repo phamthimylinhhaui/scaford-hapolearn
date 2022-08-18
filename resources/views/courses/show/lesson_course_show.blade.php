@@ -32,7 +32,24 @@
                     {{ ($lessons->currentPage() - 1) * config('courses.paginate_course_show_lesson') + ($index +1) }}
                     .</div>
                 <div class="col-10 lesson-name">{{ $lesson->name }}</div>
-                <div class="btn-learn"><button class="btn-main"><a href="{{ route('lessons.show', [$lesson->id]) }}" class="link-learn-lesson">Learn</a></button></div>
+                <div class="btn-learn">
+                    <form action="{{ route('user_lesson.store') }}" method="POST">
+                        @csrf
+                        <input type="hidden" name="course_id" value="{{ $course->id }}" class="form-control @error('course_id') is-invalid @enderror">
+                        @error('course_id')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                        <input type="hidden" name="lesson_id" value="{{ $lesson->id }}" class="form-control @error('lesson_id') is-invalid @enderror">
+                        @error('lesson_id')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                        <button class="btn-main link-learn-lesson" type="submit">Learn</button>
+                    </form>
+                </div>
             </li>
         @endforeach
 

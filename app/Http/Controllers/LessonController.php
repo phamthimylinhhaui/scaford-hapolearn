@@ -16,12 +16,6 @@ class LessonController extends Controller
         $tags = $course->tags;
         $otherCourses = Course::otherCourse()->take(config('courses.show_other_course'))->get();
         $programs = $lesson->programs()->paginate(config('lessons.paginate_program'));
-        $programLearns = 0;
-        foreach ($lesson->programs as $program) {
-            if ($program->isCompleted()) {
-                $programLearns++;
-            }
-        }
 
         return view('lessons.show', compact(
             'lesson',
@@ -29,7 +23,6 @@ class LessonController extends Controller
             'tags',
             'otherCourses',
             'programs',
-            'programLearns'
         ));
     }
 }

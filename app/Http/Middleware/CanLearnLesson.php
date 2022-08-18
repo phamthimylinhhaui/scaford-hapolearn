@@ -2,11 +2,11 @@
 
 namespace App\Http\Middleware;
 
-use App\Models\Program;
+use App\Models\Course;
 use Closure;
 use Illuminate\Http\Request;
 
-class CanLearn
+class CanLearnLesson
 {
     /**
      * Handle an incoming request.
@@ -17,15 +17,9 @@ class CanLearn
      */
     public function handle(Request $request, Closure $next)
     {
-        $program = Program::find($request['program_id']);
-        $course = $program->lesson->course;
-
+        $course = Course::find($request['course_id']);
         if (!$course->isJoined()) {
-            return redirect()->back()->with('error', __('lesson_show.cannot_learn'))->with('program', 'show');
-        }
-
-        if ($program->isCompleted()) {
-            return redirect()->back()->with('error', __('lesson_show.complete_program'))->with('program', 'show');
+            return redirect()->back()->with('error', __('lesson_show.error_learn_lesson'));
         }
 
         return $next($request);

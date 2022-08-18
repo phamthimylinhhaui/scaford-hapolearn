@@ -2,7 +2,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Bạn có chắc chắn muốn kết thúc khóa học không?</h5>
+                <h5 class="modal-title" id="exampleModalLabel">{{ __('button.message_delete') }}</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -12,8 +12,8 @@
                     @csrf
                     {{ method_field('DELETE') }}
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-                        <button type="submit" class="btn btn-danger btn-yes-delete">Yes</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ __('button.no') }}</button>
+                        <button type="submit" class="btn btn-danger btn-yes-delete">{{ __('button.yes') }}</button>
                     </div>
                 </form>
             </div>

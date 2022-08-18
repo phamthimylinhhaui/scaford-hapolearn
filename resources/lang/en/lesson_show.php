@@ -12,6 +12,4 @@ return [
     'description_lesson' => 'Description lesson',
     'requirement' => 'Requirement',
     'no_found_program' => 'No results found for this lesson program!'
-
-
 ];

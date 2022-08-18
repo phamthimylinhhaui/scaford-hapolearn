@@ -80,6 +80,17 @@
   }
 }
 
+.learn {
+  padding: 9px;
+  border-radius: 1rem;
+}
+
+.btn-complete {
+  width: 100%;
+  font-size: 16px;
+  color: white;
+}
+
 @media (min-width: 375px) and (max-width: 576px) {
   li.breadcrumb-item {
     font-size: 14px;

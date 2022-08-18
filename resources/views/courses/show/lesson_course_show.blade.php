@@ -1,14 +1,14 @@
 <div class="row search-show-course">
     <form action="{{ route('courses.show', [$course->id]) }}" method="GET" class="col-6">
-        <input type="text" class="col-7 box-search-lesson" placeholder="Search..." name="lesson_name">
+        <input type="text" class="col-7 box-search-lesson" placeholder="{{ __('button.search') }}..." name="lesson_name">
         <span class="icon-search"></span>
-        <button type="submit" class="col-3 col-sm-4 btn-primary">Tìm kiếm</button>
+        <button type="submit" class="col-3 col-sm-4 btn-primary">{{ __('button.search') }}</button>
     </form>
 
     @if(auth()->check() && $course->isDeleted())
-        <button class="btn btn-primary" disabled>Đã hoàn thành</button>
+        <button class="btn btn-primary" disabled>{{ __('button.completed') }}</button>
     @elseif(auth()->check() && $course->isJoined())
-        <button class="btn-danger btn-destroy" data-toggle="modal" data-target="#endCourse">Kết thúc khóa học</button>
+        <button class="btn-danger btn-destroy" data-toggle="modal" data-target="#endCourse">{{ __('button.close_course') }}</button>
         @include('courses.show.soft_delete_user_course_modal')
     @else
         <form action="{{ route('user_course.store') }}" method="POST">
@@ -19,8 +19,7 @@
                 <strong>{{ $message }}</strong>
             </span>
             @enderror
-            <button type="submit" class="btn-main btn-join-course">Tham gia khoá học</button>
-
+            <button type="submit" class="btn-main btn-join-course">{{ __('button.join_course') }}</button>
         </form>
     @endif
 </div>
@@ -47,14 +46,14 @@
                             <strong>{{ $message }}</strong>
                         </span>
                         @enderror
-                        <button class="btn-main link-learn-lesson" type="submit">Learn</button>
+                        <button class="btn-main link-learn-lesson" type="submit">{{ __('button.learn') }}</button>
                     </form>
                 </div>
             </li>
         @endforeach
 
         @if(count($lessons) == 0)
-            <li class="list-group-item">Chưa có bài học nào</li>
+            <li class="list-group-item">{{ __('course_show.not_found_lesson') }}</li>
         @endif
     </ul>
 

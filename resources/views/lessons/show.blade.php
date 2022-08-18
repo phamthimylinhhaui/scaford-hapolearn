@@ -5,9 +5,9 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{ route('home') }}">{{ __('courses.home') }}</a></li>
-            <li class="breadcrumb-item"><a href="{{ route('courses.index') }}">{{ __('courses.all_course') }}</a></li>
-            <li class="breadcrumb-item"><a href="{{ route('courses.show', $course->id) }}">{ __('courses.course_detail') }}<</a></li>
-            <li class="breadcrumb-item active" aria-current="page">lessons detail</li>
+            <li class="breadcrumb-item"><a href="{{ route('courses.index') }}">{{ __('courses.course_detail') }}</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('courses.show', $course->id) }}">{{ __('courses.all_course') }}</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{ __('lesson_show.lessons_detail') }}</li>
         </ol>
     </nav>
 </div>
@@ -57,7 +57,7 @@
                                 </div>
                             </div>
                             <div class="lesson-tag">
-                                <span class="lesson-description-title">Tag </span>
+                                <span class="lesson-description-title">{{ __('course_show.tags') }} </span>
                                 @foreach($tags as $tag)
                                 <button class="btn bg-light btn-tag"><a href="{{ route('tags.show', [$tag->id]) }}">{{ $tag->name }}</a></button>
                                 @endforeach
@@ -68,7 +68,7 @@
                     <div class="tab-teacher collapse collapseDocument @if (session('program') || (isset($_REQUEST['page'])) )  {{ "show" }} @endif" data-parent="#lessonTab">
                         <div class="program-detail">
                             <div class="lesson-detail">
-                                <div class="program-title lesson-description-title">Program</div>
+                                <div class="program-title lesson-description-title">{{ __('lesson_show.program') }}</div>
                                 <ul class="list-group list-group-flush">
                                     @foreach($programs as $program)
                                             <li class="list-group-item">
@@ -84,17 +84,17 @@
                                                 @endif
                                                 <div class="col-6 lesson-name">{{ $program->name }}</div>
                                                     @if(auth()->check() && $course->isJoined())
-                                                        <a href="{{ $program->path }}" class="btn-main" target="_blank">Learn</a>
+                                                        <a href="{{ $program->path }}" class="btn-main" target="_blank">{{ __('button.learn') }}</a>
                                                     @endif
                                                     <div class="btn-learn" data-id="{{ $program->id }}">
                                                     @if(!$program->isCompleteProgram())
                                                         <form method="POST" action="{{ route('user_program.store') }}">
                                                             @csrf
                                                             <input type="hidden" name="program_id" value="{{  $program->id }}">
-                                                            <button type="submit" class="btn-main link-learn-lesson" id="learn" target="_blank">Complete</button>
+                                                            <button type="submit" class="btn-main btn-complete" id="learn" target="_blank">{{ __('button.complete') }}</button>
                                                         </form>
                                                     @else
-                                                        <button class="btn btn-primary learn" disabled>Đã hoàn thành</button>
+                                                        <button class="btn btn-primary learn" disabled>{{ __('button.completed') }}</button>
                                                     @endif
                                                 </div>
                                             </li>

@@ -33,7 +33,7 @@ class CourseController extends Controller
      */
     public function show(Request $request, $id)
     {
-        if (!is_numeric($id)) {
+        if (!is_numeric($id) || $id > Course::count()) {
             abort(404, 'Not Found.');
         }
 

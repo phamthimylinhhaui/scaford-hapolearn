@@ -8,5 +8,8 @@
             <div class="col-11 course-other-name">{{ $otherCourse->name }}</div>
         </li>
         @endforeach
+        <li class="list-group-item other-course-item">
+            <button class="btn-main btn-join-course btn-finish text-light"><a href="{{ route('courses.index') }}">{{ __('button.all_course') }}</a></button>
+        </li>
     </ul>
 </div>

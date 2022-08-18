@@ -12,6 +12,7 @@ return [
     'delete' => 'Xóa',
     'send' => 'Gửi',
     'update' => 'Cập nhật',
+    'all_course' => 'Xem tất cả khóa học',
     'message_delete' => 'Bạn có chắc chắn muốn xóa không?',
     'yes' => 'Có',
     'no' => 'Không',

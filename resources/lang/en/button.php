@@ -12,6 +12,7 @@ return [
     'delete' => 'Delete',
     'send' => 'Send',
     'update' => 'Update',
+    'all_course' => 'View all ours course',
     'message_delete' => 'Are you sure you want to delete?',
     'yes' => 'Yes',
     'no' => 'No',

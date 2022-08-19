@@ -287,8 +287,8 @@
   }
 
   .stars {
-    font-size: 25px;
-    color: yellow;
+    display: flex;
+    justify-content: center;
   }
 
   .review-course-count {

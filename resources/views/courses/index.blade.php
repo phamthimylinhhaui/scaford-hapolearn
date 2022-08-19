@@ -17,7 +17,7 @@
                     <span  class="icon-search"></span>
                     <button type="submit" class="col-3 col-sm-4 btn-primary box-search-button">Tìm kiếm</button>
 
-                    <div class="attribute-filter active row" id="contentFilter">
+                    <div class="attribute-filter {{ empty($data) ? 'active' : '' }} row" id="contentFilter">
                         <div class="attribute-container">
                             <div class="col-12 row attribute-top">
                                 <div class="form-group col-lg-4 col-md-5 col-sm-6 course-filter-with">

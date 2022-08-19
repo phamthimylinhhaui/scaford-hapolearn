@@ -37,6 +37,16 @@
   color: red;
 }
 
+.btn-logout {
+  border: none;
+  background: white;
+
+  &:hover {
+    background-color: $main-color;
+    color: white;
+  }
+}
+
 @media (min-width: 577px) and (max-width: 991px) {
 
 }

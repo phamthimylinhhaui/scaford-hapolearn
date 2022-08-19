@@ -50,4 +50,10 @@ class LoginController extends Controller
 
         return redirect()->back()->with('error', __('message.login_error'));
     }
+
+    public function logout()
+    {
+        Auth::logout();
+        return redirect()->route('home')->with('success', __('message.logout_success'));
+    }
 }

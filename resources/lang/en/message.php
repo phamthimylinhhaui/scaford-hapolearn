@@ -13,6 +13,5 @@ return [
     'sign_up_with' => 'Sign up to HapoLearn',
     'new_to_hapolearn' => 'or New to Hapolearn',
     'create_new_account' => 'create new account',
-    'register' => 'Register',
-    '' => '',
+    'register' => 'Register'
 ];

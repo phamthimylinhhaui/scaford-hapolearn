@@ -20,7 +20,7 @@
                 </li>
                 @if(auth()->check())
                     <li class="nav-item">
-                        <button class="nav-link btn-logout" data-toggle="modal" data-target="#logout"></button>
+                        <button class="nav-link btn-logout" data-toggle="modal" data-target="#logout">{{ __('button.logout') }}</button>
                     </li>
                     <div class="modal fade" id="logout" tabindex="-1" role="dialog" aria-labelledby="logout" aria-hidden="true">
                         <div class="modal-dialog" role="document">

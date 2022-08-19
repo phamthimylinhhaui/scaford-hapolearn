@@ -16,4 +16,5 @@ return [
     'message_delete' => 'Are you sure you want to delete?',
     'yes' => 'Yes',
     'no' => 'No',
+    'logout' => 'Logout',
 ];

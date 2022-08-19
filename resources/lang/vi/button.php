@@ -16,4 +16,5 @@ return [
     'message_delete' => 'Bạn có chắc chắn muốn xóa không?',
     'yes' => 'Có',
     'no' => 'Không',
+    'logout' => 'Đăng xuất',
 ];

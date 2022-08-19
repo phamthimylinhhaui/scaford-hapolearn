@@ -18,9 +18,37 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="{{ route('courses.index') }}">All Courses</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link " href="{{ route('login') }}">Login/Register</a>
-                </li>
+                @if(auth()->check())
+                    <li class="nav-item">
+                        <button class="nav-link btn-logout" data-toggle="modal" data-target="#logout"></button>
+                    </li>
+                    <div class="modal fade" id="logout" tabindex="-1" role="dialog" aria-labelledby="logout" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel1">Bạn có chắc chắn muốn đăng xuất không?</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <form method="POST" action="{{ route('logout') }}" class="float-right">
+                                        @csrf
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ __('button.no') }}</button>
+                                        <button type="submit" class="btn btn-danger btn-yes-delete">{{ __('button.yes') }}</button>
+                                    </form>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                @else
+                    <li class="nav-item">
+                        <a class="nav-link " href="{{ route('login') }}">LOGIN</a>
+                    </li>
+                @endif
                 <li class="nav-item">
                     <a class="nav-link " href="{{ route('profile.index') }}">Profile</a>
                 </li>

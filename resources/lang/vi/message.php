@@ -1,12 +1,13 @@
 <?php
 return [
+    'logout_success' => 'Đăng xuất thành công',
     'user_name_required' => ':attribute  không được để trống!',
     'user_name_min' => ':attribute không được ít hơn :min ký tự',
     'user_name_alpha_dash' => ':attribute không được chứa các ký tự đặc biệt và khoảng trắng',
     'password_required' => ':attribute không được để trống!',
     'password_min' => ':attribute phải có ít nhất :min kí tự',
     'login_success' => 'Đăng nhập thành công',
-    'login_error' => 'Username hoặc Password không chính xác',
+    'login_error' => 'Tên tài khoản hoặc Mật khẩu không chính xác',
     'user_name_unique' => ':attribute này đã tồn tại',
     'email_required' => ':attribute  không được để trống!',
     'email_email' => ':attribute  không đúng định dạng email!',
@@ -16,8 +17,7 @@ return [
     'password_confirmation_same' => ':attribute chưa đúng',
     'register_success' => 'Đăng ký thành công, Hapo xin chào!!!',
     'register_error' => 'Đăng ký thất bại!',
-    'log_in' => 'Sign up',
-    'register_title' => 'Sign up to HapoLearn',
+    'sign_up' => 'Đăng nhập',
     'regex_phone' => ':attribute là các số từ 0-9',
     'digits_phone' => ':attribute phải có 10 số',
     'required' => ':attribute  không được để trống!',
@@ -30,4 +30,13 @@ return [
     'image' => ':attribute phải là ảnh',
     'date' => ':attribute phải là định dạng ngày tháng',
     'mimes' => ':attribute phải là định dạng hình ảnh (jpeg, png, jpg, gif, svg)',
+    'sign_in_to_hapoLearn' => 'Đăng nhập vào HapoLearn',
+    'forgot_password' => 'Quên mật khẩu?',
+    'sign_in_with' => 'Đăng nhập với',
+    'sign_up_with' => 'Đăng ký HapoLearn',
+    'new_to_hapolearn' => 'Bạn mới sử dụng HapoLearn',
+    'create_new_account' => 'Tạo tài khoản mới',
+    'register' => 'Đăng ký',
+
+
 ];

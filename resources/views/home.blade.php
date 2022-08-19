@@ -4,12 +4,12 @@
     <section class="banner">
         <div class="container-banner">
             <div class="content">
-                <div class="content-item">learn anytime, anywhere</div>
-                <div class="content-title"><span>at HapoLearning</span>
+                <div class="content-item">{{ __('homepage.learn_anytime_anywhere') }}</div>
+                <div class="content-title"><span>{{ __('homepage.at_hapoLearning') }}</span>
                     <img src="{{ asset('images/hapo.png') }}" alt="icon-hapo">!
                 </div>
                 <div class="content-description ">interactive lessons, "on-the-go"<br> practice, peer support</div>
-                <div class="content-btn"><a href="#" class="btn-start">start learning now!</a></div>
+                <div class="content-btn"><a href="{{ route('courses.index') }}" class="btn-start">{{ __('button.start_learning_now') }}</a></div>
             </div>
         </div>
         <div class="effect-banner"></div>

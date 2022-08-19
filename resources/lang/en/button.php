@@ -17,4 +17,7 @@ return [
     'yes' => 'Yes',
     'no' => 'No',
     'logout' => 'Logout',
+    'login' => 'Login',
+    'start_learning_now' => 'Start learning now!',
+    'take_this_course' => 'Take this course!',
 ];

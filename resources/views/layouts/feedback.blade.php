@@ -1,9 +1,7 @@
 <div class="container feedback">
     <div class="feedback-top">
-        <div class="heading-courses">Feedback</div>
-        <div class="feedback-description">What other students turned professionals have to say about us<br>
-            after learning with us and reaching their goals
-        </div>
+        <div class="heading-courses">{{ __('homepage.feedback') }}</div>
+        <div class="feedback-description">{{ __('homepage.feedback_slogan1') }}<br> {{ __('homepage.feedback_slogan2') }} </div>
     </div>
     <div class="container">
         <div class="slide-show">

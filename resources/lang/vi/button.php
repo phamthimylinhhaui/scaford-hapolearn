@@ -17,4 +17,7 @@ return [
     'yes' => 'Có',
     'no' => 'Không',
     'logout' => 'Đăng xuất',
+    'login' => 'Đăng nhập',
+    'start_learning_now' => 'Bắt đầu học ngay!',
+    'take_this_course' => 'Tham gia khóa học!',
 ];

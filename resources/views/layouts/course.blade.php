@@ -9,10 +9,10 @@
                 <div class="card-body">
                     <h5 class="card-title">{{ $course->name }}</h5>
                     <p class="card-text">
-                        {{ $course->description }}
+                        {{ substr_replace($course->description,'...',230) }}
                     </p>
                     <div class="btn btn-success">
-                        <a href="#">take this course</a>
+                        <a href="{{ route('courses.show', [$course->id]) }}">{{ __('button.take_this_course') }}</a>
                     </div>
                 </div>
             </div>
@@ -22,7 +22,7 @@
 </div>
 
 <div class="container">
-    <div class="heading-courses">Other courses</div>
+    <div class="heading-courses">{{ __('homepage.other_courses') }}</div>
     <div class="row row-cols-1 row-cols-sm-1 row-cols-md-1 row-cols-xl-3 g-4">
         @foreach($otherCourses as $otherCourse)
         <div class="col">
@@ -33,10 +33,10 @@
                 <div class="card-body">
                     <h5 class="card-title">{{ $otherCourse->name }}</h5>
                     <p class="card-text">
-                        {{ $otherCourse->description }}
+                        {{ substr_replace($otherCourse->description,'...',230) }}
                     </p>
                     <div class="btn btn-success">
-                        <a href="#">take this course</a>
+                        <a href="{{ route('courses.show', [$otherCourse->id]) }}">{{ __('button.take_this_course') }}</a>
                     </div>
                 </div>
             </div>
@@ -44,7 +44,7 @@
         @endforeach
     </div>
     <div class="course-footer">
-        <span class="course-text">View all our course</span>
+        <a href="{{ route('courses.index') }}" class="btn-link course-text">{{ __('button.all_course') }}</a>
         <i class="fas fa-arrow-right"></i>
     </div>
 </div>

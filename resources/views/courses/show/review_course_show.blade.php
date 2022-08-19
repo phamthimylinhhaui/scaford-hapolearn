@@ -2,11 +2,9 @@
     <div class="review-title">{{ $course->count_review }} {{ __('course_show.review') }}</div>
     <div class="row review-avg">
         <div class="col-4 review-avg-left">
-            <div class="review-number">{{ round($course->rate) }}</div>
+            <div id="rateCourseValue" class="review-number">{{ number_format($course->rate, 1) }}</div>
             <div class="stars">
-                @for($i = 0 ; $i < round($course->rate); $i++)
-                <i class="fa-solid fa-star"></i>
-                @endfor
+                <div id="rateCourse"></div>
             </div>
             <div class="review-course-count">{{ $course->count_review }} {{ __('course_show.rating') }}</div>
         </div>

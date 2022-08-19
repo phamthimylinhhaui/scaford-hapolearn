@@ -13,6 +13,8 @@ require('./slick');
 require('./filter');
 require('./select2');
 require('./preview_image');
+require('./rateyo');
+require('./rating_rateyo');
 
 window.Vue = require('vue').default;
 

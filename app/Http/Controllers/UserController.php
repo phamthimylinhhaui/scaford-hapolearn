@@ -2,24 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\ChangePasswordFormRequest;
-use App\Models\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
-    public function edit()
+    public function profile()
     {
-        return view('users.edit');
-    }
-
-    public function update(ChangePasswordFormRequest $request)
-    {
-        $user = User::find(auth()->id());
-        if (password_verify($request['old_password'], $user->password)) {
-            $request['password'] = bcrypt($request['password']);
-            $user->update($request->all());
-            return redirect()->route('profile.index')->with('success', __('message.success_forgot_password'));
-        }
-        return redirect()->back()->with('error', __('message.error_old_password'));
+        return view('profile');
     }
 }

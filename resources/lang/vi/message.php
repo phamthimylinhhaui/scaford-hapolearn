@@ -37,8 +37,6 @@ return [
     'new_to_hapolearn' => 'Bạn mới sử dụng HapoLearn',
     'create_new_account' => 'Tạo tài khoản mới',
     'register' => 'Đăng ký',
-    'email_dont_exists' => 'Email này không tồn tại trong hệ thống',
-    'success_send_mail' => 'Vui lòng check email để thực hiện thay đổi mật khẩu',
-    'success_forgot_password' => 'Thay đổi mât khẩu thành công!',
-    'error_old_password' => 'Old password is incorrect!',
+
+
 ];

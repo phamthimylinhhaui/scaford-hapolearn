@@ -20,6 +20,4 @@ return [
     'login' => 'Login',
     'start_learning_now' => 'Start learning now!',
     'take_this_course' => 'Take this course!',
-    'reset_password' => 'Reset password',
-    'send_password_reset_link' => 'Send Password Reset Link',
 ];

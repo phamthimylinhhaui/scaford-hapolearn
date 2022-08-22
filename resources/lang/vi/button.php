@@ -20,6 +20,4 @@ return [
     'login' => 'Đăng nhập',
     'start_learning_now' => 'Bắt đầu học ngay!',
     'take_this_course' => 'Tham gia khóa học!',
-    'reset_password' => 'Thay đổi mật khẩu',
-    'send_password_reset_link' => 'Gửi liên kết đặt lại mật khẩu',
 ];

@@ -25,10 +25,10 @@ class ProfileFormRequest extends FormRequest
     {
         return [
             'avatar' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'full_name' => 'required|min:6',
+            'full_name' => 'nullable|min:6',
             'date_of_birth' => 'nullable|date',
             'address' => 'nullable|string',
-            'email' => 'required|email|unique:users',
+            'email' => 'nullable|email|unique:users',
             'phone' => 'nullable|digits:10|regex:/[0-9]{9,}/',
             'about_me' => 'nullable',
         ];
@@ -37,7 +37,6 @@ class ProfileFormRequest extends FormRequest
     public function messages()
     {
         return [
-            'required' => __('message.required'),
             'string' => __('message.string'),
             'image' => __('message.image'),
             'mimes' => __('message.mimes'),

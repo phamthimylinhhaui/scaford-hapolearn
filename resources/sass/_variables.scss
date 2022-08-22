@@ -38,3 +38,11 @@ $gray-rate: #E1E1E1;
   padding: 0.5em 1.5em;
   box-shadow: 0px 4px 4px 0px #00000040 inset;
 }
+
+.main-title {
+  font-size: 24px;
+  text-align: center;
+  color: $main-color;
+  font-family: $font-main;
+  font-weight: 700;
+}

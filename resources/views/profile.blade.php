@@ -12,7 +12,7 @@
             <div class="list-group-item">
                 <span class="profile-birthday">
                     <i class="fa-solid fa-cake-candles"></i>
-                    {{ date( 'd-m-Y', strtotime(auth()->user()->date_of_birth)) }}
+                    {{ empty(auth()->user()->date_of_birth) ? '' : date( 'd-m-Y', strtotime(auth()->user()->date_of_birth)) }}
                 </span>
             </div>
             <div class="list-group-item">
@@ -31,6 +31,9 @@
                 <span class="profile-description">
                   {{ auth()->user()->about_me }}
                 </span>
+            </div>
+            <div class="list-group-item">
+                <a class="text-danger" href="{{ route('users.edit', auth()->id()) }}">{{ __('button.reset_password') }}</a>
             </div>
         </div>
 
@@ -66,7 +69,7 @@
                         <div class="form-group">
                             <label for="full_name" class="col-md-12 col-form-label text-md-left">{{ __('attribute.full_name') }}</label>
                             <div class="col-md-12">
-                                <input id="full_name" type="text" class="form-control @error('full_name') is-invalid @enderror" name="full_name" value="{{ old('full_name') }}" required autocomplete="name" autofocus>
+                                <input id="full_name" type="text" class="form-control @error('full_name') is-invalid @enderror" name="full_name" value="{{ old('full_name') }}" autocomplete="name" autofocus>
                                 @error('full_name')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -139,7 +142,7 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-12">
-                                <button type="submit" class="btn btn-primary float-right btn-main">{ __('button.update') }}</button>
+                                <button type="submit" class="btn btn-primary float-right btn-main">{{ __('button.update') }}</button>
                             </div>
                         </div>
                     </div>

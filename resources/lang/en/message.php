@@ -13,5 +13,9 @@ return [
     'sign_up_with' => 'Sign up to HapoLearn',
     'new_to_hapolearn' => 'or New to Hapolearn',
     'create_new_account' => 'create new account',
-    'register' => 'Register'
+    'register' => 'Register',
+    'email_dont_exists' => 'Email do not exist in system',
+    'success_send_mail' => 'Please check your email to change your password',
+    'success_forgot_password' => 'Change password and login successfully!',
+    'error_old_password' => 'Thay đổi mât khẩu thành công!',
 ];

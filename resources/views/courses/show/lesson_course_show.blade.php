@@ -46,7 +46,7 @@
                             <strong>{{ $message }}</strong>
                         </span>
                         @enderror
-                        <button class="btn-main link-learn-lesson" type="submit">{{ __('button.learn') }}</button>
+                        <button class="btn-main link-learn-lesson text-white" type="submit">{{ __('button.learn') }}</button>
                     </form>
                 </div>
             </li>

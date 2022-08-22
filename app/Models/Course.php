@@ -74,10 +74,6 @@ class Course extends Model
             $query->where('name', 'LIKE', "%". $data['keyword'] ."%")->orWhere('description', 'LIKE', "%". $data['keyword'] ."%");
         }
 
-        if (isset($data['created_time'])) {
-            $query->orderBy('courses.created_at', $data['created_time']);
-        }
-
         if (isset($data['teachers']) && count($data['teachers']) > 0) {
             $query->whereHas('users', function ($query) use ($data) {
                 $query->where('users.role', config('roles.teacher'))->whereIn('user_id', $data['teachers']);
@@ -104,6 +100,10 @@ class Course extends Model
 
         if (isset($data['rate']) && !empty($data['rate'])) {
             $query->withCount('reviews')->orderBy('reviews_count', $data['rate']);
+        }
+
+        if (isset($data['created_time'])) {
+            $query->orderBy('courses.created_at', $data['created_time']);
         }
 
         return $query;

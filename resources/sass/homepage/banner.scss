@@ -41,6 +41,7 @@
   }
 
   .content-btn {
+    font-family: UTM BryantLG;
     margin-top: 26px;
     width: 70%;
     background: $main-color;
@@ -52,7 +53,6 @@
     a {
       text-decoration: none;
       color: white;
-      text-transform: capitalize;
       font-size: 30px;
       padding: 0 10px;
     }

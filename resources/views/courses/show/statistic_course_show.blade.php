@@ -43,7 +43,7 @@
                     <strong>{{ $message }}</strong>
                 </span>
                     @enderror
-                    <button type="submit" class="btn-main btn-join-course btn-finish">{{ __('button.join_course') }}</button>
+                    <button type="submit" class="btn-main btn-join-course btn-finish text-white">{{ __('button.join_course') }}</button>
                 </form>
             </li>
         @endif

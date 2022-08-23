@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\RegisterCourseFormRequest;
 use App\Models\Course;
 use App\Models\UserCourse;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class UserCourseController extends Controller
@@ -25,5 +26,15 @@ class UserCourseController extends Controller
         ])->delete();
 
         return redirect()->back()->with('success', __('course_show.success_soft_delete'));
+    }
+
+    public function update(RegisterCourseFormRequest $request)
+    {
+        UserCourse::withTrashed()
+            ->where('course_id', $request['course_id'])->where('user_id', auth()->id())
+            ->restore();
+
+        return redirect()->back()->with('success', __('Tham gia lại thành công'));
+
     }
 }

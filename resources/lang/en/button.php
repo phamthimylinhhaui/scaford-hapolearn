@@ -13,6 +13,7 @@ return [
     'send' => 'Send',
     'update' => 'Update',
     'more' => 'More',
+    'rejoin' => 'Rejoin',
     'all_course' => 'View all ours course',
     'message_delete' => 'Are you sure you want to delete?',
     'yes' => 'Yes',

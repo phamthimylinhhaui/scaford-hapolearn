@@ -6,7 +6,18 @@
     </form>
 
     @if(auth()->check() && $course->isDeleted())
-        <button class="btn btn-primary" disabled>{{ __('button.completed') }}</button>
+        <form action="{{ route('user_course.update', [$course->id]) }}" method="POST">
+            @csrf
+            {{ method_field('PUT') }}
+            <input type="hidden" name="course_id" value="{{ $course->id }}" class="form-control @error('course_id') is-invalid @enderror">
+            @error('course_id')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+            @enderror
+            <lable disabled>{{ __('button.completed') }}</lable>
+            <button type="submit" class="btn-main btn-join-course">{{ __('button.rejoin') }}</button>
+        </form>
     @elseif(auth()->check() && $course->isJoined())
         <button class="btn-danger btn-destroy" data-toggle="modal" data-target="#endCourse">{{ __('button.close_course') }}</button>
         @include('courses.show.soft_delete_user_course_modal')
@@ -32,22 +43,26 @@
                     .</div>
                 <div class="col-10 lesson-name">{{ $lesson->name }}</div>
                 <div class="btn-learn">
-                    <form action="{{ route('user_lesson.store') }}" method="POST">
-                        @csrf
-                        <input type="hidden" name="course_id" value="{{ $course->id }}" class="form-control @error('course_id') is-invalid @enderror">
-                        @error('course_id')
-                        <span class="invalid-feedback" role="alert">
+                    @if($lesson->isLearnedLesson())
+                        <button class="col-12 btn btn-primary"><a href="{{ route('lessons.show', [$lesson->id]) }}">{{ __('Đang học') }}</a></button>
+                    @else
+                        <form action="{{ route('user_lesson.store') }}" method="POST">
+                            @csrf
+                            <input type="hidden" name="course_id" value="{{ $course->id }}" class="form-control @error('course_id') is-invalid @enderror">
+                            @error('course_id')
+                            <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
-                        @enderror
-                        <input type="hidden" name="lesson_id" value="{{ $lesson->id }}" class="form-control @error('lesson_id') is-invalid @enderror">
-                        @error('lesson_id')
-                        <span class="invalid-feedback" role="alert">
+                            @enderror
+                            <input type="hidden" name="lesson_id" value="{{ $lesson->id }}" class="form-control @error('lesson_id') is-invalid @enderror">
+                            @error('lesson_id')
+                            <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
-                        @enderror
-                        <button class="btn-main link-learn-lesson text-white" type="submit">{{ __('button.learn') }}</button>
-                    </form>
+                            @enderror
+                            <button class="btn-main link-learn-lesson text-white" type="submit">{{ __('button.learn') }}</button>
+                        </form>
+                    @endif
                 </div>
             </li>
         @endforeach

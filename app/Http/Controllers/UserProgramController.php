@@ -10,8 +10,11 @@ class UserProgramController extends Controller
     public function store(StoreUserProgramRequest $request)
     {
         $program = Program::find($request['program_id']);
-        $program->users()->attach(auth()->id());
 
-        return redirect()->back()->with('success', __('lesson_show.complete_program'))->with('program', 'show');
+        if (!$program->isCompleteProgram()) {
+            $program->users()->attach(auth()->id());
+        }
+
+        return redirect()->to($program->path);
     }
 }

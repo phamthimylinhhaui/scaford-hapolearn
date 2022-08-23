@@ -83,19 +83,16 @@
                                                     <div class="col-2 lesson-name">Video</div>
                                                 @endif
                                                 <div class="col-6 lesson-name">{{ $program->name }}</div>
-                                                    @if(auth()->check() && $course->isJoined())
-                                                        <a href="{{ $program->path }}" class="btn-main" target="_blank">{{ __('button.learn') }}</a>
-                                                    @endif
                                                     <div class="btn-learn" data-id="{{ $program->id }}">
-                                                    @if(!$program->isCompleteProgram())
-                                                        <form method="POST" action="{{ route('user_program.store') }}">
+                                                        <form id="reload" method="POST" action="{{ route('user_program.store') }}" target="_blank">
                                                             @csrf
                                                             <input type="hidden" name="program_id" value="{{  $program->id }}">
-                                                            <button type="submit" class="btn-main btn-complete" id="learn" target="_blank">{{ __('button.complete') }}</button>
+                                                            @if($program->isCompleteProgram())
+                                                                <button type="submit" class="col-12 btn btn-primary" id="learn" target="_blank">{{ __('Đã học') }}</button>
+                                                            @else
+                                                                <button type="submit" class="btn-main btn-complete" id="learn" target="_blank">{{ __('Vào học') }}</button>
+                                                            @endif
                                                         </form>
-                                                    @else
-                                                        <button class="btn btn-primary learn" disabled>{{ __('button.completed') }}</button>
-                                                    @endif
                                                 </div>
                                             </li>
                                     @endforeach

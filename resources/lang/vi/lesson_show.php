@@ -6,7 +6,7 @@ return [
     'complete_program' => 'Oh, Bạn vừa hoàn thành học bài học này!',
     'error_learn_lesson' => 'Bạn chưa đăng ký khóa học này, Hoặc khóa học này đã kết thúc. Hãy tham gia khóa học để có thể học bài học này nhé!',
     'lessons_detail' => 'Thông tin chi tiết bài học',
-    'progress' => 'Tiến độ của tôi',
+    'progress' => 'Tiến độ bài học của tôi',
     'description' => 'Mô tả',
     'program' => 'Chương trình',
     'description_lesson' => 'Mô tả chi tiết bài học',

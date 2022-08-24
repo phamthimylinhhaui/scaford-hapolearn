@@ -5,8 +5,8 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{ route('home') }}">{{ __('courses.home') }}</a></li>
-            <li class="breadcrumb-item"><a href="{{ route('courses.index') }}">{{ __('courses.course_detail') }}</a></li>
-            <li class="breadcrumb-item"><a href="{{ route('courses.show', $course->id) }}">{{ __('courses.all_course') }}</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('courses.index') }}">{{ __('courses.all_course') }}</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('courses.show', $course->id) }}">{{ __('courses.course_detail') }}</a></li>
             <li class="breadcrumb-item active" aria-current="page">{{ __('lesson_show.lessons_detail') }}</li>
         </ol>
     </nav>
@@ -82,20 +82,21 @@
                                                     <div class="number-order"><i class="fa-solid fa-file-video"></i></div>
                                                     <div class="col-2 lesson-name">Video</div>
                                                 @endif
-                                                <div class="col-6 lesson-name">{{ $program->name }}</div>
-                                                    <div class="btn-learn" data-id="{{ $program->id }}">
-                                                        <form id="reload" method="POST" action="{{ route('user_program.store') }}" target="_blank">
-                                                            @csrf
-                                                            <input type="hidden" name="program_id" value="{{  $program->id }}">
-                                                            @if($program->isCompleteProgram())
-                                                                <button type="submit" class="col-12 btn btn-primary" id="learn" target="_blank">{{ __('Đã học') }}</button>
-                                                            @else
-                                                                <button type="submit" class="btn-main btn-complete" id="learn" target="_blank">{{ __('Vào học') }}</button>
-                                                            @endif
-                                                        </form>
+                                                <div class="col-7 lesson-name">{{ $program->name }}</div>
+                                                <div class="col-3 btn-learn" data-id="{{ $program->id }}">
+                                                    <form id="reload" class="float-right" method="POST" action="{{ route('user_program.store') }}">
+                                                        @csrf
+                                                        <input type="hidden" name="program_id" value="{{  $program->id }}">
+                                                        @if($program->isCompleteProgram())
+                                                            <button type="submit" class="btn-main btn-complete font-text-button" id="learn">{{ __('Hoàn thành') }}</button>
+                                                        @else
+                                                            <button type="submit" class="btn-main btn-complete font-text-button" id="learn" target="_blank" onclick="window.open('{{ $program->path }}', '_blank');">{{ __('Vào học') }}</button>
+                                                        @endif
+                                                    </form>
                                                 </div>
                                             </li>
                                     @endforeach
+
                                         {{ $programs->links() }}
                                     @if(!$programs->count())
                                         <li class="list-group-item">{{ __('lesson_show.no_found_program') }}</li>

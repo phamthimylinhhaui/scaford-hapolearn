@@ -38,6 +38,8 @@ class CourseController extends Controller
         }
 
         $course = Course::find($id);
+
+//        dd($course->status_completed_course);
         $otherCourses = Course::otherCourse()->take(config('courses.show_other_course'))->get();
         $tags = $course->tags;
         $lessons = $course->lessons()->search($request->all())->paginate(config('courses.paginate_course_show_lesson'));

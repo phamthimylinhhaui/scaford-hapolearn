@@ -15,6 +15,6 @@ class UserProgramController extends Controller
             $program->users()->attach(auth()->id());
         }
 
-        return redirect()->to($program->path);
+        return redirect()->back();
     }
 }

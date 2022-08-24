@@ -24,10 +24,6 @@ class CanLearnProgram
             return redirect()->back()->with('error', __('lesson_show.cannot_learn'))->with('program', 'show');
         }
 
-        if ($program->isCompleteProgram()) {
-            return redirect()->back()->with('error', __('lesson_show.complete_program'))->with('program', 'show');
-        }
-
         return $next($request);
     }
 }

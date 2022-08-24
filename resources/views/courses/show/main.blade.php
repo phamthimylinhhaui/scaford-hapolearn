@@ -18,6 +18,18 @@
                 <img src="{{ asset($course->image) }}" alt="hình ảnh" class="">
             </div>
 
+{{--            <div class="col-12 lesson-progress">--}}
+{{--                @if(auth()->check() && $course->isJoined())--}}
+{{--                    <div class="description-title">{{ __('Tiến độ hoàn thành khóa học') }}</div>--}}
+{{--                    <div class="progress-value">--}}
+{{--                        <progress max="{{ $lesson->total_program }}" value="{{ $lesson->total_learned_program }}" class="col-10"></progress>--}}
+{{--                        <span>{{ $lesson->total_learned_program == 0 ? 0 : number_format($lesson->total_learned_program * 100 / $lesson->total_program, 2) }} %</span> --}}
+{{--                        <progress max="10" value="1" class="col-10"></progress>--}}
+{{--                        <span>10 %</span>--}}
+{{--                    </div>--}}
+{{--                @endif--}}
+{{--            </div>--}}
+
             <div class="col-12 show-tab">
                 <div class="col-12">
                     <ul class="tabs" >

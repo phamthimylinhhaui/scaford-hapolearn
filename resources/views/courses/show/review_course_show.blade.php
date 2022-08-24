@@ -191,7 +191,9 @@
 
 </div>
 
-@if (!$course->isReview())
+@if (!auth()->check())
+    <div class="text-dark">Đăng nhập và tham gia khóa học để thực hiện đánh giá nhé!</div>
+@elseif (!$course->isReview())
 <div class="review-bottom">
     <div class="review-bottom-title">{{ __('course_show.leave_review') }}</div>
     <div class="add-rate">
@@ -229,4 +231,6 @@
         </form>
     </div>
 </div>
+@else
+<div class="text-dark">Bạn đã đánh giá khóa học này!</div>
 @endif

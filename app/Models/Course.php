@@ -18,6 +18,11 @@ class Course extends Model
         'description'
     ];
 
+    public function getStatusCompletedCourseAttribute()
+    {
+//        return $this->lessons()->get()->status_completed_lesson;
+    }
+
     public function isReview()
     {
         return $this->reviews()->whereExists(function ($query) {
@@ -88,10 +93,6 @@ class Course extends Model
             $query->withSum('lessons', 'times')->orderBy('lessons_sum_times', $data['time']);
         }
 
-        if (isset($data['lesson']) && !empty($data['lesson'])) {
-            $query->withCount('lessons')->orderBy('lessons_count', $data['lesson']);
-        }
-
         if (isset($data['tags']) && count($data['tags']) > 0) {
             $query->whereHas('tags', function ($query) use ($data) {
                 $query->whereIn('tag_id', $data['tags']);
@@ -100,6 +101,10 @@ class Course extends Model
 
         if (isset($data['rate']) && !empty($data['rate'])) {
             $query->withCount('reviews')->orderBy('reviews_count', $data['rate']);
+        }
+
+        if (isset($data['lesson']) && !empty($data['lesson'])) {
+            $query->withCount('lessons')->orderBy('lessons_count', $data['lesson']);
         }
 
         if (isset($data['created_time'])) {

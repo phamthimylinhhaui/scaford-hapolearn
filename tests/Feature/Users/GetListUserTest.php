@@ -25,7 +25,7 @@ class GetListUserTest extends TestCase
     }
 
     /** @test */
-    public function check_bo()
+    public function checkBo()
     {
         $this->assertTrue(true);
     }

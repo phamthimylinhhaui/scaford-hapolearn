@@ -35,6 +35,7 @@ Route::resource('tags', TagController::class)->only(['show']);
 Route::group(['middleware' => 'auth'], function () {
     Route::resource('user_course', UserCourseController::class)->only(['store'])->middleware(['canJoin']);
     Route::resource('user_course', UserCourseController::class)->only(['destroy']);
+    Route::resource('user_course', UserCourseController::class)->only(['update'])->middleware(['reJoin']);
     Route::resource('lessons', LessonController::class)->only(['show']);
     Route::resource('reviews', ReviewController::class)->only(['store'])->middleware(['canReview']);
     Route::resource('reviews', ReviewController::class)->only(['update']);

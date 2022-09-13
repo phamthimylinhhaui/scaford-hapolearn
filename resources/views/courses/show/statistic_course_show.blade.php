@@ -26,7 +26,17 @@
         </li>
         @if(auth()->check() && $course->isDeleted())
             <li class="list-group-item key-item">
-                <button class="btn btn-primary btn-finish" disabled>{{ __('button.completed') }}</button>
+                <form action="{{ route('user_course.update', [$course->id]) }}" method="POST">
+                    @csrf
+                    {{ method_field('PUT') }}
+                    <input type="hidden" name="course_id" value="{{ $course->id }}" class="form-control @error('course_id') is-invalid @enderror">
+                    @error('course_id')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
+                    <button type="submit" class="btn-main btn-join-course text-white">{{ __('button.rejoin') }}</button>
+                </form>
             </li>
         @elseif(auth()->check() && $course->isJoined())
             <li class="list-group-item key-item">
@@ -43,7 +53,7 @@
                     <strong>{{ $message }}</strong>
                 </span>
                     @enderror
-                    <button type="submit" class="btn-main btn-join-course btn-finish">{{ __('button.join_course') }}</button>
+                    <button type="submit" class="btn-main btn-join-course btn-finish text-white">{{ __('button.join_course') }}</button>
                 </form>
             </li>
         @endif

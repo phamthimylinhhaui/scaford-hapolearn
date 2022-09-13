@@ -170,6 +170,21 @@
       font-weight: 700;
     }
   }
+
+  .card-text {
+    display: -webkit-box;
+    font-size: $font-main;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+.main-text-white {
+  font-family: $font-main;
+  color: white;
+  text-align: center;
 }
 
 .card-footer {
@@ -185,7 +200,6 @@
   .list-title {
     font-size: 25px;
     font-weight: 700;
-    text-transform: capitalize;
   }
 
   .list-data {

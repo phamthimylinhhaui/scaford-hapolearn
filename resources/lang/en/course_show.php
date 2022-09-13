@@ -2,6 +2,8 @@
 
 return [
     'cannot_join_course' => 'You have already signed up for this course!',
+    'cannot_rejoin_course' => 'You have not taken the Course or This Course is not finished!',
+    'success_rejoin_course' => 'Rejoin successfully',
     'cannot_review' => 'You have not taken the course yet or rated so cannot rate this course!',
     'cannot_update_review' => 'This review is not yours!',
     'cannot_reply' => 'You have not taken the course yet so cannot reply to this review!!',

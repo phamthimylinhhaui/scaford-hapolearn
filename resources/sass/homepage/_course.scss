@@ -31,6 +31,7 @@
   }
 
   .btn-success {
+    font-family: 'UTM BryantLG';
     margin: 1.5em auto;
     margin-bottom: 5em;
     @extend .btn-main;
@@ -38,7 +39,6 @@
     a {
       color: white;
       text-decoration: none;
-      text-transform: capitalize;
       font-weight: 700;
     }
   }
@@ -80,7 +80,6 @@
   width: 80%;
   color: $main-color;
   font-weight: 800;
-  text-transform: capitalize;
 
   .course-text {
     font-family: 'UTM BryantLG';
@@ -95,6 +94,7 @@
   }
 
   .card {
+    font-family: 'UTM BryantLG';
     display: flex;
     flex-direction: row;
 

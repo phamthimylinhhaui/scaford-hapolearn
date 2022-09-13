@@ -63,6 +63,7 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'canJoin' => \App\Http\Middleware\CheckJoinCourse::class,
+        'reJoin' => \App\Http\Middleware\ReJoinCourse::class,
         'canReview' => \App\Http\Middleware\CanReview::class,
         'canReply' => \App\Http\Middleware\CanReply::class,
         'canLearnProgram' => \App\Http\Middleware\CanLearnProgram::class,

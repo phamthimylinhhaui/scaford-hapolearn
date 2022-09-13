@@ -15,6 +15,10 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="{{ route('courses.index') }}">{{ __('homepage.all_courses') }}</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link " href="{{ route('profile.index') }}">{{ __('homepage.profile') }}</a>
+                </li>
+
                 @if(auth()->check())
                     <li class="nav-item">
                         <button class="nav-link btn-logout" data-toggle="modal" data-target="#logout">{{ __('button.logout') }}</button>
@@ -39,16 +43,11 @@
                             </div>
                         </div>
                     </div>
-
-
                 @else
                     <li class="nav-item">
                         <a class="nav-link " href="{{ route('login') }}">{{ __('button.login') }}</a>
                     </li>
                 @endif
-                <li class="nav-item">
-                    <a class="nav-link " href="{{ route('profile.index') }}">{{ __('homepage.profile') }}</a>
-                </li>
             </ul>
         </div>
     </nav>

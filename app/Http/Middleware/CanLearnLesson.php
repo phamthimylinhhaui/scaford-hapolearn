@@ -18,7 +18,7 @@ class CanLearnLesson
     public function handle(Request $request, Closure $next)
     {
         $course = Course::find($request['course_id']);
-        if (!$course->isJoined()) {
+        if (!$course->isJoined() || $course->isDeleted()) {
             return redirect()->back()->with('error', __('lesson_show.error_learn_lesson'));
         }
 

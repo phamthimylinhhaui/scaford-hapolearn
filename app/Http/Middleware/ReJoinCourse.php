@@ -2,11 +2,11 @@
 
 namespace App\Http\Middleware;
 
-use App\Models\Program;
+use App\Models\Course;
 use Closure;
 use Illuminate\Http\Request;
 
-class CanLearnProgram
+class ReJoinCourse
 {
     /**
      * Handle an incoming request.
@@ -17,13 +17,10 @@ class CanLearnProgram
      */
     public function handle(Request $request, Closure $next)
     {
-        $program = Program::find($request['program_id']);
-        $course = $program->lesson->course;
-
-        if (!$course->isJoined() || $course->isDeleted()) {
-            return redirect()->back()->with('error', __('lesson_show.cannot_learn'))->with('program', 'show');
+        $course = Course::find($request['course_id']);
+        if (!$course->isJoined() || !$course->isDeleted()) {
+            return redirect()->back()->with('error', __('course_show.cannot_rejoin_course'));
         }
-
         return $next($request);
     }
 }

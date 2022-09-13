@@ -29,6 +29,16 @@ class Lesson extends Model
         })->count();
     }
 
+    public function getStatusCompletedLessonAttribute()
+    {
+        $totalPrograms = $this->programs()->count();
+        $learning = $this->programs()->whereHas('users', function ($query) {
+            $query->where('user_program.user_id', auth()->id())->where('lesson_id', $this->id);
+        })->count();
+
+        return $learning == $totalPrograms ? config('config.leaned') : config('config.learning');
+    }
+
     public function isLearnedLesson()
     {
         return $this->users()->whereExists(function ($query) {

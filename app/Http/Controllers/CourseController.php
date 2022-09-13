@@ -40,7 +40,7 @@ class CourseController extends Controller
         $course = Course::find($id);
         $otherCourses = Course::otherCourse()->take(config('courses.show_other_course'))->get();
         $tags = $course->tags;
-        $lessons = $course->lessons()->search($request->all())->paginate(config('courses.paginate_course_show_lesson'));
+        $lessons = $course->lessons()->search($request->all())->orderBy('order')->paginate(config('courses.paginate_course_show_lesson'));
         $teachers = $course->teachers;
         $numberOfStars = $course->getNumberOfStars();
         $reviews = $course->reviews()->orderBy('created_at', config('config.desc'))

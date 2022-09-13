@@ -35,6 +35,5 @@ class UserCourseController extends Controller
             ->restore();
 
         return redirect()->back()->with('success', __('Tham gia lại thành công'));
-
     }
 }

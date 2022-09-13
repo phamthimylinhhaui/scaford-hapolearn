@@ -18,11 +18,6 @@ class Course extends Model
         'description'
     ];
 
-    public function getStatusCompletedCourseAttribute()
-    {
-//        return $this->lessons()->get()->status_completed_lesson;
-    }
-
     public function isReview()
     {
         return $this->reviews()->whereExists(function ($query) {

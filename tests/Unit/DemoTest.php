@@ -5,7 +5,7 @@ namespace Tests\Unit;
 use App\Models\User;
 use PHPUnit\Framework\TestCase;
 
-class UserTest extends TestCase
+class DemoTest extends TestCase
 {
     /**
      * A basic unit test example.
@@ -17,7 +17,7 @@ class UserTest extends TestCase
         $this->assertTrue(true);
     }
 
-    public function testHasUser()
+    public function testHas()
     {
 ////        $response = $this->get('/');
 //        $response = $this->getJson(route('users.index'));

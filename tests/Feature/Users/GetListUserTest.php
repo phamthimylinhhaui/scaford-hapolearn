@@ -23,10 +23,9 @@ class GetListUserTest extends TestCase
 //        $response->assertStatus(200);
 
         $response->assertJson(function (AssertableJson $json) {
-            $json->has('status')
-            ->has('data', function (AssertableJson $json) {
+            $json->has('data', function (AssertableJson $json) {
                 $json->where('total', User::count())->etc();//etc la bo qua cac trg mk k has, o day users, total
-            });
+            })->etc();
         });
     }
 

@@ -20,7 +20,6 @@ class UserController extends Controller
         $count = $users->count();
         return response()->json([
             'status' => 200,
-//            'data' => $users
             'data' => [
                 'users' => $users,
                 'total' => $count

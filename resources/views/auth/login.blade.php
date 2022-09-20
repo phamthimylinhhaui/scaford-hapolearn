@@ -69,7 +69,8 @@
                             <div class="col-lg-4 col-md-3 line"></div>
                         </div>
                         <div class="btn btn-primary col-md-11 btn-google">
-                            <a href="#" class="link-login-google">
+{{--                            <a href="{{ route('login.google') }}" class="link-login-google">--}}
+                                <a href="{{ route('login.google', 'google') }}" class="link-login-google">
                                 <i class="fa-brands fa-google-plus-g"></i>
                                 <span>Google</span>
                             </a>

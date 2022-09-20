@@ -24,6 +24,14 @@ use App\Http\Controllers\UserLessonController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('get-google-sign-in-url/{driver}', [LoginGoogleController::class, 'getUrl'])->name('login.google');
+Route::get('/auth/callback', [LoginGoogleController::class, 'callback'])->name('callback');
+//Route::get('get-google-sign-in-url', [LoginGoogleController::class, 'getUrl'])->name('login.google');
+//Route::get('redirect/{driver}', [LoginGoogleController::class, 'redirectToProvider'])
+//    ->name('login.provider')
+//    ->where('driver', implode('|', config('auth.socialite.drivers')));
+
+
 Auth::routes();
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/home', [HomeController::class, 'index'])->name('home');

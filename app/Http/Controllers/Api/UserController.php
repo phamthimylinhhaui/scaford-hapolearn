@@ -17,9 +17,13 @@ class UserController extends Controller
     public function index()
     {
         $users = User::all();
+        $count = $users->count();
         return response()->json([
             'status' => 200,
-            'data' => $users
+            'data' => [
+                'users' => $users,
+                'total' => $count
+            ]
         ]);
     }
 

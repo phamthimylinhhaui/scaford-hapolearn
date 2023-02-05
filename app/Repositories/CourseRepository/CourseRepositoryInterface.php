@@ -7,5 +7,4 @@ use App\Repositories\RepositoryInterface;
 interface CourseRepositoryInterface extends RepositoryInterface
 {
     public function getCourseById(int $id);
-
 }

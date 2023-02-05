@@ -16,5 +16,4 @@ class CourseRepository extends EloquentRepository implements CourseRepositoryInt
     {
         return $this->model->where('id', $id)->get();
     }
-
 }

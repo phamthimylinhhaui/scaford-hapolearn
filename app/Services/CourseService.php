@@ -17,5 +17,4 @@ class CourseService
     {
         return $this->courseRepositoryInterface->getCourseById(1);
     }
-
 }

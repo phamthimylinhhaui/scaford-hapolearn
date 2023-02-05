@@ -17,6 +17,11 @@ class CourseController extends Controller
         $this->courseService = $courseService;
     }
 
+    public function getCourse()
+    {
+        return Course::orderBy('name', 'desc')->get();
+    }
+
     public function testRepository()
     {
         return $this->courseService->testRepository();

@@ -9,47 +9,23 @@ use Illuminate\Database\Eloquent\Model;
 
 abstract class EloquentRepository implements RepositoryInterface
 {
-    /**
-     * @var Model
-     */
     protected $model;
-
-    /**
-     * EloquentRepository constructor.
-     * @throws BindingResolutionException
-     */
     public function __construct()
     {
         $this->setModel();
     }
     abstract public function getModel();
 
-    /**
-     * Set model.
-     * @throws BindingResolutionException
-     */
     public function setModel()
     {
         $this->model = app()->make(
             $this->getModel()
         );
     }
-
-    /**
-     * Get all.
-     *
-     * @return Collection|static[]
-     */
     public function getAll()
     {
         return $this->model->all();
     }
-
-    /**
-     * Get one
-     * @param $id
-     * @return mixed
-     */
     public function find($id)
     {
         $result = $this->model->find($id);

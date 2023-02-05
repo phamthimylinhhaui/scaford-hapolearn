@@ -5,10 +5,22 @@ namespace App\Http\Controllers;
 use App\Models\Course;
 use App\Models\Tag;
 use App\Models\User;
+use App\Services\CourseService;
 use Illuminate\Http\Request;
 
 class CourseController extends Controller
 {
+    protected $courseService;
+    public function __construct(
+        CourseService $courseService
+    ) {
+        $this->courseService = $courseService;
+    }
+
+    public function testRepository()
+    {
+        return $this->courseService->testRepository();
+    }
     /**
      * Display a listing of the resource.
      *

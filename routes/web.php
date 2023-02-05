@@ -27,6 +27,7 @@ use App\Http\Controllers\UserLessonController;
 Auth::routes();
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/test-repository', [CourseController::class, 'testRepository'])->name('repository');
 
 Route::resource('courses', CourseController::class)->only(['index', 'show']);
 

@@ -9,7 +9,15 @@ use Illuminate\Database\Eloquent\Model;
 
 abstract class EloquentRepository implements RepositoryInterface
 {
+    /**
+     * @var Model
+     */
     protected $model;
+
+    /**
+     * EloquentRepository constructor.
+     * @throws BindingResolutionException
+     */
     public function __construct()
     {
         $this->setModel();

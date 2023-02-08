@@ -47,4 +47,11 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('user_program', UserProgramController::class)->only(['store'])->middleware(['canLearnProgram']);
     Route::resource('user_lesson', UserLessonController::class)->only(['store'])->middleware('canLearnLesson');
     Route::resource('users', UserController::class)->only(['edit', 'update']);
+
+    //----------------------------Route Admin-------------------------//
+
+    Route::group(['as' => 'admin.', 'prefix' => 'admin'], function () {
+        // Course
+        Route::resource('courses', \App\Http\Controllers\Admin\CourseController::class);
+    });
 });

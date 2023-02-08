@@ -1,0 +1,23 @@
+#sidebar {
+  .sidebar-logo {
+    a {
+      text-decoration: none;
+    }
+  }
+
+  .sidebar-inner {
+    .sidebar-menu {
+      ul {
+        list-style-type: none;
+
+        li {
+          list-style-type: none;
+
+          a {
+            text-decoration: none;
+          }
+        }
+      }
+    }
+  }
+}
